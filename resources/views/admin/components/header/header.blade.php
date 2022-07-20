@@ -75,9 +75,9 @@
 
         <div class="dropdown">
             <a href="#account_menu" class="dropdown-toggle navbar-toggler navbar-toggler-dashboard border-left d-flex align-items-center ml-navbar" data-toggle="dropdown">
-                <img src="assets/images/avatar/demi.png" class="rounded-circle" width="32" alt="Frontted">
+                {{-- <img src="assets/images/avatar/demi.png" class="rounded-circle" width="32" alt="Frontted"> --}}
                 <span class="ml-1 d-flex-inline">
-                    <span class="text-light">Adrian D.</span>
+                    <span class="text-light">{{ Auth::user()->name }}</span>
                 </span>
             </a>
             <div id="company_menu" class="dropdown-menu dropdown-menu-right navbar-company-menu">

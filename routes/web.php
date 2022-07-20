@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', ['as'=>'home','uses'=>'HomeController@index']);
+Route::get('/', ['as'=>'home','uses'=>'HomeController@index']);
 
 
 Route::namespace('Admin')->group(function(){
@@ -67,7 +67,18 @@ Route::namespace('Admin')->group(function(){
 			Route::delete('/{admin}',['as'=>'destroy','uses'=>'AdminController@destroy']);
 
 			Route::get('/dashboard',['as'=>'dashboard','uses'=>'AdminController@admin']);
+			
+			// Categories Routes
+			Route::resource('categories','CategoryController');
+			//Route::get('/categories/pdf',['as'=>'categories.pdf','uses'=>'CategoryController@pdf']);
+
+			Route::resource('product','ProductController');
+			Route::post('products/delete',['as'=>'products.delete','uses'=>'ProductController@delete']);
+			Route::get('/products/pdf',['as'=>'products.pdf','uses'=>'ProductController@pdf']);
 		});
 		
+	
+		
 	});
+	
 });
