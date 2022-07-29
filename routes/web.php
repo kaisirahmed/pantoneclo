@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::get('/', ['as'=>'home','uses'=>'PantonecloController@index']);
+Route::get('/shop', ['as'=>'shop','uses'=>'ShopController@index']);
+Route::get('/shop/{slug}',['as'=>'product.show','uses'=>'ShopController@show']);
 Auth::routes();
 
-Route::get('/', ['as'=>'home','uses'=>'HomeController@index']);
+Route::get('/cart',['as'=>'cart','uses'=>'CartController@index']);
 
 
 Route::namespace('Admin')->group(function(){
@@ -72,8 +74,9 @@ Route::namespace('Admin')->group(function(){
 			Route::resource('categories','CategoryController');
 			//Route::get('/categories/pdf',['as'=>'categories.pdf','uses'=>'CategoryController@pdf']);
 
-			Route::resource('product','ProductController');
-			Route::post('products/delete',['as'=>'products.delete','uses'=>'ProductController@delete']);
+			Route::resource('products','ProductController');
+			Route::post('products/imageupload',['as'=>'products.imageupload','uses'=>'ProductController@imageUpload']);
+			//Route::post('products/delete',['as'=>'products.delete','uses'=>'ProductController@delete']);
 			Route::get('/products/pdf',['as'=>'products.pdf','uses'=>'ProductController@pdf']);
 		});
 		

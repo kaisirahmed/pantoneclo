@@ -1,5 +1,6 @@
     <!-- Perfect Scrollbar -->
     <link type="text/css" href="{{ asset('admin/assets/vendor/perfect-scrollbar.css') }}" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
     <!-- App CSS -->
     <link type="text/css" href="{{ asset('admin/assets/css/app.css') }}" rel="stylesheet">

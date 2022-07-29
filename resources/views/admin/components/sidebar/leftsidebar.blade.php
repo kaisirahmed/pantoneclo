@@ -60,7 +60,7 @@
             </li>
 
             <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button" href="student-courses.html">
+                <a class="sidebar-menu-button" href="{{ route('admin.products.index') }}">
                     <span class="sidebar-menu-icon sidebar-menu-icon--left">
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="22" height="22">
                             <g transform="matrix(1.6666666666666667,0,0,1.6666666666666667,0,0)">
@@ -68,7 +68,7 @@
                             </g>
                         </svg>
                     </span>
-                    <span class="sidebar-menu-text">Courses</span>
+                    <span class="sidebar-menu-text">Products</span>
                 </a>
             </li>
 

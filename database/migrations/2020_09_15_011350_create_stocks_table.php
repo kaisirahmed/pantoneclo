@@ -17,8 +17,8 @@ class CreateStocksTable extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('quantity');
-            $table->unsignedBigInteger('unit_id');
-            $table->unsignedBigInteger('marchant_id');
+            $table->unsignedBigInteger('marchant_id')->default(0);
+            $table->integer('status');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -2,7 +2,7 @@
 @section('title','Admin Login Panel')
 @section('content')
 <div class="card card-body">
-    <div class="alert alert-soft-success d-flex" role="alert">
+    {{-- <div class="alert alert-soft-success d-flex" role="alert">
         <i class="material-icons mr-3">check_circle</i>
         <div class="text-body">An email with password reset instructions has been sent to your email address, if it exists on our system.</div>
     </div>
@@ -20,8 +20,8 @@
             </svg>
         </span>
         Continue with Google
-    </a>
-{{ auth()->user()    }}
+    </a> --}}
+
     <div class="page-separator">
         <div class="page-separator__text">or</div>
     </div>
