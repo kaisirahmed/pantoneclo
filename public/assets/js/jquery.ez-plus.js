@@ -1981,7 +1981,7 @@ if (typeof Object.create !== 'function') {
         // allow to continue zooming out, so it keeps retrocompatibility.
         mantainZoomAspectRatio: false,
         maxZoomLevel: false,
-        minZoomLevel: 1.01,
+        minZoomLevel: 4.01,
 
         onComplete: $.noop,
         onDestroy: $.noop,

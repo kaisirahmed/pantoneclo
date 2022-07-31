@@ -719,7 +719,7 @@ section
 {
 	color: #0e8ce4;
 }
-select
+/* select
 {
 	display: inline;
 	border: 0;
@@ -732,10 +732,14 @@ select
 	color: #7b00ff;
 	-webkit-transition: all .4s ease-in-out;
 	transition: all .4s ease-in-out;
-}
+} */
 select:hover
 {
 	cursor: pointer;
+}
+select:focus
+{
+	border: none;
 }
 select option
 {
@@ -1476,6 +1480,37 @@ select option
 	justify-content: flex-start;
 	border-bottom-right-radius: 5px;
 }
+.product_size
+{
+    display: block;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(0,0,0,0.5);
+    line-height: 28px;
+    float: left;
+	cursor: pointer;
+    padding: 12px;
+}
+.product_size span
+{
+	display: block;
+	height: 50px;
+	font-size: 16px;
+	font-weight: 300;
+	color: rgba(0,0,0,0.5);
+	line-height: 50px;
+	float: left;
+}
+
+.size_list{
+	float: right;
+    padding: 2px;
+    margin-right: -44px;
+    /* margin-top: 7px */
+    border: none;
+    width: 100%;
+}
 .product_color
 {
 	width: 182px;
@@ -1494,6 +1529,25 @@ select option
 	color: rgba(0,0,0,0.5);
 	line-height: 50px;
 	float: left;
+}
+.product_size
+{
+	width: 182px;
+	height: 50px;
+	border: solid 1px #e5e5e5;
+	border-radius: 5px;
+	float: left;
+	cursor: pointer;
+}
+.product_size span
+{
+	display: block;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(0,0,0,0.5);
+    line-height: 24px;
+    margin-left: -22px;
 }
 .color_dropdown_button
 {
@@ -1581,6 +1635,51 @@ select option
 {
 	margin-left: auto;
 }
+.product_size > li
+{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding-left: 25px;
+	padding-right: 49px;
+}
+.product_size li ul
+{
+	position: absolute;
+	top: calc(100% + 15px);
+	right: 0;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	width: auto;
+	visibility: hidden;
+	opacity: 0;
+	box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+	background: #FFFFFF;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.product_size > li:hover ul
+{
+	top: 100%;
+	visibility: visible;
+	opacity: 1;
+}
+.product_size li ul li
+{
+	padding-right: 49px;
+	padding-left: 49px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.product_size li ul li div
+{
+	margin-left: auto;
+}
+
+
 .product_price
 {
 	display: inline-block;

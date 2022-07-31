@@ -5,6 +5,7 @@
 
 @include('layouts.partials.meta')
 @include('layouts.partials.style')
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/main_styles.css') }}">
 @yield('style')
 
 </head>

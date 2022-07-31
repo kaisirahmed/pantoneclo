@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col d-flex flex-row">
-                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div><a href="callto:+880 1571704763">+880 1571704763</a></div>
-                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:kaisir23515@gmail.com">kaisir23515@gmail.com</a></div>
+                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div><a href="callto:+386 307 96092">PANTONECLO® Apparel B2B Solution for EU</a></div>
+                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('assets/images/mail.png') }}" alt=""></div><a href="mailto:mail@gmail.com">info@pantoneclo.com</a></div>
 
                 <div class="Eone">
-                    <div><h3>E-ONE SHOP</h3></div>
+                    <div><h3>Pantoneclo</h3></div>
                 </div>
                 
                 <div class="top_bar_menu ml-auto">
@@ -15,19 +15,19 @@
                         <ul class="standard_dropdown top_bar_dropdown">
                             <li>
                                 <a href="#">English<i class="fas fa-chevron-down"></i></a>
-                                <ul>
+                                {{-- <ul>
                                     <li><a href="#">Italian</a></li>
                                     <li><a href="#">Spanish</a></li>
                                     <li><a href="#">Japanese</a></li>
-                                </ul>
+                                </ul> --}}
                             </li>
                             <li>
                                 <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                                <ul>
+                                {{-- <ul>
                                     <li><a href="#">EUR Euro</a></li>
                                     <li><a href="#">GBP British Pound</a></li>
                                     <li><a href="#">JPY Japanese Yen</a></li>
-                                </ul>
+                                </ul> --}}
                             </li>
                         </ul>
                     </div>

@@ -50,6 +50,10 @@ class Product extends Model
     {
         return $this->belongsTo(Unit::class);
     }
+    public function color() 
+    {
+        return $this->belongsTo(Color::class)->withDefault(['name' => 'None']);
+    }
     public function sizes() 
     {
         return $this->hasMany(Size::class);

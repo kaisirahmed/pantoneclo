@@ -1225,7 +1225,7 @@ select option
 }
 .cart_items
 {
-	margin-top: 67px;
+	margin-top: 40px;
 }
 .cart_list
 {
@@ -1236,12 +1236,49 @@ select option
 {
 	width: 100%;
 	padding: 15px;
-	padding-right: 46px;
+	padding-right: 0px;
+}
+.product_quantity
+{
+	width: 100px;
+    font-size: 10px;
+    height: 40px;
+    border: solid 1px #e5e5e5;
+    border-radius: 5px;
+    overflow: hidden;
+    padding-left: 6px;
+    float: left;
+    margin-right: 0px;
+}
+.product_quantity strong
+{
+	display: block;
+	height: 42px;
+	font-size: 16px;
+	font-weight: 300;
+	color: rgba(0,0,0,0.5);
+	line-height: 38px;
+	float: left;
+}
+.product_quantity input
+{
+	display: block;
+    width: 30px;
+    height: 42px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(0,0,0,0.5);
+    text-align: left;
+    padding-left: 9px;
+    line-height: 50px;
+    float: left;
 }
 .cart_item_image
 {
-	width: 133px;
-	height: 133px;
+	width: 70px;
+	/* height: 133px; */
 	float: left;
 }
 .cart_item_image img
@@ -1250,13 +1287,14 @@ select option
 }
 .cart_item_info
 {
-	width: calc(100% - 133px);
-	float: left;
+	/* width: calc(100% - 133px);
+	float: left; */
 	padding-top: 18px;
+	padding-right: 10px;
 }
 .cart_item_name
 {
-	margin-left: 7.53%;
+	margin-left: 2.53%;
 }
 .cart_item_title
 {
@@ -1266,8 +1304,8 @@ select option
 }
 .cart_item_text
 {
-	font-size: 18px;
-	margin-top: 35px;
+	/* font-size: 18px; */
+	margin-top: 10px;
 }
 .cart_item_text span
 {
@@ -1327,9 +1365,9 @@ select option
     font-size: 18px;
     font-weight: 400;
     line-height: 48px;
-    color: rgba(0,0,0,0.5);
-    background: #FFFFFF;
-    border: solid 1px #b2b2b2;
+    color: rgb(255 0 0 / 50%);
+    background: #ffffff;
+    border: solid 1px #ff0000;
     padding-left: 35px;
     padding-right: 35px;
     outline: none;
@@ -1338,8 +1376,9 @@ select option
 }
 .cart_button_clear:hover
 {
-	border-color: #0e8ce4;
-	color: #0e8ce4;
+	border-color: #ff0000;
+	color: #ffffff;
+	background-color: #ff0000;
 }
 .cart_button_checkout
 {

@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', ['as'=>'home','uses'=>'PantonecloController@index']);
 Route::get('/shop', ['as'=>'shop','uses'=>'ShopController@index']);
 Route::get('/shop/{slug}',['as'=>'product.show','uses'=>'ShopController@show']);
+Route::get('/category/{cat}',['as'=>'category.products','uses'=>'ShopController@categoryShow']);
+Route::post('/cart/add',['as'=>'cart.add','uses'=>'CartController@addToCart']);
 Auth::routes();
 
 Route::get('/cart',['as'=>'cart','uses'=>'CartController@index']);

@@ -10,3 +10,5 @@
 <script src="{{ asset('assets/plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('assets/plugins/scrollUp/jquery.scrollUp.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
+<script src="{{ asset('assets/js/notify/notify.js') }}"></script>
+<script src="{{ asset('assets/js/notify/notify.min.js') }}"></script>

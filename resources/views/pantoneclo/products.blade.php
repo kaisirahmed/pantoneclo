@@ -51,7 +51,6 @@
                     <div class="order_info d-flex flex-row">
                         <form action="#">
                             <div class="clearfix" style="z-index: 1000;">
-
                                 <!-- Product Quantity -->
                                 <div class="product_quantity clearfix">
                                     <span>Quantity: </span>
@@ -62,8 +61,22 @@
                                     </div>
                                 </div>
 
+                                <!-- Product Size -->
+                                <ul class="product_size">
+                                    <li>
+                                        <span>Size: </span>
+                                        <select name="size" class="size_list" id="size">
+                                            <option disabled selected></option>
+                                            @foreach ($sizes as $size)
+                                            <option value="{{ $size->id }}">{{ $size->code }}</option>    
+                                            @endforeach                                            
+                                        </select>
+                                    </li>
+                                </ul>
+                                
                                 <!-- Product Color -->
-                                <ul class="product_color">
+                               
+                                {{-- <ul class="product_color">
                                     <li>
                                         <span>Color: </span>
                                         <div class="color_mark_container"><div id="selected_color" class="color_mark"></div></div>
@@ -75,14 +88,14 @@
                                             <li><div class="color_mark" style="background: #000000;"></div></li>
                                         </ul>
                                     </li>
-                                </ul>
+                                </ul> --}}
 
                             </div>
 
                             <div class="product_price discount">&#36;{{ $product->sale_price }} </div>
                             <span> &#36;{{ $product->price }} ({{ $product->discount_amount != 0 ? $product->discount_amount : $product->discount_percentage }}&#37; off)</span>
                             <div class="button_container">
-                                <button type="button" class="button cart_button">Add to Cart</button>
+                                <a href="javascript:void(0);" class="button cart_button" onclick="addToCart('{{ $product->slug }}')" >Add to Cart</a>
                                 <div class="product_fav"><i class="fas fa-heart"></i></div>
                             </div>
                             
@@ -100,5 +113,5 @@
 @section('script')
 <script src='{{ asset('assets/js/jquery.ez-plus.js') }}'></script>
 <script src="{{ asset('assets/js/product_custom.js') }}"></script>
-
+@include('pantoneclo.ajax.addToCart')
 @endsection

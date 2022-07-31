@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Size;
 
 class ShopController extends Controller
 {
@@ -50,8 +51,9 @@ class ShopController extends Controller
      */
     public function show($slug)
     {
+        $sizes = Size::all();
         $product = Product::where('slug',$slug)->first();
-        return view('pantoneclo.products',compact('product'));        
+        return view('pantoneclo.products',compact('product','sizes'));        
     }
 
     /**

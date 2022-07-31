@@ -288,12 +288,12 @@ section
 .Eone
 {
 	display: block;
-	color: #000000;
+    color: #000000;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
-    -webkit-margin-start: 100px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 20px;
+    -webkit-margin-start: 42px;
+    /* -webkit-margin-end: 0px; */
+    /* -webkit-padding-start: 20px;
 
 }
 
@@ -728,7 +728,7 @@ select
 	width: auto;
 	margin-left: 10px;
 	outline: none;
-	-webkit-appearance: none;
+	/* -webkit-appearance: none; */
 	-moz-appearance: none;
 	border-bottom: 2px solid #555;
 	color: #7b00ff;

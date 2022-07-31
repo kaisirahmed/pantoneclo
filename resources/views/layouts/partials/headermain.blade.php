@@ -5,7 +5,7 @@
             <!-- Logo -->
             <div class="col-lg-2 col-sm-3 col-3 order-1">
                 <div class="logo_container">
-                    <div class="logo"><a href="#"><img src="images/EO.jpg" width="100px" height="100px"></a></div>
+                    <div class="logo"><a href="#"><img src="{{ asset('assets/images/pantoneclo.png') }}" width="100px" height="100px"></a></div>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <button type="submit" class="header_search_button trans_300" value="Submit"><img src="images/search.png" alt=""></button>
+                                <button type="submit" class="header_search_button trans_300" value="Submit"><img src="{{ asset('assets/images/search.png') }}" alt=""></button>
                             </form>
                         </div>
                     </div>
@@ -53,11 +53,11 @@
                         <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                             <div class="cart_icon">
                                 <img src="images/cart.png" alt="">
-                                <div class="cart_count"><span>10</span></div>
+                                <div class="cart_count"><span>{{ $cartTotalQuantity }}</span></div>
                             </div>
                             <div class="cart_content">
-                                <div class="cart_text"><a href="{{ route('cart') }}">Cart</a></div>
-                                <div class="cart_price">$85</div>
+                                <div class="cart_text"><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i></a></div>
+                                <div class="cart_price">{{ $cartTotal }}</div>
                             </div>
                         </div>
                     </div>
