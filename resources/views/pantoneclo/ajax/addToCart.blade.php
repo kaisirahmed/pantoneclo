@@ -66,7 +66,7 @@
             }
         })
     }
-
+    // Cart item delete
     function cartDelete(itemId){
         itemId = itemId;
         Swal.fire({
@@ -102,4 +102,76 @@
             }
         });
     }
+
+    // cart item quantity update
+    function itemUpdate(itemId){
+        var quantity = $('#quantity_input'+itemId).val();
+        var items = $('#cartTable tbody tr#'+itemId);
+        itemId = itemId;
+       //alert(quantity)
+        $.ajax({ 
+            type:"post", 
+            url: "{{ route('cart.item.update') }}",
+            data:{ 
+                quantity: quantity,
+                itemId: itemId,
+                _token: "{{ csrf_token() }}"
+            }, 
+            dataType: "json", 
+            success:function(data){ 
+                $('#productTotalPrice'+itemId).html('&#36;'+data.price)
+                $('.cart_price').text(data.cartTotal);
+                $('.cart_count').text(data.cartTotalQuantity);
+                $('.order_total_amount').html('&#36;'+data.cartTotal);
+                //$.notify("Cart has been cleared Successfully!","success");
+                $.notify(data.message, "success");
+                //Swal.fire('Cart Cleared!', '', 'success')
+                items.css("background-color","aliceblue");
+                setTimeout(function() {
+                    items.css("background-color","#FFFFFF");
+                }, 1000);
+            } 
+        });            
+    }
+    // cart quantity update
+    function cartUpdate(){
+        var items = $('#cartTable tbody tr.selected');
+        var cartItems = items.map(function() {
+            var quantity = $('#quantity_input'+this.id).val();
+            let items = {
+                itemId: this.id, 
+                quantity: quantity
+            }
+            return items;
+        }).get();
+       
+        $.ajax({ 
+            type:"post", 
+            url: "{{ route('cart.update') }}",
+            data:{ 
+                items: cartItems,
+                _token: "{{ csrf_token() }}"
+            }, 
+            dataType: "json", 
+            success:function(data){  
+             
+                $.each(JSON.parse(data.items), function(index, item){
+                    $('#productTotalPrice'+item.itemId).html('&#36;'+item.price)
+                });
+               
+                $('.cart_price').text(data.cartTotal);
+                $('.cart_count').text(data.cartTotalQuantity);
+                $('.order_total_amount').html('&#36;'+data.cartTotal);
+                //$.notify("Cart has been cleared Successfully!","success");
+                $.notify(data.message, "success");
+                //Swal.fire('Cart Cleared!', '', 'success')
+
+                items.css("background-color","aliceblue");
+                setTimeout(function() {
+                    items.css("background-color","#FFFFFF");
+                }, 1000);
+            } 
+        });            
+    }
+   
 </script>

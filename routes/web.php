@@ -22,6 +22,8 @@ Route::get('/shop/{slug}',['as'=>'product.show','uses'=>'ShopController@show']);
 Route::get('/category/{cat}',['as'=>'category.products','uses'=>'ShopController@categoryShow']);
 Route::post('/cart/add',['as'=>'cart.add','uses'=>'CartController@addToCart']);
 Route::post('/cart/clear',['as'=>'cart.clear','uses'=>'CartController@clearCart']);
+Route::post('/cart/item/update',['as'=>'cart.item.update','uses'=>'CartController@itemUpdate']);
+Route::post('/cart/update',['as'=>'cart.update','uses'=>'CartController@update']);
 Route::post('/cart/delete',['as'=>'cart.delete','uses'=>'CartController@delete']);
 
 

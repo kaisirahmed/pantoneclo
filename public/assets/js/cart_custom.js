@@ -14,7 +14,7 @@
 
 $(document).ready(function()
 {
-	"use strict";
+	//"use strict";
 
 	/* 
 
@@ -27,7 +27,7 @@ $(document).ready(function()
 
 	setHeader();
 
-	initQuantity();
+	
 	initCustomDropdown();
 	initPageMenu();
 
@@ -207,41 +207,37 @@ $(document).ready(function()
 		TweenMax.to(menuContent, 0.3, {height:0});
 		menuActive = false;
 	}
-
-	/* 
-
-	7. Init Quantity
-
-	*/
-
-	function initQuantity()
-	{
-		// Handle product quantity input
-		if($('.product_quantity').length)
-		{
-			var input = $('#quantity_input');
-			var incButton = $('#quantity_inc_button');
-			var decButton = $('#quantity_dec_button');
-
-			var originalVal;
-			var endVal;
-
-			incButton.on('click', function()
-			{
-				originalVal = input.val();
-				endVal = parseFloat(originalVal) + 1;
-				input.val(endVal);
-			});
-
-			decButton.on('click', function()
-			{
-				originalVal = input.val();
-				if(originalVal > 0)
-				{
-					endVal = parseFloat(originalVal) - 1;
-					input.val(endVal);
-				}
-			});
-		}
-	}
+ 
 });
+/* 
+
+7. Init Quantity
+
+*/
+
+function incQuantity(itemId)
+{
+	
+	var inc = 0;
+	var input = $('#quantity_input'+itemId);
+	inc = input.val();
+	inc++;
+	input.val(inc);
+}
+/* 
+
+7. Init Quantity
+
+*/
+
+function decQuantity(itemId)
+{
+	
+	var inc = 0;
+	var input = $('#quantity_input'+itemId);
+	inc = input.val();
+	if(inc != 0){
+		inc--;
+	}
+	input.val(inc);
+}

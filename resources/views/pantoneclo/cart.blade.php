@@ -20,7 +20,7 @@
                             <li class="cart_item clearfix">
                                 
                                 <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                    <table class="table">
+                                    <table class="table" id="cartTable">
                                         <thead>
                                           <tr>
                                             {{-- <th scope="col">#</th> --}}
@@ -37,7 +37,7 @@
                                         <tbody>
                                         @php $i=1; @endphp
                                         @foreach ($cartitems as $item)   
-                                          <tr id="{{ $item->id }}">
+                                          <tr id="{{ $item->id }}" class="selected">
                                             {{-- <th scope="row">{{ $i++ }}</th> --}}
                                             <td><div class="cart_item_image"><img src="{{ $item->attributes->image }}" alt=""></div></td>
                                             <td><div class="cart_item_text"><p title="{{ $item->name }}">{{ $item->name }}</p></div></td>
@@ -46,19 +46,19 @@
                                             <td>
                                                 <div class="product_quantity cart_item_text clearfix">
                                                     <strong>Qty: </strong>
-                                                    <input id="quantity_input" name="quantity" type="text" pattern="[0-9]*" value="{{ $item->quantity }}">
+                                                    <input id="quantity_input{{ $item->id }}" name="quantity" type="text" pattern="[0-9]*" value="{{ $item->quantity }}">
                                                     <div class="quantity_buttons">
-                                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
-                                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+                                                        <div id="quantity_inc_button{{ $item->id }}" class="quantity_inc quantity_control" onclick="incQuantity('{{ $item->id }}')"><i class="fas fa-chevron-up"></i></div>
+                                                        <div id="quantity_dec_button{{ $item->id }}" class="quantity_dec quantity_control" onclick="decQuantity('{{ $item->id }}')"><i class="fas fa-chevron-down"></i></div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td><div class="cart_item_text">{{ $item->attributes->currency }}{{ $item->price }}</div></td>
-                                            <td><div class="cart_item_text">{{ $item->attributes->currency }}{{ number_format($item->price * $item->quantity,2) }}</div></td>
+                                            <td><div class="cart_item_text" id="productTotalPrice{{ $item->id }}">{{ $item->attributes->currency }}{{ number_format($item->price * $item->quantity,2) }}</div></td>
                                             <td>
                                                 <div class="cart_item_text">
                                                     <a href="javascript:void(0);" class="btn btn-outline-danger" onclick="cartDelete('{{ $item->id }}')" ><i class="fa fa-trash"></i></a>
-                                                    <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-refresh"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-outline-primary" onclick="itemUpdate('{{ $item->id }}')" ><i class="fa fa-refresh"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -89,8 +89,9 @@
                     </div>
 
                     <div class="cart_buttons">
-                        <a href="javascript:void(0);" class="button cart_button_clear" onclick="clearCart()">Clear Cart</a>
-                        <button type="button" class="button cart_button_checkout">Update Cart</button>
+                        <a href="javascript:void(0);" class="btn btn-outline-danger" onclick="clearCart()">Clear Cart</a>
+                        <a href="javascript:void(0);" class="btn btn-outline-primary" onclick="cartUpdate()">Update Cart</a>
+                        <a href="javascript:void(0);" class="btn btn-info">Checkout</a>
                     </div>
                     @endif
                 </div>

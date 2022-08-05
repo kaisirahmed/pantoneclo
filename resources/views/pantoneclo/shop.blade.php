@@ -97,17 +97,19 @@
                         @foreach($products as $product)
                         <!-- Product Item -->
                         <div class="product_item discount">
-                            <div class="product_border"></div>
-                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ $product->image }}" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_price">&#36;{{ $product->sale_price }}<span>&#36;{{ $product->price }}</span></div>
-                                <div class="product_name"><a href="{{ route('product.show',$product->slug) }}" tabindex="0"><p>{{ mb_strimwidth($product->name,0,30,"...") }}</p></a></div>
-                            </div>
-                            <div class="product_fav"><i class="fas fa-heart"></i></div>
-                            <ul class="product_marks">
-                                <li class="product_mark product_discount">-{{ $product->discount_amount != 0 ? $product->discount_amount : $product->discount_percentage }}</li>
-                                <li class="product_mark product_new">new</li>
-                            </ul>
+                            <a href="{{ route('product.show',$product->slug) }}" tabindex="0">
+                                <div class="product_border"></div>
+                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ $product->image }}" alt=""></div>
+                                <div class="product_content">
+                                    <div class="product_price">&#36;{{ $product->sale_price }}<span>&#36;{{ $product->price }}</span></div>
+                                    <div class="product_name"><p>{{ mb_strimwidth($product->name,0,30,"...") }}</p></div>
+                                </div>
+                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                <ul class="product_marks">
+                                    <li class="product_mark product_discount">-{{ $product->discount_amount != 0 ? $product->discount_amount : $product->discount_percentage }}</li>
+                                    <li class="product_mark product_new">new</li>
+                                </ul>
+                            </a>
                             {{-- <a href="javascript:void(0);" class="addToCart" onclick="addToCart('{{ $product->slug }}')" >Add to Cart</a> --}}
                         </div>
                         @endforeach

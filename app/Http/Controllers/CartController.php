@@ -19,7 +19,7 @@ class CartController extends Controller
         $cartitems = Cart::getContent();
         $sizes = Size::pluck('code','id')->toArray();
         //dd($sizes);
-        $total = number_format(Cart::getTotal(),2);
+        $total = number_format(Cart::getSubTotal(),2);
         return view('pantoneclo.cart', compact('cartitems','total','sizes'));
     }
 
@@ -80,7 +80,7 @@ class CartController extends Controller
                 ]
             ]);
 
-            $cartTotal = number_format(Cart::getTotal(),2);
+            $cartTotal = number_format(Cart::getSubTotal(),2);
             $cartTotalQuantity = Cart::getTotalQuantity();
             return response()->json(['cartTotal' => $cartTotal,'cartTotalQuantity' => $cartTotalQuantity]);
         }
@@ -108,7 +108,7 @@ class CartController extends Controller
     {
         if($request->ajax()){
             Cart::clear();
-            $cartTotal = number_format(Cart::getTotal(),2);
+            $cartTotal = number_format(Cart::getSubTotal(),2);
             $cartTotalQuantity = Cart::getTotalQuantity();
             return response()->json(['cartTotal' => $cartTotal,'cartTotalQuantity' => $cartTotalQuantity,'message'=>'Cart has been cleared Successfully!']);
         }
@@ -121,9 +121,54 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function itemUpdate(Request $request)
     {
-        //
+        if($request->ajax()){
+            Cart::update($request->itemId,[
+                'quantity' => [
+                    'relative' => false,
+                    'value' => $request->quantity,
+                ]
+            ]);
+
+            $summedPrice = Cart::get($request->itemId)->getPriceSum();
+            $cartTotal = number_format(Cart::getSubTotal(),2);
+            $cartTotalQuantity = Cart::getTotalQuantity();
+            return response()->json(['price' => number_format($summedPrice,2),'cartTotal' => $cartTotal,'cartTotalQuantity' => $cartTotalQuantity,'message'=>'Item has been updated Successfully!']);
+        }
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+        if($request->ajax()){
+            $items = $request->items;
+            $updatedItems = [];
+            foreach($items as $item){
+                Cart::update($item['itemId'],[
+                    'quantity' => [
+                        'relative' => false,
+                        'value' => $item['quantity'],
+                    ]
+                ]);
+                $summedPrice = Cart::get($item['itemId'])->getPriceSum();
+                $updatedItems[] = [
+                    'itemId' => $item['itemId'],
+                    'quantity' => $item['quantity'],
+                    'price' => number_format($summedPrice,2)
+                ];
+            }
+            
+            $items = json_encode($updatedItems);
+            $cartTotal = number_format(Cart::getSubTotal(),2);
+            $cartTotalQuantity = Cart::getTotalQuantity();
+            return response()->json(['items' => $items,'cartTotal' => $cartTotal,'cartTotalQuantity' => $cartTotalQuantity,'message'=>'Item has been updated Successfully!']);
+        }
     }
 
     /**
@@ -136,7 +181,7 @@ class CartController extends Controller
     { 
         if($request->ajax()){
             $cartRemove = Cart::remove($request->itemId);
-            $cartTotal = number_format(Cart::getTotal(),2);
+            $cartTotal = number_format(Cart::getSubTotal(),2);
             $cartTotalQuantity = Cart::getTotalQuantity();
             return response()->json(['cartTotal' => $cartTotal,'cartTotalQuantity' => $cartTotalQuantity,'message'=>'Item has been deleted Successfully!']);
         }
