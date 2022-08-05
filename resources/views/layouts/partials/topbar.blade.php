@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col d-flex flex-row">
                 <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div><a href="callto:+386 307 96092">PANTONECLO® Apparel B2B Solution for EU</a></div>
-                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('assets/images/mail.png') }}" alt=""></div><a href="mailto:mail@gmail.com">info@pantoneclo.com</a></div>
+                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('assets/images/mail.png') }}" alt=""></div><a href="mailto:info@pantoneclo.com">info@pantoneclo.com</a></div>
 
                 <div class="Eone">
                     <div><h3>Pantoneclo</h3></div>

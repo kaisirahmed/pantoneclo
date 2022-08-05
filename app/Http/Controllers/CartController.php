@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Size;
 use Cart;
 
 class CartController extends Controller
@@ -16,8 +17,10 @@ class CartController extends Controller
     public function index()
     {
         $cartitems = Cart::getContent();
+        $sizes = Size::pluck('code','id')->toArray();
+        //dd($sizes);
         $total = number_format(Cart::getTotal(),2);
-        return view('pantoneclo.cart', compact('cartitems','total'));
+        return view('pantoneclo.cart', compact('cartitems','total','sizes'));
     }
 
     /**
@@ -45,6 +48,8 @@ class CartController extends Controller
             $product = Product::where('slug',$slug)
                             ->where('status',1)
                             ->first();
+
+            $size = Size::where('id',$size)->first();
             
             if($request->quantity){
                 $quantity = $request->quantity;
@@ -56,16 +61,19 @@ class CartController extends Controller
             $name = $product->name;
             $price = $product->sale_price;
             $image = $product->image;
+                        
             $cart = Cart::add([
-                'id' => $id,
-                'name' => $name,
+                'id' => $id.$size->id,
+                'name' => $name." (".$size->code.")",
                 'price' => $price,
                 'quantity' => $quantity,
                 'attributes' => [
+                    'product_id' => $id,
                     'discount_amount' => $product->discount_amount,
                     'discount_percentage' => $product->discount_percentage,
                     'image' => $image,
-                    'size' => $size,
+                    'size' => $size->id,
+                    //'size' => $size->code,
                     'color' => $product->color->name,
                     'colorCode' => $product->color->code,
                     'currency' => '$'
@@ -78,6 +86,7 @@ class CartController extends Controller
         }
     }
 
+   
     /**
      * Display the specified resource.
      *
@@ -95,11 +104,13 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function clearCart($id)
+    public function clearCart(Request $request)
     {
         if($request->ajax()){
-            Cart:clear();
-            return response()->json('success','Cart cleared successfully!');
+            Cart::clear();
+            $cartTotal = number_format(Cart::getTotal(),2);
+            $cartTotalQuantity = Cart::getTotalQuantity();
+            return response()->json(['cartTotal' => $cartTotal,'cartTotalQuantity' => $cartTotalQuantity,'message'=>'Cart has been cleared Successfully!']);
         }
     }
 
@@ -121,8 +132,13 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function delete(Request $request)
+    { 
+        if($request->ajax()){
+            $cartRemove = Cart::remove($request->itemId);
+            $cartTotal = number_format(Cart::getTotal(),2);
+            $cartTotalQuantity = Cart::getTotalQuantity();
+            return response()->json(['cartTotal' => $cartTotal,'cartTotalQuantity' => $cartTotalQuantity,'message'=>'Item has been deleted Successfully!']);
+        }
     }
 }

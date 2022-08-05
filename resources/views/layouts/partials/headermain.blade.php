@@ -55,10 +55,12 @@
                                 <img src="images/cart.png" alt="">
                                 <div class="cart_count"><span>{{ $cartTotalQuantity }}</span></div>
                             </div>
+                            <a href="{{ route('cart') }}">
                             <div class="cart_content">
-                                <div class="cart_text"><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i></a></div>
+                                <div class="cart_text"><i class="fa fa-shopping-cart"></i></div>
                                 <div class="cart_price">{{ $cartTotal }}</div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>

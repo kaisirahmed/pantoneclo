@@ -293,7 +293,7 @@ section
     -webkit-margin-after: 1em;
     -webkit-margin-start: 42px;
     /* -webkit-margin-end: 0px; */
-    /* -webkit-padding-start: 20px;
+    /* -webkit-padding-start: 20px;*/
 
 }
 
@@ -516,6 +516,8 @@ ul, menu, dir {
 .header_main
 {
 	z-index: 1;
+	padding-top: 15px;
+    padding-bottom: 0px;
 }
 .header.scrolled .header_main
 {
@@ -3547,7 +3549,7 @@ select option
 	margin-bottom: 18px;
 	margin-top: -10px;
 }
-.footer .logo
+/* .footer .logo
 {
 	top: auto;
 	-webkit-transform: transform: none;
@@ -3555,7 +3557,7 @@ select option
     -ms-transform: transform: none;
     -o-transform: transform: none;
     transform: none;
-}
+} */
 .footer .logo a
 {
 	color: #000000;

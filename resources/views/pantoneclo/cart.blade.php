@@ -14,6 +14,7 @@
                 <div class="cart_container">
                     <div class="cart_title">Shopping Cart</div>
                     <div class="cart_items">
+                        @if(!Cart::isEmpty())
                         <ul class="cart_list">
                                                     
                             <li class="cart_item clearfix">
@@ -22,27 +23,30 @@
                                     <table class="table">
                                         <thead>
                                           <tr>
-                                            <th scope="col">#</th>
+                                            {{-- <th scope="col">#</th> --}}
                                             <th scope="col">Image</th>
                                             <th scope="col">Name</th>
+                                            <th scope="col">Color</th>
                                             <th scope="col">Size</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Total</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col" width="14%">Action</th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($cartitems as $key => $item)   
-                                          <tr>
-                                            <th scope="row">{{ $key+1 }}</th>
+                                        @php $i=1; @endphp
+                                        @foreach ($cartitems as $item)   
+                                          <tr id="{{ $item->id }}">
+                                            {{-- <th scope="row">{{ $i++ }}</th> --}}
                                             <td><div class="cart_item_image"><img src="{{ $item->attributes->image }}" alt=""></div></td>
-                                            <td><div class="cart_item_text"><p>{{ mb_strimwidth($item->name,0,25,"...") }}</p></div></td>
-                                            <td><div class="cart_item_text">{{ $item->attributes->size }}</div></td>
+                                            <td><div class="cart_item_text"><p title="{{ $item->name }}">{{ $item->name }}</p></div></td>
+                                            <td><div class="cart_item_text"><p>{{ $item->attributes->color }}</p></div></td>
+                                            <td><div class="cart_item_text"><p>{{ $sizes[$item->attributes->size] }}</p></div></td>
                                             <td>
                                                 <div class="product_quantity cart_item_text clearfix">
                                                     <strong>Qty: </strong>
-                                                    <input id="quantity" name="quantity" type="text" pattern="[0-9]*" value="{{ $item->quantity }}">
+                                                    <input id="quantity_input" name="quantity" type="text" pattern="[0-9]*" value="{{ $item->quantity }}">
                                                     <div class="quantity_buttons">
                                                         <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
                                                         <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
@@ -53,8 +57,8 @@
                                             <td><div class="cart_item_text">{{ $item->attributes->currency }}{{ number_format($item->price * $item->quantity,2) }}</div></td>
                                             <td>
                                                 <div class="cart_item_text">
-                                                    <button class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
-                                                    <button class="btn btn-outline-primary"><i class="fa fa-refresh"></i></button>
+                                                    <a href="javascript:void(0);" class="btn btn-outline-danger" onclick="cartDelete('{{ $item->id }}')" ><i class="fa fa-trash"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-refresh"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -66,23 +70,37 @@
                             </li>
                             
                         </ul>
+                        @else
+                        <div class="order_total">
+                            <div class="order_total_content text-md-center">
+                                <div class="order_total_title"><i class="fa fa-shopping-cart"></i> Empty Cart</div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                     
+                    @if(!Cart::isEmpty())
                     <!-- Order Total -->
                     <div class="order_total">
                         <div class="order_total_content text-md-right">
-                            <div class="order_total_title">Order Total:</div>
+                            <div class="order_total_title">Sub Total:</div>
                             <div class="order_total_amount">&#36;{{ $total }}</div>
                         </div>
                     </div>
 
                     <div class="cart_buttons">
-                        <button type="button" class="button cart_button_clear" onclick="clearCart()">Clear Cart</button>
+                        <a href="javascript:void(0);" class="button cart_button_clear" onclick="clearCart()">Clear Cart</a>
                         <button type="button" class="button cart_button_checkout">Update Cart</button>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@endsection
+@section('script')
+<script src="{{ asset('assets/js/cart_custom.js') }}"></script>
+@include('pantoneclo.ajax.addToCart')
 @endsection

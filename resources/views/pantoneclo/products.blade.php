@@ -1,10 +1,9 @@
 @extends('layouts.app')
-@section('title','Product Details')
+@section('title',$product->name)
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/product_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/product_responsive.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/jquery.ez-plus.css') }}"/>
-    
 @endsection
 @section('content')
 @section('banner')
@@ -54,7 +53,7 @@
                                 <!-- Product Quantity -->
                                 <div class="product_quantity clearfix">
                                     <span>Quantity: </span>
-                                    <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                    <input id="quantity_input" name="quantity" type="text" pattern="[0-9]*" value="1">
                                     <div class="quantity_buttons">
                                         <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
                                         <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
@@ -65,7 +64,7 @@
                                 <ul class="product_size">
                                     <li>
                                         <span>Size: </span>
-                                        <select name="size" class="size_list" id="size">
+                                        <select name="size[]" class="size_list" id="size">
                                             <option disabled selected></option>
                                             @foreach ($sizes as $size)
                                             <option value="{{ $size->id }}">{{ $size->code }}</option>    

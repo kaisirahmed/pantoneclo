@@ -2141,7 +2141,12 @@ select option
 {
 	display: none;
 	visibility: hidden;
-
+	cursor: pointer;
+}
+.addToCart:focus
+{
+	border: none;
+	cursor: pointer;
 }
 
 .product_item:hover .addToCart

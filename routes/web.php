@@ -21,6 +21,10 @@ Route::get('/shop', ['as'=>'shop','uses'=>'ShopController@index']);
 Route::get('/shop/{slug}',['as'=>'product.show','uses'=>'ShopController@show']);
 Route::get('/category/{cat}',['as'=>'category.products','uses'=>'ShopController@categoryShow']);
 Route::post('/cart/add',['as'=>'cart.add','uses'=>'CartController@addToCart']);
+Route::post('/cart/clear',['as'=>'cart.clear','uses'=>'CartController@clearCart']);
+Route::post('/cart/delete',['as'=>'cart.delete','uses'=>'CartController@delete']);
+
+
 Auth::routes();
 
 Route::get('/cart',['as'=>'cart','uses'=>'CartController@index']);

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Pentoneclo')
+@section('title','Shop')
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/shop_styles.css') }}">
@@ -108,7 +108,7 @@
                                 <li class="product_mark product_discount">-{{ $product->discount_amount != 0 ? $product->discount_amount : $product->discount_percentage }}</li>
                                 <li class="product_mark product_new">new</li>
                             </ul>
-                            <button class="addToCart">Add to Cart</button>
+                            {{-- <a href="javascript:void(0);" class="addToCart" onclick="addToCart('{{ $product->slug }}')" >Add to Cart</a> --}}
                         </div>
                         @endforeach
                     </div>
@@ -141,4 +141,5 @@
 <script src="{{ asset('assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
 <script src="{{ asset('assets/plugins/parallax-js-master/parallax.min.js') }}"></script>
 <script src="{{ asset('assets/js/shop_custom.js') }}"></script>
+@include('pantoneclo.ajax.addToCart')
 @endsection

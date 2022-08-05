@@ -5,7 +5,7 @@
 
 @include('layouts.partials.meta')
 @include('layouts.partials.style')
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/main_styles.css') }}">
+
 @yield('style')
 
 </head>
@@ -30,15 +30,15 @@
 
 	<!-- Recently Viewed -->
 
-	@include('layouts.partials.recentlyviews')
+	{{-- @include('layouts.partials.recentlyviews') --}}
 
 	<!-- Brands -->
 
-	@include('layouts.partials.brands')
+	{{-- @include('layouts.partials.brands') --}}
 
 	<!-- Newsletter -->
 
-	@include('layouts.partials.newsletter')
+	{{-- @include('layouts.partials.newsletter') --}}
 
 	<!-- Footer -->
 

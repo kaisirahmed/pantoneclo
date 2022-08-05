@@ -1507,9 +1507,11 @@ select option
 	float: right;
     padding: 2px;
     margin-right: -44px;
-    /* margin-top: 7px */
+    /* margin-top: 7px; */
     border: none;
     width: 100%;
+    color: #000000;
+    font-size: 14px;
 }
 .product_color
 {

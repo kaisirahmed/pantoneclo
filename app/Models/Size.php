@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Size extends Model
 {
-    use HasFactory;
+    //use HasFactory;
 
     protected $fillable = ['name','code'];
     
