@@ -55,6 +55,21 @@ class ShopController extends Controller
         $product = Product::where('slug',$slug)->first();
         return view('pantoneclo.products',compact('product','sizes'));        
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function categoryShow($slug)
+    {
+        $products = Product::where(function($query) use ($slug){
+            $query->whereHas('categories', function($query) use ($slug){
+                $query->where('slug',$slug);
+            });
+        })->get();
+        return view('pantoneclo.products',compact('products'));        
+    }
 
     /**
      * Show the form for editing the specified resource.

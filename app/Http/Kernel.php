@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'guard.verified' => \App\Http\Middleware\EnsureCustomGuardIsVerified::class,
         'verify.email' => \App\Http\Middleware\EnsureEmailIsVerified::class,
         'reauth' => \App\Http\Middleware\AuthRecheck::class,
+        'checkout' => \App\Http\Middleware\Checkout::class,
     ];
 }

@@ -578,6 +578,7 @@ $(document).ready(function()
 			{
 				items:1,
 				loop:true,
+				autoplay:true,
 				nav:false,
 				dots:true,
 				dotsContainer: '.banner_2_dots',

@@ -57,8 +57,8 @@
                                             <td><div class="cart_item_text" id="productTotalPrice{{ $item->id }}">{{ $item->attributes->currency }}{{ number_format($item->price * $item->quantity,2) }}</div></td>
                                             <td>
                                                 <div class="cart_item_text">
-                                                    <a href="javascript:void(0);" class="btn btn-outline-danger" onclick="cartDelete('{{ $item->id }}')" ><i class="fa fa-trash"></i></a>
-                                                    <a href="javascript:void(0);" class="btn btn-outline-primary" onclick="itemUpdate('{{ $item->id }}')" ><i class="fa fa-refresh"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-outline-danger" onclick="cartDelete('{{ $item->id }}')" ><i class="fa fa-trash"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary" onclick="itemUpdate('{{ $item->id }}')" ><i class="fa fa-cloud"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -91,7 +91,7 @@
                     <div class="cart_buttons">
                         <a href="javascript:void(0);" class="btn btn-outline-danger" onclick="clearCart()">Clear Cart</a>
                         <a href="javascript:void(0);" class="btn btn-outline-primary" onclick="cartUpdate()">Update Cart</a>
-                        <a href="javascript:void(0);" class="btn btn-info">Checkout</a>
+                        <a href="{{ route('checkout') }}" class="btn btn-info">Checkout</a>
                     </div>
                     @endif
                 </div>

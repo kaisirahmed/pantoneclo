@@ -3,9 +3,10 @@
         <div class="row">
 
             <!-- Logo -->
-            <div class="col-lg-2 col-sm-3 col-3 order-1">
+            <div class="col-lg-3 col-sm-3 col-3 order-1">
                 <div class="logo_container">
-                    <div class="logo"><a href="#"><img src="{{ asset('assets/images/pantoneclo.png') }}" width="100px" height="100px"></a></div>
+                    <div class="logo"><a href="#"><img src="{{ asset('assets/images/pantoneclo.png') }}" width="80px" height="80px"></a></div>
+                    {{-- <div class="logo"><a href="#">PantoNeclo</a></div> --}}
                 </div>
             </div>
 
@@ -22,11 +23,9 @@
                                         <i class="fas fa-chevron-down"></i>
                                         <ul class="custom_list clc">
                                             <li><a class="clc" href="#">All Categories</a></li>
-                                            <li><a class="clc" href="#">Computers</a></li>
-                                            <li><a class="clc" href="#">Laptops</a></li>
-                                            <li><a class="clc" href="#">Cameras</a></li>
-                                            <li><a class="clc" href="#">Hardware</a></li>
-                                            <li><a class="clc" href="#">Smartphones</a></li>
+                                            @foreach ($categories as $category)
+                                                <li><a class="clc" href="{{ route('category.products',$category->slug) }}">{{ $category->name }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -38,7 +37,7 @@
             </div>
 
             <!-- Wishlist -->
-            <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
+            <div class="col-lg-3 col-9 order-lg-3 order-2 text-lg-left text-right">
                 <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                     <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                         <div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
@@ -50,18 +49,19 @@
 
                     <!-- Cart -->
                     <div class="cart">
-                        <div class="cart_container d-flex flex-row align-items-center justify-content-end">
-                            <div class="cart_icon">
-                                <img src="images/cart.png" alt="">
-                                <div class="cart_count"><span>{{ $cartTotalQuantity }}</span></div>
+                        <a href="{{ route('cart') }}">
+                            <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                                <div class="cart_icon">
+                                    <img src="{{ asset('assets/images/cart.png') }}" alt="">
+                                    <div class="cart_count"><span>{{ $cartTotalQuantity }}</span></div>
+                                </div>
+                                
+                                <div class="cart_content">
+                                    <div class="cart_text"><h4>Cart</h4></div>
+                                    <div class="cart_price">{{ $cartTotal }}</div>
+                                </div>
                             </div>
-                            <a href="{{ route('cart') }}">
-                            <div class="cart_content">
-                                <div class="cart_text"><i class="fa fa-shopping-cart"></i></div>
-                                <div class="cart_price">{{ $cartTotal }}</div>
-                            </div>
-                            </a>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

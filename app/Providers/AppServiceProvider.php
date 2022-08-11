@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $cartTotalQuantity = Cart::getTotalQuantity();
 
             $categoryId = Category::pluck('parent_id');
-            $categories = Category::select('id','name','slug')->whereNotIn('id',$categoryId)->get();
+            $categories = Category::select('id','name','slug','image')->whereNotIn('id',$categoryId)->get();
      
             $view->with('categories', $categories);
             $view->with('cartTotal', $cartTotal);

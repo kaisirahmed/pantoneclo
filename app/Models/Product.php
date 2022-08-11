@@ -32,6 +32,8 @@ class Product extends Model
         'unit_id',
         'affiliate_link',
         'status',
+        'is_slider',
+        'is_featured',
         'meta_title',
         'meta_tags',
         'meta_description',
@@ -40,6 +42,8 @@ class Product extends Model
     protected $nullable = [
         'code',
         'model',
+        'is_slider',
+        'is_featured',
         'affiliate_link',
         'meta_title',
         'meta_tags',

@@ -38,7 +38,7 @@
 
 	<!-- Newsletter -->
 
-	{{-- @include('layouts.partials.newsletter') --}}
+	@include('layouts.partials.newsletter')
 
 	<!-- Footer -->
 

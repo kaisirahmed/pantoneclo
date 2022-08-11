@@ -25,11 +25,25 @@ Route::post('/cart/clear',['as'=>'cart.clear','uses'=>'CartController@clearCart'
 Route::post('/cart/item/update',['as'=>'cart.item.update','uses'=>'CartController@itemUpdate']);
 Route::post('/cart/update',['as'=>'cart.update','uses'=>'CartController@update']);
 Route::post('/cart/delete',['as'=>'cart.delete','uses'=>'CartController@delete']);
-
-
-Auth::routes();
-
+Route::get('/contact',['as'=>'contact','uses'=>'ContactController@index']);
 Route::get('/cart',['as'=>'cart','uses'=>'CartController@index']);
+
+
+
+Auth::routes([ 'verify' => true ]);
+
+Route::group(['middleware' => ['auth']], function () {//'verified'
+	Route::get('/checkout',['as'=>'checkout','uses'=>'CheckoutController@index'])->middleware('checkout');
+	//Ajax Routes
+	Route::post('/checkout/state',['as'=>'checkout.state','uses'=>'CheckoutController@state']);
+	Route::post('/checkout/city',['as'=>'checkout.city','uses'=>'CheckoutController@city']);
+	// End
+	Route::post('/checkout/store',['as'=>'checkout.store','uses'=>'CheckoutController@store'])->middleware('checkout');
+	Route::get('/checkout/payment/{id}',['as'=>'checkout.payment','uses'=>'CheckoutController@payment']);
+	Route::post('/order/purchage',['as'=>'order.purchage','uses'=>'CheckoutController@purchage']);
+	
+});
+
 
 
 Route::namespace('Admin')->group(function(){

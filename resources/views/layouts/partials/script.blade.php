@@ -1,4 +1,5 @@
-<script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+{{-- <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script> --}}
 <script src="{{ asset('assets/styles/bootstrap4/popper.js') }}"></script>
 <script src="{{ asset('assets/styles/bootstrap4/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/greensock/TweenMax.min.js') }}"></script>
@@ -10,6 +11,5 @@
 <script src="{{ asset('assets/plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('assets/plugins/scrollUp/jquery.scrollUp.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
-<script src="{{ asset('assets/js/custom.js') }}"></script>
 <script src="{{ asset('assets/js/notify/notify.js') }}"></script>
 <script src="{{ asset('assets/js/notify/notify.min.js') }}"></script>

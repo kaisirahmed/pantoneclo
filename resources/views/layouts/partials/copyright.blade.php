@@ -6,7 +6,7 @@
                 <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
                     <div class="copyright_content"> 
 
-                    Copyright &copy; All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by Kaisir Ahmed
+                    Copyright &copy; Pantoneclo | All rights reserved | Developed by <i class="fa fa-heart" aria-hidden="true"></i>&nbsp;<a href="https://www.digitalsoftit.com" target="_blank">Digital Soft IT</a>
                     
                     </div>
                     <div class="logos ml-sm-auto">

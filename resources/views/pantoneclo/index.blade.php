@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('title','Pentoneclo')
 @section('style')
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/main_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/responsive.css') }}">
 @endsection
 @section('banner')
 <!-- Carousel Start -->
@@ -8,17 +10,7 @@
 <!-- Carousel End -->
 @endsection
 @section('content')
-<!-- Adverts -->
 
-{{-- @include('layouts.partials.adverts') --}}
-
-<!-- Trends -->
-
-{{-- @include('layouts.partials.trends') --}}
-
-<!-- Reviews -->
-
-@include('layouts.partials.reviews')
 <!-- Characteristics -->
 
 @include('layouts.partials.characteristics')
@@ -26,6 +18,18 @@
 <!-- Deals of the week -->
 
 {{-- @include('layouts.partials.featureddeals') --}}
+<!-- Reviews -->
+
+{{-- @include('layouts.partials.reviews') --}}
+
+<!-- Adverts -->
+
+{{-- @include('layouts.partials.adverts') --}}
+
+<!-- Trends -->
+
+@include('layouts.partials.trends')
+
 
 <!-- Popular Categories -->
 
@@ -33,7 +37,7 @@
 
 <!-- Banner -->
 
-@include('layouts.partials.slider')
+{{-- @include('layouts.partials.slider') --}}
 
 <!-- Hot New Arrivals -->
 
@@ -46,5 +50,5 @@
 @endsection
 
 @section('script')
-
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 @endsection

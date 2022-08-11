@@ -22,15 +22,9 @@
                     <div class="sidebar_section">
                         <div class="sidebar_title">Categories</div>
                         <ul class="sidebar_categories">
-                            <li><a href="#">Computers & Laptops</a></li>
-                            <li><a href="#">Cameras & Photos</a></li>
-                            <li><a href="#">Hardware</a></li>
-                            <li><a href="#">Smartphones & Tablets</a></li>
-                            <li><a href="#">TV & Audio</a></li>
-                            <li><a href="#">Gadgets</a></li>
-                            <li><a href="#">Car Electronics</a></li>
-                            <li><a href="#">Video Games & Consoles</a></li>
-                            <li><a href="#">Accessories</a></li>
+                            @foreach ($categories as $category)
+                            <li><a href="{{ route('category.products',$category->slug) }}">{{ $category->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="sidebar_section filter_by_section">
@@ -53,7 +47,7 @@
                             <li class="color"><a href="#" style="background: #ffffff; border: solid 1px #e1e1e1;"></a></li>
                         </ul>
                     </div>
-                    <div class="sidebar_section">
+                    {{-- <div class="sidebar_section">
                         <div class="sidebar_subtitle brands_subtitle">Brands</div>
                         <ul class="brands_list">
                             <li class="brand"><a href="#">Apple</a></li>
@@ -65,7 +59,7 @@
                             <li class="brand"><a href="#">Sony</a></li>
                             <li class="brand"><a href="#">Xiaomi</a></li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
@@ -97,19 +91,21 @@
                         @foreach($products as $product)
                         <!-- Product Item -->
                         <div class="product_item discount">
+                            {{-- <div class="product_border"></div> --}}
+                            
+                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ $product->image }}" alt=""></div>
                             <a href="{{ route('product.show',$product->slug) }}" tabindex="0">
-                                <div class="product_border"></div>
-                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ $product->image }}" alt=""></div>
                                 <div class="product_content">
                                     <div class="product_price">&#36;{{ $product->sale_price }}<span>&#36;{{ $product->price }}</span></div>
                                     <div class="product_name"><p>{{ mb_strimwidth($product->name,0,30,"...") }}</p></div>
                                 </div>
-                                <div class="product_fav"><i class="fas fa-heart"></i></div>
-                                <ul class="product_marks">
-                                    <li class="product_mark product_discount">-{{ $product->discount_amount != 0 ? $product->discount_amount : $product->discount_percentage }}</li>
-                                    <li class="product_mark product_new">new</li>
-                                </ul>
                             </a>
+                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                            <ul class="product_marks">
+                                <li class="product_mark product_discount">-{{ $product->discount_amount != 0 ? $product->discount_amount : $product->discount_percentage }}</li>
+                                <li class="product_mark product_new">new</li>
+                            </ul>
+                            
                             {{-- <a href="javascript:void(0);" class="addToCart" onclick="addToCart('{{ $product->slug }}')" >Add to Cart</a> --}}
                         </div>
                         @endforeach

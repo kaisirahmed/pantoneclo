@@ -98,7 +98,7 @@
 	position: absolute;
 	z-index: 2;
 	width: 3px;
-	height: 12px;
+	height: 16px;
 	cursor: default;
 	-ms-touch-action: none;
 	touch-action: none;
@@ -112,6 +112,7 @@
 	border: 0;
 	background-position: 0 0;
 	background-color: #0e8ce4;
+	padding: 4px;
 }
 
 /* support: IE8 - See #6727 */
@@ -175,6 +176,7 @@
 }
 .ui-widget.ui-widget-content {
 	/*border: 1px solid #c5c5c5;*/
+	padding: 4px;
 }
 .ui-widget-content {
 	/*border: 1px solid #dddddd;*/
@@ -209,6 +211,7 @@ html .ui-button.ui-state-disabled:active {
 	background: #000000;
 	font-weight: normal;
 	color: #454545;
+	padding: 3px;
 }
 .ui-state-default a,
 .ui-state-default a:link,

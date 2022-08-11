@@ -5,10 +5,10 @@
             <div class="col-lg-3 footer_col">
                 <div class="footer_column footer_contact">
                     <div class="logo_container">
-                        <div class="logo"><a href="#">E-One</a></div>
+                        <div class="logo"><a href="#">PantoNeclo</a></div>
                     </div>
                     <div class="footer_title">Got Question? Call Us 24/7</div>
-                    <div class="footer_phone">+880 1987798224</div>
+                    <div class="footer_phone">+880 00000000000</div>
                     <div class="footer_contact_text">
                         <p>Mirpur-1, Dhaka</p>
                         <p>Bangladesh</p>

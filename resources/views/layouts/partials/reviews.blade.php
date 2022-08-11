@@ -16,7 +16,7 @@
                         <!-- Reviews Slider Item -->
                         <div class="owl-item">
                             <div class="review d-flex flex-row align-items-start justify-content-start">
-                                <div><div class="review_image"><img src="images/review_1.jpg" alt=""></div></div>
+                                <div><div class="review_image"><img src="{{ asset('assets/images/review_1.jpg') }}" alt=""></div></div>
                                 <div class="review_content">
                                     <div class="review_name">Roberto Sanchez</div>
                                     <div class="review_rating_container">
@@ -31,7 +31,7 @@
                         <!-- Reviews Slider Item -->
                         <div class="owl-item">
                             <div class="review d-flex flex-row align-items-start justify-content-start">
-                                <div><div class="review_image"><img src="images/review_2.jpg" alt=""></div></div>
+                                <div><div class="review_image"><img src="{{ asset('assets/images/review_2.jpg') }}" alt=""></div></div>
                                 <div class="review_content">
                                     <div class="review_name">Brandon Flowers</div>
                                     <div class="review_rating_container">
@@ -46,7 +46,7 @@
                         <!-- Reviews Slider Item -->
                         <div class="owl-item">
                             <div class="review d-flex flex-row align-items-start justify-content-start">
-                                <div><div class="review_image"><img src="images/review_3.jpg" alt=""></div></div>
+                                <div><div class="review_image"><img src="{{ asset('assets/images/review_3.jpg') }}" alt=""></div></div>
                                 <div class="review_content">
                                     <div class="review_name">Emilia Clarke</div>
                                     <div class="review_rating_container">
@@ -61,7 +61,7 @@
                         <!-- Reviews Slider Item -->
                         <div class="owl-item">
                             <div class="review d-flex flex-row align-items-start justify-content-start">
-                                <div><div class="review_image"><img src="images/review_1.jpg" alt=""></div></div>
+                                <div><div class="review_image"><img src="{{ asset('assets/images/review_1.jpg') }}" alt=""></div></div>
                                 <div class="review_content">
                                     <div class="review_name">Roberto Sanchez</div>
                                     <div class="review_rating_container">
@@ -76,7 +76,7 @@
                         <!-- Reviews Slider Item -->
                         <div class="owl-item">
                             <div class="review d-flex flex-row align-items-start justify-content-start">
-                                <div><div class="review_image"><img src="images/review_2.jpg" alt=""></div></div>
+                                <div><div class="review_image"><img src="{{ asset('assets/images/review_2.jpg') }}" alt=""></div></div>
                                 <div class="review_content">
                                     <div class="review_name">Brandon Flowers</div>
                                     <div class="review_rating_container">
@@ -91,7 +91,7 @@
                         <!-- Reviews Slider Item -->
                         <div class="owl-item">
                             <div class="review d-flex flex-row align-items-start justify-content-start">
-                                <div><div class="review_image"><img src="images/review_3.jpg" alt=""></div></div>
+                                <div><div class="review_image"><img src="{{ asset('assets/images/review_3.jpg') }}" alt=""></div></div>
                                 <div class="review_content">
                                     <div class="review_name">Emilia Clarke</div>
                                     <div class="review_rating_container">

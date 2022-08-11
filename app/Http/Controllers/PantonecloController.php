@@ -15,7 +15,8 @@ class PantonecloController extends Controller
      */
     public function index()
     {
-        return view('pantoneclo.index');
+        $products = Product::where('is_slider',1)->latest()->get();
+        return view('pantoneclo.index',compact('products'));
     }
 
     /**

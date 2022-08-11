@@ -35,6 +35,8 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('unit_id');
             $table->string('affiliate_link')->nullable();
             $table->boolean('status'); 
+            $table->boolean('is_slider'); 
+            $table->boolean('is_featured'); 
             $table->string('meta_title',75)->nullable();
             $table->string('meta_tags')->nullable();
             $table->text('meta_description',300)->nullable();
