@@ -5,21 +5,20 @@
             <div class="col-lg-3 footer_col">
                 <div class="footer_column footer_contact">
                     <div class="logo_container">
-                        <div class="logo"><a href="#">PantoNeclo</a></div>
+                        <div class="logo"><a href="{{ route('home') }}">PantoNeclo</a></div>
                     </div>
                     <div class="footer_title">Got Question? Call Us 24/7</div>
-                    <div class="footer_phone">+880 00000000000</div>
+                    <div class="footer_phone"><a href="callto:+386 30 796 092">+386 30 796 092</a></div>
                     <div class="footer_contact_text">
-                        <p>Mirpur-1, Dhaka</p>
-                        <p>Bangladesh</p>
+                        <p>Pokopališka cesta 43000 </p>
+                        <p>CeljeSlovenia</p>
                     </div>
                     <div class="footer_social">
                         <ul>
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="#"><i class="fab fa-google"></i></a></li>
-                            <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google"></i></a></li>
                         </ul>
                     </div>
                 </div>

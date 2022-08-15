@@ -24,6 +24,14 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function shipping()
+    {
+        return $this->belongsTo(Shipping::class);
+    }
+    public function billing()
+    {
+        return $this->belongsTo(Billing::class);
+    }
 
     public function items()
     {

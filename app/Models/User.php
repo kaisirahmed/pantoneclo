@@ -9,9 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use App\Notifications\VerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -65,9 +65,9 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new VerifyEmail());
     }
 
-    public function addresses()
+    public function address()
     {
-        return $this->belongsToMany(Address::class);
+        return $this->hasOne(Address::class);
     }
 
 }

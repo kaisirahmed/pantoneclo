@@ -249,7 +249,7 @@
 }
 .logo_container
 {
-	height: 175px;
+	height: 140px;
 }
 .logo
 {
@@ -268,7 +268,7 @@
 }
 .header_search
 {
-	height: 175px;
+	height: 135px;
 }
 .header_search_content
 {
@@ -471,7 +471,7 @@ select option
 	right: 0;
 	width: 50px;
 	height: 100%;
-	background: #0e8ce4;
+	background: #0ebde4;
 	border: none;
 	outline: none;
 	cursor: pointer;
@@ -480,7 +480,7 @@ select option
 }
 .wishlist_cart
 {
-	height: 175px;
+	height: 140px;
 }
 .wishlist
 {
@@ -522,7 +522,7 @@ select option
 	right: -14px;
 	width: 23px;
 	height: 23px;
-	background: #0e8ce4;
+	background: #0ebde4;
 	border-radius: 50%;
 	text-align: center;
 }
@@ -576,7 +576,7 @@ select option
 {
 	width: 100%;
 	border-top: solid 1px #f2f2f2;
-	box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+	/* box-shadow: 0px 5px 20px rgba(0,0,0,0.1); */
 	background: #FFFFFF;
 }
 .header.scrolled .main_nav
@@ -597,12 +597,13 @@ select option
 }
 .cat_menu_container
 {
-	width: 293px;
-	height: 100%;
-	background: #0e8ce4;
+	width: 250px;
+    height: 100%;
+    background: #0ebde4;
 	padding-left: 35px;
 	cursor: pointer;
 	z-index: 1;
+	border-radius: 10px;
 }
 .cat_menu_title
 {
@@ -632,7 +633,7 @@ select option
 }
 .cat_menu_text
 {
-	font-size: 18px;
+	font-size: 15px;
 	font-weight: 400;
 	color: #FFFFFF;
 	text-transform: uppercase;
@@ -937,8 +938,9 @@ select option
 .home
 {
 	width: 100%;
-	height: 160px;
+	/* height: 120px; */
 	background: transparent;
+	border-top: 1px solid #dfdfdf;
 }
 .home_background
 {
@@ -958,17 +960,28 @@ select option
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: #cde4f1;
-	background: linear-gradient(#FFFFFF, #cde4f1);
+	background: #fafafa;
+	/* background: linear-gradient(#FFFFFF, #cde4f1); */
 	opacity: 0.9;
 }
 .home_content
 {
 	width: 100%;
 	height: 100%;
-	padding-top: 56px;
+	padding-top: 20px;
 }
 
 .breadcrumb {
 	background-color: transparent !important;
+}
+.breadcrumb {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0 !important;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
 }

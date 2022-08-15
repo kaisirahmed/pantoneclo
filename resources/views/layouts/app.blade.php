@@ -49,7 +49,7 @@
 	@include('layouts.partials.copyright')
 
 </div>
-
+@include('pantoneclo.ajax.modal')
 @include('layouts.partials.script')
 @yield('script')
 

@@ -42,14 +42,14 @@
                                             <td><div class="cart_item_image"><img src="{{ $item->attributes->image }}" alt=""></div></td>
                                             <td><div class="cart_item_text"><p title="{{ $item->name }}">{{ $item->name }}</p></div></td>
                                             <td><div class="cart_item_text"><p>{{ $item->attributes->color }}</p></div></td>
-                                            <td><div class="cart_item_text"><p>{{ $sizes[$item->attributes->size] }}</p></div></td>
+                                            <td><div class="cart_item_text"><p>{{ $sizes[$item->attributes->size_id] }}</p></div></td>
                                             <td>
                                                 <div class="product_quantity cart_item_text clearfix">
                                                     <strong>Qty: </strong>
                                                     <input id="quantity_input{{ $item->id }}" name="quantity" type="text" pattern="[0-9]*" value="{{ $item->quantity }}">
                                                     <div class="quantity_buttons">
-                                                        <div id="quantity_inc_button{{ $item->id }}" class="quantity_inc quantity_control" onclick="incQuantity('{{ $item->id }}')"><i class="fas fa-chevron-up"></i></div>
-                                                        <div id="quantity_dec_button{{ $item->id }}" class="quantity_dec quantity_control" onclick="decQuantity('{{ $item->id }}')"><i class="fas fa-chevron-down"></i></div>
+                                                        <div id="quantity_inc_button{{ $item->id }}" class="quantity_inc quantity_control" onclick="incQuantity('{{ $item->id }}')"><i class="fa fa-chevron-up"></i></div>
+                                                        <div id="quantity_dec_button{{ $item->id }}" class="quantity_dec quantity_control" onclick="decQuantity('{{ $item->id }}')"><i class="fa fa-chevron-down"></i></div>
                                                     </div>
                                                 </div>
                                             </td>

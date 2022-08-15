@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Unit;
 use App\Models\Size;
+use App\Models\Color;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
@@ -40,10 +41,11 @@ class ProductController extends Controller
     {
         $units = Unit::all();
         $sizes = Size::all();
+        $colors = Color::all();
         $categoryId = Category::pluck('parent_id');
         $categories = Category::whereNotIn('id',$categoryId)->get();
   
-        return view('admin.products.create',compact('categories','units','sizes'));
+        return view('admin.products.create',compact('categories','units','sizes','colors'));
     }
 
     /**
@@ -75,6 +77,8 @@ class ProductController extends Controller
             'left_side_image' => ['required','image', 'max:512'],//,'dimensions:min_width=200,max_width=250,min_height=250,max_height=250'
             'back_side_image' => ['required','image', 'max:512'],//,'dimensions:min_width=200,max_width=250,min_height=250,max_height=250'
             'unit_id' => ['required','integer'],
+            'size_id' => ['required','integer'],
+            'color_id' => ['required','integer'],
             'status' => ['required','integer'],
             'description' => ['required','string'],
             'discount_amount' => ['nullable','integer'],
@@ -163,6 +167,8 @@ class ProductController extends Controller
             }
            
             $product->quantity = $request->quantity;
+            $product->unit_id = $request->unit_id;
+            $product->size_id = $request->size_id;
             $product->unit_id = $request->unit_id;
             $product->status = $request->status;
             $product->description = $request->description;

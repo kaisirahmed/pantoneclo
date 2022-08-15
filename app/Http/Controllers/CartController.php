@@ -16,7 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cartitems = Cart::getContent();
+        $cartitems = Cart::getContent(); 
         $sizes = Size::pluck('code','id')->toArray();
         //dd($sizes);
         $total = number_format(Cart::getSubTotal(),2);
@@ -72,7 +72,7 @@ class CartController extends Controller
                     'discount_amount' => $product->discount_amount,
                     'discount_percentage' => $product->discount_percentage,
                     'image' => $image,
-                    'size' => $size->id,
+                    'size_id' => $size->id,
                     //'size' => $size->code,
                     'color' => $product->color->name,
                     'colorCode' => $product->color->code,

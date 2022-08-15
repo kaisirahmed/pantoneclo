@@ -291,6 +291,17 @@
                             <div class="invalid-feedback">Please provide a Price of product.</div>
                             <div class="valid-feedback">Looks good!</div>
                         </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="color">Color</label>
+                            <select id="color" name="color_id" data-toggle="select" class="form-control">
+                                <option disabled selected>Select color</option>
+                                @foreach($colors as $color)
+                                <option value="{{ $color->id }}">{{ $color->name }}</option>
+                                @endforeach
+                            </select>
+                            <div class="invalid-feedback">Please provide a color of product.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
                     </div>
                 </div>
             </div>

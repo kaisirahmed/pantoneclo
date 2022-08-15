@@ -1,6 +1,6 @@
 
 <div class="home">
-    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="{{ asset('assets/images/shop_background.jpg') }}"></div>
+    {{-- <div class="home_background parallax-window" data-parallax="scroll" data-image-src="{{ asset('assets/images/shop_background.jpg') }}"></div> --}}
     <div class="home_overlay"></div>
     <div class="container">
         <div class="row">

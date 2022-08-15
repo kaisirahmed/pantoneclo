@@ -11,10 +11,12 @@ use App\Models\City;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\Address;
+use App\Mail\PlaceOrder;
 use App\Models\Shipping;
 use App\Models\Billing;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Illuminate\Support\Facades\Mail;
 use Cart;
 
 class CheckoutController extends Controller
@@ -25,13 +27,19 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $cartitems = Cart::getContent();
-        $sizes = Size::pluck('code','id')->toArray();
-        //dd($sizes);
-        $total = number_format(Cart::getSubTotal(),2);
-        $countries = Country::select('id','name','iso2')->get();
-        return view('pantoneclo.checkout',compact('countries','cartitems','sizes','total'));
+    {//$cartitems = Cart::getContent();dd($cartitems);
+        //return config('orderstatus.PAID');
+        if(!Cart::isEmpty()){
+            $cartitems = Cart::getContent();
+            $sizes = Size::pluck('code','id')->toArray();
+            //dd($sizes);
+            $total = number_format(Cart::getSubTotal(),2);
+            $countries = Country::select('id','name','iso2')->get();
+            return view('pantoneclo.checkout',compact('countries','cartitems','sizes','total'));
+        } else {
+            return redirect()->back();
+        }
+        
     }
 
     /**
@@ -65,7 +73,7 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Billing $billing, Shipping $shipping, Order $order, OrderItem $orderitem)
+    public function store(Request $request, Billing $billing, Shipping $shipping, Order $order)
     {   //return $request->all();
         $validator = Validator::make($request->all(), [
             'billing_first_name' => ['required', 'string'],
@@ -145,17 +153,23 @@ class CheckoutController extends Controller
                         $order->where('id',$order->id)->update(['order_number'=>$order->order_number]);
 
                         foreach($cartitems as $item){
-                            $orderitem->order_id = $order->id;
-                            $orderitem->product_id = $item->attributes->product_id;
-                            $orderitem->product_price = $item->price;
-                            $orderitem->quantity = $item->quantity;
-                            $orderitem->unit = $item->unit;
-                            $orderitem->weight = $item->weight;
-                            $orderitem->color = $item->color;
-                            $orderitem->total_price = $item->getPriceSum();
-                            $orderitem->discount_amount = $item->attributes->discount_amount;
-                            $orderitem->save();                    
+                            $orderitem['order_id'] = $order->id;
+                            $orderitem['product_id'] = $item->attributes->product_id;
+                            $orderitem['product_price'] = $item->price;
+                            $orderitem['quantity'] = $item->quantity;
+                            $orderitem['unit'] = $item->unit;
+                            $orderitem['weight'] = $item->weight;
+                            $orderitem['color'] = $item->color;
+                            $size = Size::find($item->size_id);
+                            $orderitem['size'] = $size;
+                            $orderitem['total_price'] = $item->getPriceSum();
+                            $orderitem['discount_amount'] = $item->attributes->discount_amount;
+                            OrderItem::create($orderitem);
+
                         }
+
+                        Mail::to($shipping->email)->send(new PlaceOrder($order));
+
                         Cart::clear();
                         return redirect()->route('checkout.payment',encrypt($order->id));
                     }
@@ -189,13 +203,13 @@ class CheckoutController extends Controller
      */
     public function purchage(Request $request)
     {
-        $order_id = $request->order_id;
+        $order_id = decrypt($request->order_id);
         $checkOrderStatus = Order::where('id',$order_id)->pluck('status'); 
         if(isset($checkOrderStatus->status) && $checkOrderStatus->status == 2){
             return redirect()->back();
         }
         if(isset($request->order_id)){
-            Order::where('id',$order_id)->update(['status' => config('orderstatus.PAID')]);
+            Order::where('id',$order_id)->update(['status' => config('orderstatus.PAID'),'payment_method' => $request->payment_method]);
             return view('pantoneclo.purchaged',['message'=>'Your order has been purchaged successfully!']);
         } else {
             return redirect()->back();

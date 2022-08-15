@@ -55,8 +55,8 @@
                                     <span>Quantity: </span>
                                     <input id="quantity_input" name="quantity" type="text" pattern="[0-9]*" value="1">
                                     <div class="quantity_buttons">
-                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
-                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up"></i></div>
+                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down"></i></div>
                                     </div>
                                 </div>
 
@@ -94,8 +94,9 @@
                             <div class="product_price discount">&#36;{{ $product->sale_price }} </div>
                             <span> &#36;{{ $product->price }} ({{ $product->discount_amount != 0 ? $product->discount_amount : $product->discount_percentage }}&#37; off)</span>
                             <div class="button_container">
-                                <a href="javascript:void(0);" class="button cart_button" onclick="addToCart('{{ $product->slug }}')" >Add to Cart</a>
-                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm" onclick="addToCart('{{ $product->slug }}')" >Add to Cart</a>
+                                <a href="{{ $product->affiliate_link }}" class="btn btn-info btn-sm" ><i class="fa">&#xf270;</i> Buy From Amazon</a>
+                                <div class="product_fav"><i class="fa fa-heart"></i></div>
                             </div>
                             
                         </form>

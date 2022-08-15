@@ -26,7 +26,7 @@
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
                     <h6 class="my-0"><img width="30px" style="border-right: 1px solid #dfdfdf" src="{{ $item->attributes->image }}" alt=""> {{ $item->name }}</h6>
-                    <small class="text-muted">{{ $item->attributes->color }} | {{ $sizes[$item->attributes->size] }} | {{ $item->quantity }}</small>
+                    <small class="text-muted">{{ $item->attributes->color }} | {{ $sizes[$item->attributes->size_id] }} | {{ $item->quantity }}</small>
                   </div>
                   <span class="text-muted">{{ $item->attributes->currency }}{{ $item->price }}</span>
                 </li>

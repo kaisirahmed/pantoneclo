@@ -24,9 +24,9 @@ class PantonecloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function b2bService()
+    public function demoEmail()
     {
-        
+        return view('pantoneclo.emails.demo');
     }
 
     /**

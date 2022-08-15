@@ -23,6 +23,10 @@
           </h4>
           <ul class="list-group mb-3">
             <li class="list-group-item d-flex justify-content-between">
+              <span>Shipping (USD)</span>
+              <strong>{{ $order->shipping_charge }}</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
               <span>Total (USD)</span>
               <strong>{{ $order->total }}</strong>
             </li>
@@ -58,7 +62,7 @@
                   <label class="custom-control-label" for="paypal">Paypal</label>
                 </div> --}}
                 <div class="custom-control custom-radio">
-                  <input id="cod" name="payment_method" type="radio" class="custom-control-input" required>
+                  <input id="cod" name="payment_method" value="COD" type="radio" class="custom-control-input" required>
                   <label class="custom-control-label" for="cod">COD(Cash On Delivery)</label>
                 </div>
             </div>

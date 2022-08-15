@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', ['as'=>'home','uses'=>'PantonecloController@index']);
 Route::get('/shop', ['as'=>'shop','uses'=>'ShopController@index']);
 Route::get('/shop/{slug}',['as'=>'product.show','uses'=>'ShopController@show']);
-Route::get('/category/{cat}',['as'=>'category.products','uses'=>'ShopController@categoryShow']);
+Route::get('/category/{cat}',['as'=>'category.products','uses'=>'ShopController@categoryProducts']);
 Route::post('/cart/add',['as'=>'cart.add','uses'=>'CartController@addToCart']);
 Route::post('/cart/clear',['as'=>'cart.clear','uses'=>'CartController@clearCart']);
 Route::post('/cart/item/update',['as'=>'cart.item.update','uses'=>'CartController@itemUpdate']);
@@ -28,7 +28,7 @@ Route::post('/cart/delete',['as'=>'cart.delete','uses'=>'CartController@delete']
 Route::get('/contact',['as'=>'contact','uses'=>'ContactController@index']);
 Route::get('/cart',['as'=>'cart','uses'=>'CartController@index']);
 
-
+Route::get('temp-email',['as'=>'temp.email','uses'=>'PantonecloController@demoEmail']);
 
 Auth::routes([ 'verify' => true ]);
 
@@ -41,6 +41,12 @@ Route::group(['middleware' => ['auth']], function () {//'verified'
 	Route::post('/checkout/store',['as'=>'checkout.store','uses'=>'CheckoutController@store'])->middleware('checkout');
 	Route::get('/checkout/payment/{id}',['as'=>'checkout.payment','uses'=>'CheckoutController@payment']);
 	Route::post('/order/purchage',['as'=>'order.purchage','uses'=>'CheckoutController@purchage']);
+
+	Route::get('/account',['as'=>'account','uses'=>'AccountController@index']);
+	Route::get('/account/orders',['as'=>'account.orders','uses'=>'AccountController@orders']);
+	// Ajax routes
+	Route::post('/account/user/edit',['as'=>'account.user.edit','uses'=>'AccountController@userEdit']);
+	Route::post('/account/user/update',['as'=>'account.user.update','uses'=>'AccountController@userUpdate']);
 	
 });
 

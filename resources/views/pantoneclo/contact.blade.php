@@ -4,6 +4,9 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/contact_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/contact_responsive.css') }}">         
 @endsection
+@section('banner')
+@include('layouts.partials.pagebanner')
+@endsection
 @section('content')
 
 	<!-- Contact Info -->
@@ -19,7 +22,7 @@
 							<div class="contact_info_image"><img src="{{ asset('assets/images/contact_1.png') }}" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Phone</div>
-								<div class="contact_info_text">+38 068 005 3570</div>
+								<div class="contact_info_text"><a href="callto:+386 30 796 092">+386 30 796 092</a></div>
 							</div>
 						</div>
 
@@ -28,7 +31,7 @@
 							<div class="contact_info_image"><img src="{{ asset('assets/images/contact_2.png') }}" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Email</div>
-								<div class="contact_info_text">fastsales@gmail.com</div>
+								<div class="contact_info_text"><a href="mailto:info@pantoneclo.com">info@pantoneclo.com</a></div>
 							</div>
 						</div>
 
@@ -37,7 +40,7 @@
 							<div class="contact_info_image"><img src="{{ asset('assets/images/contact_3.png') }}" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Address</div>
-								<div class="contact_info_text">10 Suffolk at Soho, London, UK</div>
+								<div class="contact_info_text">Pokopališka cesta 4, 3000, CeljeSlovenia</div>
 							</div>
 						</div>
 
@@ -82,12 +85,18 @@
 	<div class="contact_map">
 		<div id="google_map" class="google_map">
 			<div class="map_container">
-				<div id="map"></div>
+				<div class="mapouter">
+					<div class="gmap_canvas">
+						<iframe width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Pokopali%C5%A1ka%20cesta%204,%203000,%20CeljeSlovenia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+						<style>.mapouter{position:relative;text-align:right;height:500px;width:100%;}</style>
+						<style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:100%;}</style>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 @endsection
 @section('script')
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+{{-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script> --}}
 <script src="{{ asset('assets/js/contact_custom.js') }}"></script>
 @endsection

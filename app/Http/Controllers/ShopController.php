@@ -16,7 +16,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(5);
+        $products = Product::cursorPaginate(20);
         $categoryId = Category::pluck('parent_id');
         $categories = Category::whereNotIn('id',$categoryId)->get();
         return view('pantoneclo.shop',compact('products'));
@@ -61,14 +61,14 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function categoryShow($slug)
+    public function categoryProducts($slug)
     {
         $products = Product::where(function($query) use ($slug){
             $query->whereHas('categories', function($query) use ($slug){
                 $query->where('slug',$slug);
             });
-        })->get();
-        return view('pantoneclo.products',compact('products'));        
+        })->cursorPaginate(20);
+        return view('pantoneclo.categoryshop',compact('products','slug'));        
     }
 
     /**

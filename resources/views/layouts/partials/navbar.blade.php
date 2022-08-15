@@ -9,7 +9,14 @@
 
                     <div class="cat_menu_container">
                         <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-                            <div class="cat_burger"><span></span><span></span><span></span></div>
+                            <div class="cat_burger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                            </div>
                             <div class="cat_menu_text">categories</div>
                         </div>
  
@@ -123,8 +130,8 @@
                     </ul>
                     
                     <div class="menu_contact">
-                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{ asset('assets/images/phone_white.png') }}" alt=""></div><a href="callto:+386 30 796 092">+386 30 796 092</a></div>
+                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{ asset('assets/images/mail_white.png') }}" alt=""></div><a href="mailto:info@pantoneclo.com">info@pantoneclo.com</a></div>
                     </div>
                 </div>
             </div>
