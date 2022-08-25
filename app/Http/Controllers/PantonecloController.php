@@ -15,7 +15,7 @@ class PantonecloController extends Controller
      */
     public function index()
     {
-        $products = Product::where('is_slider',1)->latest()->get();
+        $products = Product::where('is_slider',1)->where('status',1)->latest()->get();
         return view('pantoneclo.index',compact('products'));
     }
 
@@ -48,7 +48,7 @@ class PantonecloController extends Controller
      */
     public function show($slug)
     {
-        $product = Product::where('slug',$slug)->first();
+        $product = Product::where('slug',$slug)->where('status',1)->first();
         return view('pantoneclo.productShow',compact('product'));        
     }
 

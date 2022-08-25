@@ -64,7 +64,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Product $product)
-    {//dd($request->all());
+    {dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string','max:100','unique:products,name'],
             'code' => ['nullable','string','max:30'],

@@ -15,10 +15,10 @@
                     </div>
                     <div class="footer_social">
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google"></i></a></li>
+                            <li><a href="https://www.facebook.com/PantonecloEU/" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.instagram.com/pantone_clo/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCWGlFHHU_fvv01lO9IrTn5g" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="https://www.google.com.bd/search?q=Pantonclo&ludocid=12548668273068374647&lsig=AB86z5WTJsQ9lHO_2xwxm4jwjGvq" target="_blank"><i class="fa fa-google"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -28,21 +28,16 @@
                 <div class="footer_column">
                     <div class="footer_title">Find it Fast</div>
                     <ul class="footer_list">
-                        <li><a href="#">Computers & Laptops</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Smartphones & Tablets</a></li>
-                        <li><a href="#">TV & Audio</a></li>
-                    </ul>
-                    <div class="footer_subtitle">Gadgets</div>
-                    <ul class="footer_list">
-                        <li><a href="#">Car Electronics</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="col-lg-2">
                 <div class="footer_column">
+                    <div class="footer_title">Policy</div>
                     <ul class="footer_list footer_list_2">
                         <li><a href="#">Video Games & Consoles</a></li>
                         <li><a href="#">Accessories</a></li>

@@ -242,9 +242,17 @@
                     <p class="text-muted"></p>
                 </div>
                 <div class="col-lg-10 card-form__body card-body">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="desc">Description</label>
                         <textarea id="desc" name="description" rows="4" class="form-control" placeholder="Please enter a description"></textarea>
+                    </div> --}}
+                    {{-- <label>Custom toolbar</label> --}}
+                    <div class="form-group">
+                        <div class="h-150" data-toggle="quill" data-quill-placeholder="Description write here...." data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
+                            <p>Description</p>
+                            <p>Start to<strong>write</strong> description here...</p>
+                            <p><br></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -346,7 +354,7 @@
     <script src="{{ asset('admin/assets/vendor/jquery.mask.min.js') }}"></script>
 
     <!-- Quill -->
-    {{-- <script src="{{ asset('admin/assets/vendor/quill.min.js') }}"></script> --}}
+    <script src="{{ asset('admin/assets/vendor/quill.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/quill.js') }}"></script>
 
     <!-- Dropzone -->

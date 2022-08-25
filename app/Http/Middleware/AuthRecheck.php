@@ -2,22 +2,24 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Auth\Middleware\Authenticate as Middleware;
-use App\Providers\RouteServiceProvider;
+use Closure;
+use Illuminate\Support\Facades\Auth;
 
-class Authenticate extends Middleware
+class AuthRecheck
 {
     /**
-     * Get the path the user should be redirected to when they are not authenticated.
+     * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return string|null
+     * @param  \Closure  $next
+     * @return mixed
      */
-    protected function redirectTo($request)
-    { 
-        if ($request->url('/admin')) {
-            return redirect(RouteServiceProvider::ADMINLOGIN);
+    public function handle($request, Closure $next, $guard = null)
+    {
+        if (Auth::guard('admin')->check()) {
+            return $next($request);
         }
-  
+        return redirect(route('admin.login'));
+        
     }
 }

@@ -16,7 +16,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = Product::cursorPaginate(20);
+        $products = Product::where('status',1)->cursorPaginate(20);
         $categoryId = Category::pluck('parent_id');
         $categories = Category::whereNotIn('id',$categoryId)->get();
         return view('pantoneclo.shop',compact('products'));

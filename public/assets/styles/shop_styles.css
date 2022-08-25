@@ -703,6 +703,7 @@ section
 	transform: translateX(-37px);
 	border-right: 1px solid #dfdfdf;
 	padding-top: 70px;
+	padding-left: 40px;
 }
 .sidebar_title
 {
