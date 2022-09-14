@@ -100,9 +100,13 @@
                                     <div class="product_name"><p>{{ mb_strimwidth($product->name,0,30,"...") }}</p></div>
                                 </div>
                             </a>
-                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                            <div class="product_fav"><i class="fa fa-heart"></i></div>
                             <ul class="product_marks">
-                                <li class="product_mark product_discount">-{{ $product->discount_amount != 0 ? $product->discount_amount : $product->discount_percentage }}</li>
+                                @if($product->discount_amount != 0)
+                                    <li class="product_mark product_discount">-{{ $product->discount_amount }}</li>
+                                @elseif($product->discount_percentage !=0)
+                                    <li class="product_mark product_discount">-{{ $product->discount_percentage }}</li>
+                                @endif
                                 <li class="product_mark product_new">new</li>
                             </ul>
                             

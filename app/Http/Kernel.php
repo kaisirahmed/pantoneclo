@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'verify.email' => \App\Http\Middleware\EnsureEmailIsVerified::class,
         'reauth' => \App\Http\Middleware\AuthRecheck::class,
         'checkout' => \App\Http\Middleware\Checkout::class,
+        'cors' => \App\Http\Middleware\Cors::class,
     ];
 }

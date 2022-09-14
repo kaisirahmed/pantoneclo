@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::where('status',1)->latest();
         $categoryId = Category::pluck('parent_id');
         $categories = Category::whereNotIn('id',$categoryId)->get();
         return view('admin.products.index',compact('products','categories'));
@@ -55,6 +55,15 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function imageUpload(Request $request){
+        return $request->all();
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function variationProduct(Request $request){
         return $request->all();
     }
     /**

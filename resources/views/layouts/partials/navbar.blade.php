@@ -21,8 +21,17 @@
                         </div>
  
                         <ul class="cat_menu">
-                            @foreach ($categories as $category)
-                                <li><a href="{{ route('category.products',$category->slug) }}">{{ $category->name }}<i class="fas fa-chevron-right ml-auto"></i></a></li>
+                            @foreach($categories as $category)
+                                @if($category->parent_id == 0) 
+                                <li class="{{ count($category->subcategory) > 0 ? 'hassubs' : '' }}">
+                                    <a href="{{ route('category.products',$category->slug) }}">{{ $category->name }}<i class="fa fa-chevron-right ml-auto"></i></a>
+                                    @if(count($category->subcategory) > 0)
+                                    <ul>
+                                        @include('layouts.partials.subcategories', ['subcategories' => $category->subcategory])
+                                    </ul>
+                                    @endif
+                                </li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>

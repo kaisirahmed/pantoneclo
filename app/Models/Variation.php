@@ -9,4 +9,13 @@ class Variation extends Model
 {
     use HasFactory;
     protected $guard = [];
+
+    public function optionValues() 
+    {
+        return $this->belongsToMany(OptionValue::class);
+    }
+    public function product() 
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

@@ -26,8 +26,7 @@
                                             {{-- <th scope="col">#</th> --}}
                                             <th scope="col">Image</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Color</th>
-                                            <th scope="col">Size</th>
+                                            <th scope="col">Options</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Total</th>
@@ -41,8 +40,7 @@
                                             {{-- <th scope="row">{{ $i++ }}</th> --}}
                                             <td><div class="cart_item_image"><img src="{{ $item->attributes->image }}" alt=""></div></td>
                                             <td><div class="cart_item_text"><p title="{{ $item->name }}">{{ $item->name }}</p></div></td>
-                                            <td><div class="cart_item_text"><p>{{ $item->attributes->color }}</p></div></td>
-                                            <td><div class="cart_item_text"><p>{{ $sizes[$item->attributes->size_id] }}</p></div></td>
+                                            <td><div class="cart_item_text"><p>{{ $item->attributes->options }}</p></div></td>
                                             <td>
                                                 <div class="product_quantity cart_item_text clearfix">
                                                     <strong>Qty: </strong>

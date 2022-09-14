@@ -47,17 +47,17 @@
 	<!-- Copyright -->
 
 	@include('layouts.partials.copyright')
-
+	
 </div>
 @include('pantoneclo.ajax.modal')
 @include('layouts.partials.script')
 @yield('script')
-
+ 
 </body>
 
 </html>
 
-<script>
+{{-- <script>
 $(function () {
   $.scrollUp({
     scrollName: 'scrollUp', // Element ID
@@ -70,4 +70,4 @@ $(function () {
     activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
   });
 });
-</script>
+</script> --}}

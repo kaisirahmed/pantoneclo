@@ -1955,15 +1955,15 @@ if (typeof Object.create !== 'function') {
         easingAmount: 12,
         enabled: true,
 
-        gallery: false,
+        gallery: true,
         galleryActiveClass: 'zoomGalleryActive',
-        gallerySelector: false,
+        gallerySelector: true,
         galleryItem: 'li',
         galleryEvent: 'click',
 
-        imageCrossfade: false,
+        imageCrossfade: true,
 
-        lensBorderColour: '#000',
+        lensBorderColour: '#FFF',
         lensBorderSize: 1,
         lensColour: 'white', //colour of the lens background
         lensFadeIn: false,
@@ -1973,13 +1973,13 @@ if (typeof Object.create !== 'function') {
         lensSize: 200,
         lenszoom: false,
 
-        loadingIcon: false, //http://www.example.com/spinner.gif
+        loadingIcon: true, //http://www.example.com/spinner.gif
 
         // This change will allow to decide if you want to decrease
         // zoom of one of the dimensions once the other reached it's top value,
         // or keep the aspect ratio, default behaviour still being as always,
         // allow to continue zooming out, so it keeps retrocompatibility.
-        mantainZoomAspectRatio: false,
+        mantainZoomAspectRatio: true,
         maxZoomLevel: false,
         minZoomLevel: 4.01,
 

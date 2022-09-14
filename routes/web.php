@@ -27,6 +27,7 @@ Route::post('/cart/update',['as'=>'cart.update','uses'=>'CartController@update']
 Route::post('/cart/delete',['as'=>'cart.delete','uses'=>'CartController@delete']);
 Route::get('/contact',['as'=>'contact','uses'=>'ContactController@index']);
 Route::get('/cart',['as'=>'cart','uses'=>'CartController@index']);
+Route::get('/variation/product',['as'=>'variation.product','uses'=>'ProductController@variationProduct']);
 
 Route::get('temp-email',['as'=>'temp.email','uses'=>'PantonecloController@demoEmail']);
 

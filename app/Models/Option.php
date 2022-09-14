@@ -9,4 +9,9 @@ class Option extends Model
 {
     use HasFactory;
     protected $guard = [];
+
+    public function optionValues() 
+    {
+        return $this->hasMany(OptionValue::class);
+    }
 }

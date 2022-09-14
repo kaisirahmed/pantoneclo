@@ -5,14 +5,14 @@
         <div class="d-flex align-items-center sidebar-p-a border-bottom bg-light">
             <a href="#" class="flex d-flex align-items-center text-body text-underline-0">
                 <span class="avatar avatar-sm mr-2">
-                    <span class="avatar-title rounded-circle bg-soft-secondary text-muted">AD</span>
+                    <span class="avatar-title rounded-circle bg-soft-secondary text-muted"><span class="text-light material-icons">verified_user</span></span>
                 </span>
                 <span class="flex d-flex flex-column">
-                    <strong>Adrian Demian</strong>
-                    <small class="text-muted text-uppercase">Instructor</small>
+                    <strong>{{ auth()->user()->name }}</strong>
+                    <small class="text-muted text-uppercase">Admin</small>
                 </span>
             </a>
-            <div class="dropdown ml-auto">
+            {{-- <div class="dropdown ml-auto">
                 <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted"><i class="material-icons">more_vert</i></a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="student-dashboard.html">Dashboard</a>
@@ -21,12 +21,12 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" rel="nofollow" data-method="delete" href="login.html">Logout</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="sidebar-block p-0">
 
-        <div class="sidebar-heading">Student</div>
+        <div class="sidebar-heading">Menus</div>
 
 
         <ul class="sidebar-menu mt-0">
@@ -82,12 +82,12 @@
                             </g>
                         </svg>
                     </span>
-                    <span class="sidebar-menu-text">Course Lessons</span>
+                    <span class="sidebar-menu-text">Orders</span>
                 </a>
             </li>
 
 
-            <li class="sidebar-menu-item">
+            {{-- <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button" href="student-take-course.html">
                     <span class="sidebar-menu-icon sidebar-menu-icon--left">
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="22" height="22">
@@ -419,6 +419,6 @@
                 <div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 </div>

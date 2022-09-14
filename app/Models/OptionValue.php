@@ -9,4 +9,5 @@ class OptionValue extends Model
 {
     use HasFactory;
     protected $guard = [];
+ 
 }

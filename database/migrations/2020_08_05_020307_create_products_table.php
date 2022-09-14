@@ -19,9 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('code')->nullable();
             $table->string('model')->nullable();
             $table->string('slug');
+            $table->string('sku')->nullable()->unique();
             $table->double('price', 8, 2);
-            $table->unsignedBigInteger('size_id')->default(0);
-            $table->unsignedBigInteger('color_id')->default(0);
             $table->string('image');
             $table->string('front_side_image');
             $table->string('right_side_image');

@@ -5,29 +5,33 @@
         } 
     }); 
 
-    function addToCart(slug) { 
-        var size = $('#size').val();
+    function addToCart(productId) { 
+        
+        var variants = [];
+        $.each($(".variants option:selected"), function(){            
+            if($(this).val() != '') variants.push($(this).val());
+        });
+       
         var quantity = $('#quantity_input').val();
-        var slug = slug; 
-        if (slug != '' && size != null) { 
+        if (variants.length > 1) { 
             $.ajax({ 
                 type:"post", 
                 url: "{{ route('cart.add') }}",
                 data:{ 
-                    slug : slug,
-                    size : size,
+                    product_id : productId,
+                    variants : variants,
                     quantity : quantity,
                     _token: "{{ csrf_token() }}"
                 }, 
                 dataType: "json", 
-                success:function(data){ 
+                success:function(data){ console.log(data);
                     $.notify("Cart Item Added Successfully!","success");
                     $('.cart_price').text(data.cartTotal)
                     $('.cart_count').text(data.cartTotalQuantity)
                 } 
             }); 
         } else {
-            $(".product_size").notify("Please choose product size.");
+            $(".product_size").notify("Please choose Options.");
         }
     }
 

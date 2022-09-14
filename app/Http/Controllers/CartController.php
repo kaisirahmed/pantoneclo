@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Variation;
 use App\Models\Size;
 use Cart;
 
@@ -17,10 +18,8 @@ class CartController extends Controller
     public function index()
     {
         $cartitems = Cart::getContent(); 
-        $sizes = Size::pluck('code','id')->toArray();
-        //dd($sizes);
         $total = number_format(Cart::getSubTotal(),2);
-        return view('pantoneclo.cart', compact('cartitems','total','sizes'));
+        return view('pantoneclo.cart', compact('cartitems','total'));
     }
 
     /**
@@ -42,15 +41,17 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         if($request->ajax()){
-            $slug = $request->slug;
-            $size = $request->size;
-
-            $product = Product::where('slug',$slug)
+            $product_id = $request->product_id;
+            $variants = implode("",$request->variants);
+            
+            $variant = $product_id.$variants;
+            $product = Product::where('id',$product_id)
                             ->where('status',1)
                             ->first();
 
-            $size = Size::where('id',$size)->first();
-            
+            $variation = Variation::where('code',$variant)->where('product_id',$product_id)->first();            
+           
+
             if($request->quantity){
                 $quantity = $request->quantity;
             }else{
@@ -59,27 +60,23 @@ class CartController extends Controller
 
             $id = $product->id;
             $name = $product->name;
-            $price = $product->sale_price;
+            $price = $variation->sale_price;
             $image = $product->image;
                         
             $cart = Cart::add([
-                'id' => $id.$size->id,
-                'name' => $name." (".$size->code.")",
+                'id' => $variant,
+                'name' => $name." (".$variation->name.")",
                 'price' => $price,
                 'quantity' => $quantity,
                 'attributes' => [
                     'product_id' => $id,
-                    'discount_amount' => $product->discount_amount,
-                    'discount_percentage' => $product->discount_percentage,
+                    'discount_amount' => $variation->discount_amount,
+                    'discount_percentage' => $variation->discount_percentage,
                     'image' => $image,
-                    'size_id' => $size->id,
-                    //'size' => $size->code,
-                    'color' => $product->color->name,
-                    'colorCode' => $product->color->code,
+                    'options' => $variation->name,
                     'currency' => '$'
                 ]
             ]);
-
             $cartTotal = number_format(Cart::getSubTotal(),2);
             $cartTotalQuantity = Cart::getTotalQuantity();
             return response()->json(['cartTotal' => $cartTotal,'cartTotalQuantity' => $cartTotalQuantity]);

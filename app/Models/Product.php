@@ -54,15 +54,27 @@ class Product extends Model
     {
         return $this->belongsTo(Unit::class);
     }
-    public function color() 
+    // public function color() 
+    // {
+    //     return $this->belongsTo(Color::class)->withDefault(['name' => 'None']);
+    // }
+    // public function sizes() 
+    // {
+    //     return $this->hasMany(Size::class);
+    // }
+    public function options() 
     {
-        return $this->belongsTo(Color::class)->withDefault(['name' => 'None']);
+        return $this->hasMany(Option::class);
     }
-    public function sizes() 
+    public function variants() 
     {
-        return $this->hasMany(Size::class);
+        return $this->hasMany(Variation::class);
     }
-
+    public function variant() 
+    {
+        return $this->hasOne(Variation::class)->where('is_default',1)->first();
+    }
+  
     public function categories()
     {
         return $this->belongsToMany(Category::class)

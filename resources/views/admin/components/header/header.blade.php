@@ -18,16 +18,13 @@
                     </svg>
                 </span>
                 <span class="flex d-flex flex-column text-white">
-                    <strong class="sidebar-brand">LEMA</strong>
+                    <strong class="sidebar-brand">PENTONECLO</strong>
                 </span>
             </a>
         </div>
 
 
-
-
-
-        <ul class="nav navbar-nav d-none d-lg-flex pl-2">
+        {{-- <ul class="nav navbar-nav d-none d-lg-flex pl-2">
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-caret="false">
                     <span class="mr-1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="22" height="22">
@@ -42,11 +39,11 @@
                     <a class="dropdown-item" href="fixed-index.html">Fixed</a>
                 </div>
             </li>
-        </ul>
+        </ul> --}}
 
 
 
-        <ul class="ml-auto nav navbar-nav mr-2 d-none d-lg-flex">
+        {{-- <ul class="ml-auto nav navbar-nav mr-2 d-none d-lg-flex">
             <li class="nav-item"><a href="#" class="nav-link">Get Help</a></li>
         </ul>
 
@@ -54,10 +51,10 @@
         <form class="search-form search-form--light d-none d-sm-flex flex ml-3" action="index.html">
             <input type="text" class="form-control" placeholder="Search">
             <button class="btn" type="submit"><i class="material-icons">search</i></button>
-        </form>
+        </form> --}}
 
 
-        <ul class="nav navbar-nav d-none d-md-flex">
+        {{-- <ul class="nav navbar-nav d-none d-md-flex">
             @include('admin.components.header.notifications')
             <li class="nav-item">
                 <a href="#events-drawer" data-toggle="sidebar" class="nav-link d-flex align-items-center">
@@ -71,7 +68,7 @@
                 </a>
             </li>
             
-        </ul>
+        </ul> --}}
 
         <div class="dropdown">
             <a href="#account_menu" class="dropdown-toggle navbar-toggler navbar-toggler-dashboard border-left d-flex align-items-center ml-navbar" data-toggle="dropdown">
@@ -84,21 +81,21 @@
                 <div class="dropdown-item d-flex align-items-center py-2 navbar-company-info py-3">
 
                     <span class="mr-3">
-                        <img src="assets/images/frontted-logo-blue.svg" width="43" height="43" alt="avatar">
+                        <img src="{{ asset('admin/assets/images/frontted-logo-blue.svg') }}" width="43" height="43" alt="avatar">
                     </span>
                     <span class="flex d-flex flex-column">
-                        <strong class="h5 m-0">Adrian D.</strong>
-                        <small class="text-muted text-uppercase">STUDENT</small>
+                        <strong class="h5 m-0">{{ auth()->user()->name }}</strong>
+                        <small class="text-muted text-uppercase">Admin</small>
                     </span>
 
                 </div>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item d-flex align-items-center py-2" href="student-edit-account.html">
+                {{-- <a class="dropdown-item d-flex align-items-center py-2" href="student-edit-account.html">
                     <span class="material-icons mr-2">account_circle</span> Edit Account
                 </a>
                 <a class="dropdown-item d-flex align-items-center py-2" href="#">
                     <span class="material-icons mr-2">settings</span> Settings
-                </a>
+                </a> --}}
                 <a class="dropdown-item d-flex align-items-center py-2" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                     <span class="material-icons mr-2">exit_to_app</span> Logout
                      <form id="frm-logout" action="{{ route('admin.logout') }}" method="POST" style="display: none;">

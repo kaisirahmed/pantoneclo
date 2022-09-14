@@ -51,9 +51,22 @@ class ShopController extends Controller
      */
     public function show($slug)
     {
-        $sizes = Size::all();
         $product = Product::where('slug',$slug)->first();
-        return view('pantoneclo.products',compact('product','sizes'));        
+        
+        // $variant = $product->variant();
+        // dd($variant->name);
+        // if(!is_null($product)){
+        //     $options = $product->options()->get();
+        //     foreach($options as $option){
+        //         $values  = $option->optionValues()->get();
+        //         //dd($values);
+        //     }
+        // } else {
+        //     $product = Product::where('slug',$slug)->first();
+        // }
+
+
+        return view('pantoneclo.products',compact('product'));        
     }
     /**
      * Display the specified resource.
