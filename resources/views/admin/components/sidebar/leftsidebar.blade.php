@@ -1,8 +1,8 @@
-<div class="sidebar sidebar-light sidebar-left bg-white" data-perfect-scrollbar>
+<div class="sidebar sidebar-light sidebar-left bg-grey" data-perfect-scrollbar>
 
 
     <div class="sidebar-block p-0 m-0">
-        <div class="d-flex align-items-center sidebar-p-a border-bottom bg-light">
+        <div class="d-flex align-items-center sidebar-p-a border-bottom bg-grey">
             <a href="#" class="flex d-flex align-items-center text-body text-underline-0">
                 <span class="avatar avatar-sm mr-2">
                     <span class="avatar-title rounded-circle bg-soft-secondary text-muted"><span class="text-light material-icons">verified_user</span></span>
@@ -87,8 +87,8 @@
             </li>
 
 
-            {{-- <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button" href="student-take-course.html">
+            <li class="sidebar-menu-item">
+                <a class="sidebar-menu-button" href="{{ route('admin.files.index') }}">
                     <span class="sidebar-menu-icon sidebar-menu-icon--left">
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="22" height="22">
                             <g transform="matrix(1.6666666666666667,0,0,1.6666666666666667,0,0)">
@@ -96,11 +96,11 @@
                             </g>
                         </svg>
                     </span>
-                    <span class="sidebar-menu-text">Take Course</span>
+                    <span class="sidebar-menu-text">Files</span>
                 </a>
             </li>
 
-            <li class="sidebar-menu-item">
+            {{-- <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button" href="student-take-quiz.html">
                     <span class="sidebar-menu-icon sidebar-menu-icon--left">
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="22" height="22">

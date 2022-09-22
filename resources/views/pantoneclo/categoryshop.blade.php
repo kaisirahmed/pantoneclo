@@ -36,7 +36,7 @@
                             <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
                         </div>
                     </div>
-                    <div class="sidebar_section">
+                    {{-- <div class="sidebar_section">
                         <div class="sidebar_subtitle color_subtitle">Color</div>
                         <ul class="colors_list">
                             <li class="color"><a href="#" style="background: #b19c83;"></a></li>
@@ -46,7 +46,7 @@
                             <li class="color"><a href="#" style="background: #df3b3b;"></a></li>
                             <li class="color"><a href="#" style="background: #ffffff; border: solid 1px #e1e1e1;"></a></li>
                         </ul>
-                    </div>
+                    </div> --}}
                     {{-- <div class="sidebar_section">
                         <div class="sidebar_subtitle brands_subtitle">Brands</div>
                         <ul class="brands_list">
@@ -109,7 +109,9 @@
                                 @endif
                                 <li class="product_mark product_new">new</li>
                             </ul>
-                            
+                            <div class="product_extras">
+                                <a href="{{ route('product.show',$product->slug) }}"><button class="product_cart_button" tabindex="0">Details</button></a>
+                            </div>
                             {{-- <a href="javascript:void(0);" class="addToCart" onclick="addToCart('{{ $product->slug }}')" >Add to Cart</a> --}}
                         </div>
                         @endforeach

@@ -12,10 +12,6 @@
 @endsection
 @section('content')
 
-<!-- Characteristics -->
-
-@include('layouts.partials.characteristics')
-
 <!-- Deals of the week -->
 
 {{-- @include('layouts.partials.featureddeals') --}}
@@ -25,12 +21,16 @@
 
 <!-- Adverts -->
 
-{{-- @include('layouts.partials.adverts') --}}
+@include('layouts.partials.adverts')
+
+<!-- Characteristics -->
+
+@include('layouts.partials.characteristics')
 
 <!-- Trends -->
-
+@if(count($trending) > 0)
 @include('layouts.partials.trends')
-
+@endif
 
 <!-- Popular Categories -->
 
@@ -47,7 +47,7 @@
 <!-- Best Sellers -->
 
 {{-- @include('layouts.partials.bestsellers') --}}
-<div class="overlay">
+{{-- <div class="overlay">
     <div class="videoBox" id="videobox">
           <a class="close"></a>
         <iframe width="100%" height="400" 
@@ -57,7 +57,7 @@
             allow="autoplay">
         </iframe>
     </div>
-  </div>
+  </div> --}}
 @endsection
 
 @section('script')
@@ -83,6 +83,13 @@ $(function() {
   $('body').on('click','.videoBox', function(e) {
     e.stopPropagation();
   });
+
+  $('video').on('ended', function () {
+    this.load();
+    this.play();
+  });
+
 });
+
 </script>
 @endsection

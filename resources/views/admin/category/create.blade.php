@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-            {!! Form::open([ 'method'=>'POST', 'route' => ['category.store'], 'files' => true , 'class' => 'custom-validation']) !!}
+            {!! Form::open([ 'method'=>'POST', 'route' => ['admin.category.store'], 'files' => true , 'class' => 'custom-validation']) !!}
                 @csrf
                 <div class="card">
                     <div class="card-header">

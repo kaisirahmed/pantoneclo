@@ -1,17 +1,16 @@
-<div class="header_main">
+{{-- <div class="header_main">
     <div class="container">
-        <div class="row">
+        <div class="row"> --}}
 
             <!-- Logo -->
-            <div class="col-lg-3 col-sm-3 col-3 order-1">
+            {{-- <div class="col-lg-3 col-sm-3 col-3 order-1">
                 <div class="logo_container">
                     <div class="logo"><a href="#"><img src="{{ asset('assets/images/pantoneclo.png') }}" width="80px" height="80px"></a></div>
-                    {{-- <div class="logo"><a href="#">PantoNeclo</a></div> --}}
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Search -->
-            <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+            {{-- <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
                 <div class="header_search">
                     <div class="header_search_content">
                         <div class="header_search_form_container">
@@ -34,10 +33,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Wishlist -->
-            <div class="col-lg-3 col-9 order-lg-3 order-2 text-lg-left text-right">
+            {{-- <div class="col-lg-3 col-9 order-lg-3 order-2 text-lg-left text-right">
                 <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                     <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                         <div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
@@ -45,10 +44,10 @@
                             <div class="wishlist_text"><a href="#">Wishlist</a></div>
                             <div class="wishlist_count">115</div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Cart -->
-                    <div class="cart">
+                    {{-- <div class="cart">
                         <a href="{{ route('cart') }}">
                             <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                 <div class="cart_icon">
@@ -67,4 +66,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}

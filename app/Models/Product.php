@@ -18,7 +18,6 @@ class Product extends Model
         'model',
         'slug',
         'price',
-        'size_id',
         'image',
         'front_side_image',
         'right_side_image',

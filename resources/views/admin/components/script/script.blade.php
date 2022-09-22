@@ -27,3 +27,8 @@
 
 <!-- App Settings (safe to remove) -->
 <script src="{{ asset('admin/assets/js/app-settings.js') }}"></script>
+
+
+<!-- Toastr -->
+<script src="{{ asset('admin/assets/vendor/toastr.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/toastr.js') }}"></script>

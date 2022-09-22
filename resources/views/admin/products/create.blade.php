@@ -13,7 +13,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header card-header-large bg-white d-flex align-items-center">
-                        <h4 class="card-header__title flex m-0">Recent Activity</h4>
+                        <h4 class="card-header__title flex m-0">Information</h4>
                         {{-- <div>
                             <a href="javascript:void(0)" class="link-date">13/03/2018 <span class="text-muted mx-1">to</span> 20/03/2018</a>
                         </div> --}}
@@ -267,7 +267,6 @@
                                             {{-- <label>Custom toolbar</label> --}}
                                             <div class="form-group">
                                                 <div class="h-150" data-toggle="quill" data-quill-placeholder="Description write here...." data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
-                                                    <p>Start to<strong>write</strong> description here...</p>
                                                 </div>
                                             </div>
                                         </div>

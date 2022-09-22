@@ -17,3 +17,5 @@
     <!-- ion Range Slider -->
     <link type="text/css" href="{{ asset('admin/assets/css/vendor-ion-rangeslider.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('admin/assets/css/vendor-ion-rangeslider.rtl.css') }}" rel="stylesheet">
+    <!-- Toastr -->
+    <link type="text/css" href="{{ asset('admin/assets/vendor/toastr.min.css') }}" rel="stylesheet">

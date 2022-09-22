@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::all(); 
         return view('admin.category.index',compact('categories'));
     }
 
@@ -111,7 +111,7 @@ class CategoryController extends Controller
                 Session::flash('warning','Something is wrong when creating app info.');
             }
 
-            return redirect()->route('categories.index');
+            return redirect()->route('admin.categories.index');
         }
     }
 

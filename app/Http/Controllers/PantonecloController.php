@@ -16,7 +16,8 @@ class PantonecloController extends Controller
     public function index()
     {
         $products = Product::where('is_slider',1)->where('status',1)->latest()->get();
-        return view('pantoneclo.index',compact('products'));
+        $trending = Product::where('is_featured',1)->where('status',1)->latest()->get();
+        return view('pantoneclo.index',compact('products','trending'));
     }
 
     /**

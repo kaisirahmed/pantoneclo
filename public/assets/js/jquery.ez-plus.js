@@ -158,8 +158,8 @@ if (typeof Object.create !== 'function') {
             if (self.options.imageCrossfade) {
                 var elementZoomWrapper = $('<div class="zoomWrapper"/>')
                     .css({
-                        height: self.nzHeight,
-                        width: self.nzWidth
+                        height: 500+'px',
+                        width: 500+'px'
                     });
                 self.zoomWrap = self.$elem.wrap(elementZoomWrapper);
                 self.$elem.css({
@@ -1981,7 +1981,7 @@ if (typeof Object.create !== 'function') {
         // allow to continue zooming out, so it keeps retrocompatibility.
         mantainZoomAspectRatio: true,
         maxZoomLevel: false,
-        minZoomLevel: 4.01,
+        minZoomLevel: 3.01,
 
         onComplete: $.noop,
         onDestroy: $.noop,
@@ -2013,7 +2013,7 @@ if (typeof Object.create !== 'function') {
         zoomWindowBgColour: '#fff',
         zoomWindowFadeIn: false,
         zoomWindowFadeOut: false,
-        zoomWindowHeight: 600,
+        zoomWindowHeight: 500,
         zoomWindowOffsetX: 0,
         zoomWindowOffsetY: 0,
         zoomWindowPosition: 1, //Possible values: 1-16, but we can also position with a selector string.

@@ -6,8 +6,8 @@
                 <div class="main_nav_content d-flex flex-row">
 
                     <!-- Categories Menu -->
-
-                    <div class="cat_menu_container">
+                    <div class="logo"><a href="#"><img src="{{ asset('assets/images/pantoneclo.png') }}" width="200px" height="60px"></a></div>
+                    {{-- <div class="cat_menu_container">
                         <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
                             <div class="cat_burger">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
@@ -34,7 +34,7 @@
                                 @endif
                             @endforeach
                         </ul>
-                    </div>
+                    </div> --}}
 
                     <!-- Menu -->
 
@@ -92,50 +92,11 @@
                         <li class="page_menu_item">
                             <a href="{{ route('home') }}">Home<i class="fa fa-angle-down"></i></a>
                         </li>
+                        @foreach ($categories as $category)
                         <li class="page_menu_item">
-                            <a href="{{ route('shop') }}">Shop<i class="fas fa-chevron-down"></i></a>
+                            <a href="{{ route('category.products',$category->slug) }}">{{ $category->name }}<i class="fas fa-chevron-down"></i></a>
                         </li>
-                        <li class="page_menu_item">
-                            <a href="{{ route('contact') }}">Contact<i class="fas fa-chevron-down"></i></a>
-                        </li>
-                        {{-- <li class="page_menu_item has-children">
-                            <a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection">
-                                <li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="page_menu_item has-children">
-                            <a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection">
-                                <li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="page_menu_item has-children">
-                            <a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection">
-                                <li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li> --}}
+                        @endforeach
                     </ul>
                     
                     <div class="menu_contact">

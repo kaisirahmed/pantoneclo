@@ -382,13 +382,15 @@ section
 .image_selected img
 {
 	max-width: 100%;
+	background-size: cover;
+  	position: relative;
 }
 .image_selected img:hover
 {
 	max-width: 100%;
 	-moz-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
 }
 .product_description
 {

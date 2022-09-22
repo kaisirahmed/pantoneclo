@@ -28,6 +28,7 @@ Route::post('/cart/delete',['as'=>'cart.delete','uses'=>'CartController@delete']
 Route::get('/contact',['as'=>'contact','uses'=>'ContactController@index']);
 Route::get('/cart',['as'=>'cart','uses'=>'CartController@index']);
 Route::get('/variation/product',['as'=>'variation.product','uses'=>'ProductController@variationProduct']);
+Route::get('/privacy-policy',['as'=>'privacy.policy','uses'=>'PolicyController@privacyPolicy']);
 
 Route::get('temp-email',['as'=>'temp.email','uses'=>'PantonecloController@demoEmail']);
 
@@ -101,12 +102,13 @@ Route::namespace('Admin')->group(function(){
 			
 			// Categories Routes
 			Route::resource('categories','CategoryController');
-			//Route::get('/categories/pdf',['as'=>'categories.pdf','uses'=>'CategoryController@pdf']);
-
+			//Route::get('/categories/pdf',['as'=>'categories.pdf','uses'=>'CategoryController@pdf'];
 			Route::resource('products','ProductController');
 			Route::post('products/imageupload',['as'=>'products.imageupload','uses'=>'ProductController@imageUpload']);
 			//Route::post('products/delete',['as'=>'products.delete','uses'=>'ProductController@delete']);
 			Route::get('/products/pdf',['as'=>'products.pdf','uses'=>'ProductController@pdf']);
+
+			Route::resource('files','FileController');
 		});
 		
 	

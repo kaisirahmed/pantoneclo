@@ -38,6 +38,7 @@
                                     </div>
                                     
                                 </th>
+                                <th>Image</th>
                                 <th>
                                     <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-category-name">Name</a>
                                 </th>
@@ -45,7 +46,6 @@
                                     <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-parent-name">Category</a>
                                 </th>
                                 
-                                <th>Image</th> 
                                 <th>Price</th> 
                                 <th>Discount Amount</th> 
                                 <th>Discount Percentage</th> 
@@ -64,7 +64,7 @@
                                         <label class="custom-control-label" for="product-check"><span class="text-hide">Check</span></label>
                                     </div>
                                 </td>
-
+                                <td><img width="50px" src="{{ $product->image }}" alt="{{ $product->image }}"></td>
                                 <td>
 
                                     <div class="media align-items-center">
@@ -85,11 +85,11 @@
                                     </span>
                                     
                                 </td>
-                                <td><img width="50px" src="{{ $product->image }}" alt="{{ $product->image }}"></td>
-                                <td>{{ floatval($product->price) }}</td>
+                                
+                                <td>{{ floatval($product->price) }} $</td>
                                 <td>{{ floatval($product->discount_amount) }}</td>
                                 <td>{{ floatval($product->discount_percentage) }}&#37;</td>
-                                <td>{{ floatval($product->sale_price) }}</td>
+                                <td>{{ floatval($product->sale_price) }} $</td>
                                 <td><span class="badge badge-{{ $product->status === 1 ? 'success' : 'warning' }}">{{ $product->status === 1 ? 'Active' : 'Draft' }}</span></td>
                                 
                                 {{-- <td>&dollar;12,402</td> --}}
@@ -115,8 +115,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="card-body text-center">
+                        {{ $products->links() }}
+                    </div>
                 </div>
-
 
             </div>
         </div>

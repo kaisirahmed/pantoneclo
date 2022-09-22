@@ -1,6 +1,6 @@
 <!-- Top Bar -->
 
-@include('layouts.partials.topbar')
+{{-- @include('layouts.partials.topbar') --}}
 
 <!-- Header Main -->
 

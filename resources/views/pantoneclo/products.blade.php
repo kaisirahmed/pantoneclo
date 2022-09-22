@@ -28,7 +28,7 @@
                         <img src="{{ $product->left_side_image }}" alt="">
                     </li>
                     <li data-image="{{ $product->right_side_image }}" data-zoom-image="{{ $product->right_side_image }}">
-                        <img src="{{ $product->image }}" alt="">
+                        <img src="{{ $product->right_side_image }}" alt="">
                     </li>
                     <li data-image="{{ $product->image }}" data-zoom-image="{{ $product->image }}">
                         <img src="{{ $product->image }}" alt="">
@@ -39,7 +39,7 @@
             <!-- Selected Image -->
             <div class="col-lg-5 order-lg-2 order-1">
                 <div class="image_selected">
-                    <img id="product_zoom" src="{{ $product->image }}" data-zoom-image="{{ $product->image }}"/>
+                    <img id="product_zoom" style="height: 100%; width: 100%; object-fit: contain" src="{{ $product->image }}" data-zoom-image="{{ $product->image }}"/>
                 </div>
             </div>            
             <!-- Description -->

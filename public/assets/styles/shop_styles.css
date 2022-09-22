@@ -304,6 +304,7 @@ section
 	border-bottom: solid 1px #dadada;
 	padding-bottom: 14px;
 	z-index: 1;
+	margin-bottom:16px;
 }
 .shop_product_count
 {
@@ -427,7 +428,6 @@ section
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 24px !important;
     width: 18%;
     background: #FFFFFF;
     cursor: pointer;
@@ -564,6 +564,63 @@ section
 	color: red;
 }
 .product_item:hover .product_fav
+{
+	visibility: visible;
+	opacity: 1;
+}
+.product_extras
+{
+	width: 100%;
+	background: #FFFFFF;
+	max-height: 0px;
+	overflow: hidden;
+	-webkit-transition: max-height 200ms ease;
+	-moz-transition: max-height 200ms ease;
+	-ms-transition: max-height 200ms ease;
+	-o-transition: max-height 200ms ease;
+	transition: max-height 200ms ease;
+}
+.product_item:hover .product_extras
+{
+	max-height: 300px;
+}
+.product_cart_button
+{
+	position: relative;
+	left: 0px;
+	visibility: hidden;
+	opacity: 0;
+	width: 100%;
+	height: 30px;
+	background: #0e8ce4;
+	border: none;
+	outline: none;
+	font-size: 18px;
+	font-weight: 400;
+	color: #FFFFFF;
+	cursor: pointer;
+	/* margin-top: 19px; */
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.product_cart_button:hover
+{
+	background: rgba(14, 140, 228, 0.8);
+}
+.product_item:hover
+{
+	visibility: visible;
+	opacity: 1;
+	box-shadow: 0px 5px 25px rgb(0 0 0 / 10%);
+    z-index: 10;
+	border: none;
+}
+.product_item:hover .product_cart_button
 {
 	visibility: visible;
 	opacity: 1;

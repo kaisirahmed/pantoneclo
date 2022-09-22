@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('status',1)->latest();
+        $products = Product::where('status',1)->latest()->simplepaginate(20);
         $categoryId = Category::pluck('parent_id');
         $categories = Category::whereNotIn('id',$categoryId)->get();
         return view('admin.products.index',compact('products','categories'));

@@ -4,11 +4,10 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/contact_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/contact_responsive.css') }}">         
 @endsection
+@section('content')
 @section('banner')
 @include('layouts.partials.pagebanner')
 @endsection
-@section('content')
-
 	<!-- Contact Info -->
 
 	<div class="contact_info">

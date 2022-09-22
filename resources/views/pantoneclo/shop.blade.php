@@ -109,8 +109,10 @@
                                 @endif
                                 <li class="product_mark product_new">new</li>
                             </ul>
-                            
-                            {{-- <a href="javascript:void(0);" class="addToCart" onclick="addToCart('{{ $product->slug }}')" >Add to Cart</a> --}}
+                            <div class="product_extras">
+                                <a href="{{ route('product.show',$product->slug) }}"><button class="product_cart_button" tabindex="0">Details</button></a>
+                            </div>
+                            {{-- <a href="javascript:void(0);" class="product_cart_button" onclick="addToCart('{{ $product->slug }}')" >Add to Cart</a> --}}
                         </div>
                         @endforeach
                     </div>
