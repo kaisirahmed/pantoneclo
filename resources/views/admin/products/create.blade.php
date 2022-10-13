@@ -1,493 +1,349 @@
 @extends('admin.layouts.index')
 @section('title','Product Create')
 @section('content')
+{!! Form::open([ 'method'=>'POST', 'route' => ['admin.products.store'], 'files' => true]) !!}
+@csrf
 <div class="container-fluid page__heading-container">
     <div class="page__heading d-flex align-items-center justify-content-between">
         <h4 class="m-0">Product Create</h4>
+        <button type="submit" class="btn btn-success btn-outline ml-1">Save<i class="material-icons">save</i></button>
     </div>
 </div>
 
-<div class="container-fluid page__container">
-    <div class="container-fluid page__container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header card-header-large bg-white d-flex align-items-center">
-                        <h4 class="card-header__title flex m-0">Information</h4>
-                        {{-- <div>
-                            <a href="javascript:void(0)" class="link-date">13/03/2018 <span class="text-muted mx-1">to</span> 20/03/2018</a>
-                        </div> --}}
+<div class="container page__container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                {{-- <div class="card-header card-header-large bg-white d-flex align-items-center">
+                    <h4 class="card-header__title flex m-0">Information</h4>
+                    <div>
+                        <a href="javascript:void(0)" class="link-date">13/03/2018 <span class="text-muted mx-1">to</span> 20/03/2018</a>
                     </div>
-                    <div class="card-header card-header-tabs-basic nav" role="tablist">
-                        <a href="#generalinfo" class="active" data-toggle="tab" role="tab" aria-controls="generalinfo" aria-selected="true">General Information</a>
-                        <a href="#options" data-toggle="tab" role="tab" aria-selected="false">Options</a>
-                        <a href="#variation" data-toggle="tab" role="tab" aria-selected="false">Variation</a>
-                        {{-- <a href="#activity_quotes" data-toggle="tab" role="tab" aria-selected="false">Quotes</a> --}}
-                    </div>
-                    <div class="card-body tab-content">
-                        <div class="tab-pane active show fade" id="generalinfo">
-                            {!! Form::open([ 'method'=>'POST', 'route' => ['admin.products.store'], 'files' => true]) !!}
-                            @csrf
-                                <div class="card card-form">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-2 card-body">
-                                            <p><strong class="headings-color">Basic Information</strong></p>
-                                            <p class="text-muted"></p>
+                </div> --}}
+                
+                <div class="card-header card-header-tabs-basic nav" role="tablist">
+                    <a href="#generalinfo" class="active" data-toggle="tab" role="tab" aria-controls="generalinfo" aria-selected="true">Product Information</a>
+                    {{-- <a href="#options" data-toggle="tab" role="tab" aria-selected="false">Options</a> --}}
+                    {{-- <a href="#variation" data-toggle="tab" role="tab" aria-selected="false">Variation</a> --}}
+                    {{-- <a href="#activity_quotes" data-toggle="tab" role="tab" aria-selected="false">Quotes</a> --}}
+                </div>
+                <div class="card-body tab-content">
+                    <div class="tab-pane active show fade" id="generalinfo">
+                    
+                        <div class="card card-form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 card-body">
+                                    <p><strong class="headings-color">Basic Information</strong></p>
+                                    <p class="text-muted"></p>
+                                </div>
+                                <div class="col-lg-10 card-form__body card-body">
+                                    <div class="was-validated">
+                                        <div class="form-row">
+                                            <div class="col-12 col-md-6 mb-3">
+                                                <label for="name">Name</label>
+                                                <input type="text" name="name" class="form-control" id="name" placeholder="Product Name" value="{{ old('name') }}" required="">
+                                                <div class="invalid-feedback">Please provide a Product Name.</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                            <div class="col-12 col-md-6 mb-3">
+                                                <label for="code">Code</label>
+                                                <input type="text" name="code" class="form-control" id="code" placeholder="Code" value="{{ old('code') }}" required="">
+                                                <div class="invalid-feedback">Please provide a Code</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-10 card-form__body card-body">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
                                             <div class="was-validated">
-                                                <div class="form-row">
-                                                    <div class="col-12 col-md-6 mb-3">
-                                                        <label for="name">Name</label>
-                                                        <input type="text" name="name" class="form-control" id="name" placeholder="Product Name" value="" required="">
-                                                        <div class="invalid-feedback">Please provide a Product Name.</div>
-                                                        <div class="valid-feedback">Looks good!</div>
-                                                    </div>
-                                                    <div class="col-12 col-md-6 mb-3">
-                                                        <label for="code">Code</label>
-                                                        <input type="text" name="code" class="form-control" id="code" placeholder="Code" value="" required="">
-                                                        <div class="invalid-feedback">Please provide a Code</div>
-                                                        <div class="valid-feedback">Looks good!</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <div class="was-validated">
-                                                        <label for="link">Affiliate Link</label>
-                                                        <input type="text" name="affiliate_link" class="form-control" id="link" placeholder="Affiliate Link" required="">
-                                                        <div class="invalid-feedback">Please provide a valid Affiliate Link.</div>
-                                                        <div class="valid-feedback">Looks good!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <label for="model">Model</label>
-                                                    <input type="text" name="model" class="form-control" id="model" placeholder="Model" required="">
-                                                    {{-- <div class="invalid-feedback">Please provide a valid city.</div> --}}
-                                                    {{-- <div class="valid-feedback">Looks good!</div> --}}
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="card card-form">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-2 card-body">
-                                            <p><strong class="headings-color">Price & Category</strong></p>
-                                            <p class="text-muted"></p>
-                                        </div>
-                                        <div class="col-lg-10 card-form__body card-body">
-                                            
-                                            <div class="form-row">
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <div class="was-validated">
-                                                        <label for="price">Price</label>
-                                                        <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" min="1" type="text" name="price" placeholder="Price" value="" required="">
-                                                        <div class="invalid-feedback">Please provide a Price of product.</div>
-                                                        <div class="valid-feedback">Looks good!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <label for="discount">Manual Discount</label>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">
-                                                                <input class="@error('discount_amount') is-invalid @enderror" id="manualDiscount" type="radio" name="discount" aria-label="radio for following text input">
-                                                            </div>
-                                                        </div>
-                                                        <input type="text" disabled="disabled" class="form-control" value="Manual Discount" aria-label="Text input with radio">
-                                                    </div>
-                        
-                                                    @error('discount_amount')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                    
-                                                </div>
-                                                
-                                                <div class="col-12 col-md-6 mb-3 discountA">
-                                                                        
-                                                </div>
-                                                
-                                            </div>
-                                        
-                                            <div class="form-row">
-                                                <div class="col-12 col-md-6 mb-3" id="DP">
-                                                    <label for="discount">Discount Percentage</label>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">
-                                                                <input class="@error('discount_percentage') is-invalid @enderror" id="manualPercentage" type="radio" name="discount" aria-label="radio for following text input">
-                                                            </div>
-                                                        </div>
-                                                        <input type="text" disabled="disabled" class="form-control" value="Discount Percentage" aria-label="Text input with radio">
-                                                    </div>
-                        
-                                                    @error('discount_percentage')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                    <div class="invalid-feedback">Please provide a Discount Percentage.</div>
-                                                    <div class="valid-feedback">Looks good!</div>
-                                                </div>
-                                                <div class="col-12 col-md-6 mb-3 discountP">
-                                                                        
-                                                </div>  
-                                            </div>  
-                                            <div class="form-row">
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <div class="form-group">
-                                                        <label for="sale_price">Sale Price</label>
-                                                        <input id="salePrice" type="number" class="form-control @error('sale_price') is-invalid @enderror" min="1" name="sale_price" min="1" value="" required autocomplete="sale_price" readonly autofocus>
-                        
-                                                        @error('sale_price')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <label for="size">Category</label>
-                                                    <select id="size" name="category[]" data-toggle="select" class="form-control">
-                                                        <option disabled selected></option>
-                                                        @foreach($categories as $category)
-                                                        <option value="{{ $category->id }}" @if(old('category_id') == $category->id) ? 'selected' : '' @endif>{{ $category->name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                                <label for="link">Affiliate Link</label>
+                                                <input type="text" name="affiliate_link" class="form-control" id="link" placeholder="Affiliate Link" value="{{ old('affiliate_link') }}" required="">
+                                                <div class="invalid-feedback">Please provide a valid Affiliate Link.</div>
+                                                <div class="valid-feedback">Looks good!</div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                        
-                                <div class="card card-form">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-2 card-body">
-                                            <p><strong class="headings-color">Images Upload</strong></p>
-                                            <p class="text-muted"></p>
-                                        </div>
-                                        <div class="col-lg-10 card-form__body card-body d-flex align-items-center">
-                            
-                                            <div class="form-group">
-                                                <label>Image</label>
-                                                <div class="dz-clickable1 media align-items-center" data-toggle="dropzone" data-dropzone-url="{{ route('admin.products.imageupload') }}" data-dropzone-clickable=".dz-clickable1" data-dropzone-files='["{{ asset('admin/assets/images/account-add-photo.svg') }}"]'>
-                                                    {{-- <div class="dz-preview dz-file-preview dz-clickable1 mr-3">
-                                                        <div class="avatar avatar-lg">
-                                                            <img src="{{ asset('admin/assets/images/account-add-photo.svg') }}" class="avatar-img rounded" alt="..." data-dz-thumbnail>
-                                                            <input type="file" name="image" value="" class="avatar-img rounded">
-                                                        </div>
-                                                    </div> --}}
-                                                    <div class="media-body">
-                                                        <input type="file" name="image" value="" class="avatar-img rounded">
-                                                        {{-- <a href="javascript:void(0)" class="btn btn-sm btn-light dz-clickable1">Choose photo</a> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Front Side Image</label>
-                                                <div class="dz-clickable2 media align-items-center" data-toggle="dropzone" data-dropzone-url="http://" data-dropzone-clickable=".dz-clickable2" data-dropzone-files='["{{ asset('admin/assets/images/account-add-photo.svg') }}"]'>
-                                                    {{-- <div class="dz-preview dz-file-preview dz-clickable2 mr-3">
-                                                        <div class="avatar avatar-lg">
-                                                            <img src="{{ asset('admin/assets/images/account-add-photo.svg') }}" class="avatar-img rounded" alt="..." data-dz-thumbnail>
-                                                            <input type="hidden" name="front_side_image" value="" class="avatar-img rounded" data-dz-thumbnail>
-                                                        </div>
-                                                    </div> --}}
-                                                    <div class="media-body">
-                                                        <input type="file" name="front_side_image" value="" class="avatar-img rounded">
-                                                        {{-- <a href="javascript:void(0)" class="btn btn-sm btn-light dz-clickable2">Choose photo</a> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Right Side Image</label>
-                                                <div class="dz-clickable3 media align-items-center" data-toggle="dropzone" data-dropzone-url="http://" data-dropzone-clickable=".dz-clickable3" data-dropzone-files='["{{ asset('admin/assets/images/account-add-photo.svg') }}"]'>
-                                                    {{-- <div class="dz-preview dz-file-preview dz-clickable3 mr-3">
-                                                        <div class="avatar avatar-lg">
-                                                            <img src="{{ asset('admin/assets/images/account-add-photo.svg') }}" class="avatar-img rounded" alt="..." data-dz-thumbnail>
-                                                            <input type="hidden" name="right_side_image" value="" class="avatar-img rounded" data-dz-thumbnail>
-                                                        </div>
-                                                    </div> --}}
-                                                    <div class="media-body">
-                                                        <input type="file" name="right_side_image" value="" class="avatar-img rounded">
-                                                        {{-- <a href="javascript:void(0)" class="btn btn-sm btn-light dz-clickable3">Choose photo</a> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Left Side Image</label>
-                                                <div class="dz-clickable4 media align-items-center" data-toggle="dropzone" data-dropzone-url="http://" data-dropzone-clickable=".dz-clickable4" data-dropzone-files='["{{ asset('admin/assets/images/account-add-photo.svg') }}"]'>
-                                                    {{-- <div class="dz-preview dz-file-preview dz-clickable4 mr-3">
-                                                        <div class="avatar avatar-lg">
-                                                            <img src="{{ asset('admin/assets/images/account-add-photo.svg') }}" class="avatar-img rounded" alt="..." data-dz-thumbnail>
-                                                            <input type="hidden" name="left_side_image" value="" class="avatar-img rounded" data-dz-thumbnail>
-                                                        </div>
-                                                    </div> --}}
-                                                    <div class="media-body">
-                                                        <input type="file" name="left_side_image" value="" class="avatar-img rounded">
-                                                        {{-- <a href="javascript:void(0)" class="btn btn-sm btn-light dz-clickable4">Choose photo</a> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Back Side Image</label>
-                                                <div class="dz-clickable5 media align-items-center" data-toggle="dropzone" data-dropzone-url="http://" data-dropzone-clickable=".dz-clickable5" data-dropzone-files='["{{ asset('admin/assets/images/account-add-photo.svg') }}"]'>
-                                                    {{-- <div class="dz-preview dz-file-preview dz-clickable5 mr-3">
-                                                        <div class="avatar avatar-lg">
-                                                            <img src="{{ asset('admin/assets/images/account-add-photo.svg') }}" class="avatar-img rounded" alt="..." data-dz-thumbnail>
-                                                            <input type="hidden" name="back_side_image" value="" class="avatar-img rounded" data-dz-thumbnail>
-                                                        </div>
-                                                    </div> --}}
-                                                    <div class="media-body">
-                                                        <input type="file" name="back_side_image" value="" class="avatar-img rounded">
-                                                        {{-- <a href="javascript:void(0)" class="btn btn-sm btn-light dz-clickable5">Choose photo</a> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                        
-                                        </div>
-                                    </div>
-                                </div>
-                        
-                                <div class="card card-form">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-2 card-body">
-                                            <p><strong class="headings-color">Description</strong></p>
-                                            <p class="text-muted"></p>
-                                        </div>
-                                        <div class="col-lg-10 card-form__body card-body">
-                                            {{-- <div class="form-group">
-                                                <label for="desc">Description</label> --}}
-                                                <textarea type="textarea" style="display:none" id="description" name="description" rows="4" class="form-control" placeholder="Please enter a description"></textarea>
-                                            {{-- </div> --}}
-                                            {{-- <label>Custom toolbar</label> --}}
-                                            <div class="form-group">
-                                                <div class="h-150" data-toggle="quill" data-quill-placeholder="Description write here...." data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        
-                                <div class="card card-form">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-2 card-body">
-                                            <p><strong class="headings-color">Sizes & Units</strong></p>
-                                            <p class="text-muted"></p>
-                                        </div>
-                                        <div class="col-lg-10 card-form__body card-body">
-                                            <div class="form-row">
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <div class="was-validated">
-                                                        <label for="price">Object Quantity</label>
-                                                        <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" min="1" type="text" name="quantity" placeholder="Price" value="" required="">
-                                                        <div class="invalid-feedback">Please provide a Weight of product.</div>
-                                                        <div class="valid-feedback">Looks good!</div>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <label for="unit">Units</label>
-                                                    <select id="unit" name="unit_id" data-toggle="select" class="form-control">
-                                                        <option disabled selected>Select Unit</option>
-                                                        @foreach($units as $unit)
-                                                        <option value="{{ $unit->id }}">{{ $unit->code }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="invalid-feedback">Please provide a Discount Amount.</div>
-                                                    <div class="valid-feedback">Looks good!</div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <label for="size">Sizes</label>
-                                                    <select id="size" name="size_id" data-toggle="select" class="form-control">
-                                                        <option disabled selected>Select Size</option>
-                                                        @foreach($sizes as $size)
-                                                        <option value="{{ $size->id }}">{{ $size->code }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="invalid-feedback">Please provide a Price of product.</div>
-                                                    <div class="valid-feedback">Looks good!</div>
-                                                </div>
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <label for="color">Color</label>
-                                                    <select id="color" name="color_id" data-toggle="select" class="form-control">
-                                                        <option disabled selected>Select color</option>
-                                                        @foreach($colors as $color)
-                                                        <option value="{{ $color->id }}">{{ $color->name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="invalid-feedback">Please provide a color of product.</div>
-                                                    <div class="valid-feedback">Looks good!</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        
-                                <div class="card card-form">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-2 card-body">
-                                            <p><strong class="headings-color">Publication Status</strong></p>
-                                            <p class="text-muted">This is for save the product draft or published</p>
-                                        </div>
-                                        <div class="col-lg-10 card-form__body card-body">
-                                            <div class="form-row">
-                                                <div class="col-12 col-md-6 mb-3">
-                                                    <div class="flex">
-                                                        <label for="Product Status">Product Status</label>
-                                                        <select id="status" name="status" data-toggle="select" class="form-control">
-                                                            <option value="1">Active</option>
-                                                            <option value="0">Draft</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <label for="model">Model</label>
+                                            <input type="text" name="model" class="form-control" id="model" placeholder="Model" value="{{ old('model') }}" required="">
+                                            {{-- <div class="invalid-feedback">Please provide a valid city.</div> --}}
+                                            {{-- <div class="valid-feedback">Looks good!</div> --}}
                                         </div>
                                     </div>
                                     
                                 </div>
-                                <div class="text-right mb-5">
-                                    <button type="submit" class="btn btn-success">Save</button>
-                                </div>
-                            {{ Form::close() }}
+                            </div>
                         </div>
-                        <div class="tab-pane fade" id="options">
-                            {!! Form::open([ 'method'=>'POST', 'route' => ['admin.products.store'], 'files' => true]) !!}
-                            @csrf
-                            <div class="card card-form">
-                                <div class="card-header card-header-large bg-light d-flex align-items-center">
-                                    <div class="flex">
-                                        <h4 class="card-header__title float-right">
-                                            <button type="button" class="btn btn-outline-success">+ Add New Option</button>
-                                        </h4>
+                        
+                        <div class="card card-form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 card-body">
+                                    <p><strong class="headings-color">Price & Discount</strong></p>
+                                    <p class="text-muted"></p>
+                                </div>
+                                <div class="col-lg-10 card-form__body card-body">
+                                    
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="was-validated">
+                                                <label for="price">Price</label>
+                                                <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" min="1" type="text" name="price" placeholder="Price" value="{{ old('price') }}" required="">
+                                                <div class="invalid-feedback">Please provide a Price of product.</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <label for="discount">Discount Amount</label>
+                                            <input id="inputDiscountAmount" type="number" class="form-control" name="discount_amount" value="{{ old('discount_amount') ?? 0 }}" autocomplete="discount">
+                                                
+                                            @error('discount_amount')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            
+                                        </div>
+                                    
+                                    </div>
+                                
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3" id="DP">
+                                            <label for="discount">Discount Percentage</label>
+                                            <input id="inputDiscountPercentage" type="number" class="form-control" name="discount_percentage" value="{{ old('discount_percentage') ?? 0 }}" autocomplete="discount_percentage">
+                
+                                            @error('discount_percentage')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            <div class="invalid-feedback">Please provide a Discount Percentage.</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+                                    
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label for="sale_price">Sale Price</label>
+                                                <input id="salePrice" type="number" class="form-control @error('sale_price') is-invalid @enderror" name="sale_price" value="{{ old('sale_price') }}" required autocomplete="sale_price" readonly>
+                
+                                                @error('sale_price')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
-                                <div class="row no-gutters">
-                                    <div class="col-lg-2 card-body">
-                                        <p><strong class="headings-color">Basic Information</strong></p>
-                                        <p class="text-muted"></p>
+                            </div>
+                        </div>
+                
+                        <div class="card card-form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 card-body">
+                                    <p><strong class="headings-color">Images Upload</strong></p>
+                                    <p class="text-muted"></p>
+                                </div>
+                                <div class="col-lg-10 card-form__body card-body">
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="was-validated">
+                                                <label for="link">Default</label>
+                                                <input type="text" name="image" class="form-control" id="link" placeholder="Default image" value="{{ old('image') }}" required="">
+                                                <div class="invalid-feedback">Please provide a valid default image Link.</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-10 card-form__body card-body">
-                                        <div class="form-row" id="#">
-                                            <div class="col-12 col-md-6 mb-3">
-                                                <input type="text" name="name" class="form-control" id="name" placeholder="Product Name" value="" required="">
-                                                <div class="invalid-feedback">Please provide a Product Name.</div>
+                    
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="was-validated">
+                                                <label for="link">Front</label>
+                                                <input type="text" name="front_side_image" class="form-control" id="link" placeholder="Front image" value="{{ old('front_side_image') }}" required="">
+                                                <div class="invalid-feedback">Please provide a valid fron image Link.</div>
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
-                                            <div class="col-12 col-md-6 mb-3">
-                                                <button type="button" class="btn btn-outline-primary">+</button>
-                                            </div>
-                                            <div class="col-12 col-md-6 mb-3">
-                                                <input type="text" name="name" class="form-control" id="name" placeholder="Product Name" value="" required="">
-                                                <div class="invalid-feedback">Please provide a Product Name.</div>
+                                        </div>
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="was-validated">
+                                                <label for="link">Back</label>
+                                                <input type="text" name="back_side_image" class="form-control" id="link" placeholder="Back image" value="{{ old('back_side_image') }}" required="">
+                                                <div class="invalid-feedback">Please provide a valid back image Link.</div>
                                                 <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="was-validated">
+                                                <label for="link">Right</label>
+                                                <input type="text" name="right_side_image" class="form-control" id="link" placeholder="Right image" value="{{ old('right_side_image') }}" required="">
+                                                <div class="invalid-feedback">Please provide a valid right image Link.</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="was-validated">
+                                                <label for="link">Left</label>
+                                                <input type="text" name="left_side_image" class="form-control" id="link" placeholder="Left image" value="{{ old('left_side_image') }}" required="">
+                                                <div class="invalid-feedback">Please provide a valid left image Link.</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                                                        
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card card-form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 card-body">
+                                    <p><strong class="headings-color">Description</strong></p>
+                                    <p class="text-muted"></p>
+                                </div>
+                                <div class="col-lg-10 card-form__body card-body">
+                                    <textarea type="textarea" style="display:none" id="description" name="description" rows="4" class="form-control" placeholder="Please enter a description">{!! old('description') !!}</textarea>
+                                    <div class="form-group">
+                                        <div class="h-150" data-toggle="quill" data-quill-placeholder="Description write here...." data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
+                                            {!! old('description') !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card card-form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 card-body">
+                                    <p><strong class="headings-color">Quantity & Units</strong></p>
+                                    <p class="text-muted"></p>
+                                </div>
+                                <div class="col-lg-10 card-form__body card-body">
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="was-validated">
+                                                <label for="price">Quantity</label>
+                                                <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" min="1" type="text" name="quantity" placeholder="Quantity" value="{{ old('quality') }}" required="">
+                                                <div class="invalid-feedback">Please provide a Weight of product.</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <label for="unit">Units</label>
+                                            <select id="unit" name="unit_id" data-toggle="select" class="form-control">
+                                                <option disabled selected>Select Unit</option>
+                                                @foreach($units as $unit)
+                                                <option value="{{ $unit->id }}" {{ old('unit_id') === $unit->id ? 'selected' : '' }}>{{ $unit->code }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">Please provide a Discount Amount.</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <label for="size">Category</label>
+                                            <select id="size" name="category[]" data-toggle="select" class="form-control">
+                                                <option disabled selected>Select</option>
+                                                @foreach($categories as $category)
+                                                <option value="{{ $category->id }}" @if(old('category') == $category->id) ? 'selected' : '' @endif>{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                        
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="card card-form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 card-body">
+                                    <p><strong class="headings-color">Publication Status</strong></p>
+                                    <p class="text-muted">This is for save the product draft or published</p>
+                                </div>
+                                <div class="col-lg-10 card-form__body card-body">
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="flex">
+                                                <label for="Product Status">Product Status</label>
+                                                <select id="status" name="status" data-toggle="select" class="form-control">
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Draft</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {!! Form::close() !!}
+                            
                         </div>
-                        <div class="tab-pane fade" id="variation">
-                            <div class="col-lg-12 card-form__body">
-                                <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-category-name","js-lists-values-parent-name"]'>
-                                    <div class="search-form search-form--light m-3">
-                                        <input type="text" class="form-control search" placeholder="Search">
-                                        <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
-                                    </div>
-                                    <table class="table mb-0 thead-border-top-0">
-                                        <thead class="bg-black">
-                                            <tr>
-    
-                                                <th style="width: 18px;">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#staff" id="customCheckAll">
-                                                        <label class="custom-control-label" for="customCheckAll"><span class="text-hide">Toggle all</span></label>
-                                                    </div>
-                                                    
-                                                </th>
-                                                <th>
-                                                    <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-category-name">Name</a>
-                                                </th>
-                                                <th>
-                                                    <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-parent-name">Parent</a>
-                                                </th>
-                                                
-                                                <th>Order No.</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="list" id="staff">
-                                            <tr>
-    
-                                                <td>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input js-check-selected-row" id="customCheck1_1" value="dfg">
-                                                        <label class="custom-control-label" for="customCheck1_1"><span class="text-hide">Check</span></label>
-                                                    </div>
-                                                </td>
-    
-                                                <td>
-    
-                                                    <div class="media align-items-center">
-                                                        {{-- <div class="avatar avatar-xs mr-2">
-                                                            <img src="assets/images/256_luke-porter-261779-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div> --}}
-                                                        <div class="media-body">
-                                                            
-                                                            <span class="js-lists-values-category-name">dsfg</span>
-    
-                                                        </div>
-                                                    </div>
-    
-                                                </td>
-                                                <td>
-                                                    <div class="col-12 col-md-6 mb-3">
-                                                        <input type="text" name="name" class="form-control" id="name" placeholder="Product Name" value="" required="">
-                                                        <div class="invalid-feedback">Please provide a Product Name.</div>
-                                                        <div class="valid-feedback">Looks good!</div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col-12 col-md-6 mb-3">
-                                                        <input type="text" name="name" class="form-control" id="name" placeholder="Product Name" value="" required="">
-                                                        <div class="invalid-feedback">Please provide a Product Name.</div>
-                                                        <div class="valid-feedback">Looks good!</div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col-12 col-md-6 mb-3">
-                                                        <input type="text" name="name" class="form-control" id="name" placeholder="Product Name" value="" required="">
-                                                        <div class="invalid-feedback">Please provide a Product Name.</div>
-                                                        <div class="valid-feedback">Looks good!</div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+
+                        <div class="card card-form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 card-body">
+                                    <p><strong class="headings-color">Size Attributes</strong></p>
+                                    <p class="text-muted"></p>
                                 </div>
-    
-    
+                                <div class="col-lg-10 card-form__body card-body" id="sizeOption">
+                                    <div class="form-row" id="#">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <input type="text" name="options[size]" class="form-control" id="options_name" placeholder="Options Name" value="Size" readonly>
+                                        </div>
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <button type="button" class="btn btn-outline-primary" id="sizeAdd">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <input type="text" name="size[]" class="form-control" id="size" placeholder="Size">
+                                        </div>
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <button type="button" class="btn btn-outline-warning" disabled>-</button>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
                             </div>
                         </div>
-                        {{-- <div class="tab-pane fade" id="activity_quotes">
-                            Odit consectetur dolore maxime similique qui officia deserunt fugiat quo tempore consequuntur dicta ratione sint commodi eum eligendi, magnam aliquid expedita quas accusantium, sed nobis tenetur illum mollitia. Quis ipsum tenetur distinctio tempore vitae atque quam.
-                        </div> --}}
+                        
+                        <div class="card card-form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 card-body">
+                                    <p><strong class="headings-color">Color Attributes</strong></p>
+                                    <p class="text-muted"></p>
+                                </div>
+                                <div class="col-lg-10 card-form__body card-body" id="colorOption">
+                                    <div class="form-row" id="#">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <input type="text" name="options[color]" class="form-control" id="options_name" placeholder="Options Name" value="Color" readonly>
+                                        </div>
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <button type="button" class="btn btn-outline-primary" id="colorAdd">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <input type="text" name="color[]" class="form-control" id="color" placeholder="Color">
+                                        </div>
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <button type="button" class="btn btn-outline-warning" disabled>-</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>        
+                        <button type="submit" class="btn btn-success ml-1">Save<i class="material-icons">save</i></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-
 </div>
+{!! Form::close() !!}
 @endsection
 @section('script')\
     
@@ -537,58 +393,35 @@
             $('#price').on('keyup', function() {
                 var price = $(this).val();
                 $('form .checkPrice').remove();
-                    var discountAmount = $('form #inputDiscountAmount').val();
-                    var discountPercent = $('form #inputDiscountPercentage').val();
+                    var discountAmount = $('#inputDiscountAmount').val();
+                    var discountPercent = $('#inputDiscountPercentage').val();
                     if(discountAmount) { 
                         var salePrice = price - discountAmount; 
-                        $('form #salePrice').val(salePrice);
+                        $('#salePrice').val(salePrice);
                     } else if(discountPercent) {
                         var discountAmount = price*(discountPercent/100);
                         var salePrice = price - discountAmount;
-                        $('form #salePrice').val(salePrice);
+                        $('#salePrice').val(salePrice);
                     } else {
-                        $('form #salePrice').val(price);
+                        $('#salePrice').val(price);
                     }        
             })
         
-            if($("#manualDiscount").prop("checked") == true) {alert(1)
-                
-                $('#discountPercentage').remove();
-                $('.discountA').append('<div id="discountAmount"><label for="discount-amount">Discount Amount</label><input id="inputDiscountAmount" type="number" class="form-control" name="discount_amount" min="1" value="" autocomplete="discount" autofocus><div class="checkPrice"><div></div>');
-                
-                $(document).on("keyup", "#inputDiscountAmount" , function() {
-                    var discountAmount = $(this).val();
-                    var price = $("#price").val();
-                    if(price) {
-                        $('form .checkPrice').remove();
-                        var salePrice = price - discountAmount;
-                        $('form #salePrice').val(salePrice);
-                    } else {
-                        $('form .checkPrice').html('<span class="invalid-feedback" role="alert">Please set the price before.</span>');
-                    }
-                });
-            }
-        
-            $("#manualDiscount").change(function() {
-                
-                if($(this).prop("checked") == true) {
-                    $('#discountPercentage').remove();
-                    $('.discountA').append('<div class="form-group" id="discountAmount"><label for="discount">Discount Amount</label><input id="inputDiscountAmount" type="number" class="form-control" name="discount_percentage" min="1" value="" autocomplete="discount" autofocus><div class="checkPrice"><div></div>');
-                    
-                    $(document).on("keyup", "#inputDiscountAmount" , function() {
-                        var discountAmount = $(this).val();
-                        var price = $("#price").val(); 
-                        if(price) {
-                            $('form .checkPrice').remove();
-                            var salePrice = price - discountAmount;
-                            $('form #salePrice').val(salePrice);
-                        } else {
-                            $('form .checkPrice').html('<span class="invalid-feedback" role="alert">Please set the price before.</span>');
-                        }
-                        
-                    });
+          
+            $(document).on("keyup", "#inputDiscountAmount" , function() {
+                $('#inputDiscountPercentage').val(0);
+                var discountAmount = $(this).val();
+                var price = $("#price").val();
+                if(price) {
+                    $('.checkPrice').remove();
+                    var salePrice = price - discountAmount;
+                    $('#salePrice').val(salePrice);
+                } else {
+                    $('.checkPrice').html('<span class="invalid-feedback" role="alert">Please set the price before.</span>');
                 }
-            })
+            });
+         
+           
         
             $('#reset, #reset1').on('click', function() {
                 $('#discountAmount').remove();
@@ -596,44 +429,22 @@
                 $('#specialImage').remove();
             })
         
-            if($("#manualPercentage").prop("checked") == true) {
-                $('#discountAmount').remove();
-                $('.discountP').append('<div class="form-group" id="discountPercentage"><label for="discount_percentage">Discount Percentage</label><input id="inputDiscountPercentage" type="number" class="form-control" name="discount_percentage" min="1" value="" autocomplete="discount_percentage" autofocus><div class="checkPrice"><div></div>');
         
-                $(document).on("keyup", "#inputDiscountPercentage" , function() {
-                    var discountPercent = $(this).val();
-                    var price = $("#price").val();
-                    if(price) {
-                        $('form .checkPrice').remove();
-                        var discountAmount = price*(discountPercent/100);
-                        var salePrice = price - discountAmount;
-                        $('form #salePrice').val(salePrice);
-                    } else {
-                        $('form .checkPrice').html('<span class="invalid-feedback" role="alert">Please set the price before.</span>');
-                    }
-                });
-            }
-        
-            $("#manualPercentage").change(function() {
-             
-                if($(this).prop("checked") == true) {
-                    $('#discountAmount').remove();
-                    $('#DP').append('<div class="form-group" id="discountPercentage"><label for="discount_percentage">Discount Percentage</label><input id="inputDiscountPercentage" type="number" class="form-control" name="discount_percentage" min="1" value="" autocomplete="discount_percentage" autofocus><div class="checkPrice"><div></div>');
-        
-                    $(document).on("keyup", "#inputDiscountPercentage" , function() {
-                        var discountPercent = $(this).val();
-                        var price = $("#price").val();
-                        if(price) {
-                            $('form .checkPrice').remove();
-                            var discountAmount = price*(discountPercent/100);
-                            var salePrice = price - discountAmount;
-                            $('form #salePrice').val(salePrice);
-                        } else {
-                            $('form .checkPrice').html('<span class="invalid-feedback" role="alert">Please set the price before.</span>');
-                        }
-                    });
+    
+            $(document).on("keyup", "#inputDiscountPercentage" , function() {
+                $('#inputDiscountAmount').val(0);
+                var discountPercent = $(this).val();
+                var price = $("#price").val();
+                if(price) {
+                    $('.checkPrice').remove();
+                    var discountAmount = price*(discountPercent/100);
+                    var salePrice = price - discountAmount;
+                    $('#salePrice').val(salePrice);
+                } else {
+                    $('.checkPrice').html('<span class="invalid-feedback" role="alert">Please set the price before.</span>');
                 }
             });
+              
         
             $('#productImage').change(function () {
                 var filename = $(this)[0].value.split("\\").pop();
@@ -646,6 +457,58 @@
 
             $(".ql-editor").on("keyup",function() { 
                 $("#description").val($(".ql-editor").html());
+            })
+
+            $("#colorAdd").on('click', function(){
+                $('#colorOption').append();
+            })
+
+            var maxField = 10; 
+            var c = 1; var s = 1;
+            $("#colorAdd").click(function () {
+                newRowAdd = 
+                '<div class="form-row" id="colorOptionSub">'+
+                    '<div class="col-12 col-md-6 mb-3">'+
+                        '<input type="text" name="color[]" class="form-control" id="color" placeholder="Color" value="" required="">'+
+                    '</div>'+
+                    '<div class="col-12 col-md-6 mb-3">'+
+                        '<button type="button" class="btn btn-outline-warning" id="colorSub">-</button>'+
+                    '</div>'+
+                '</div>';
+    
+               
+                if(c < maxField){ 
+                    c++; //Increment field counter
+                    $('#colorOption').append(newRowAdd);
+                }
+            });
+    
+            $("#colorOption").on("click", "#colorSub", function () {  
+                $(this).parents("#colorOptionSub").remove();
+                c--;
+            })
+
+            $("#sizeAdd").click(function () {  
+                newRowAdd = 
+                '<div class="form-row" id="sizeOptionSub">'+
+                    '<div class="col-12 col-md-6 mb-3">'+
+                        '<input type="text" name="size[]" class="form-control" id="size" placeholder="Size" value="" required="">'+
+                    '</div>'+
+                    '<div class="col-12 col-md-6 mb-3">'+
+                        '<button type="button" class="btn btn-outline-warning" id="sizeSub">-</button>'+
+                    '</div>'+
+                '</div>';
+    
+               
+                if(s < maxField){ 
+                    s++; //Increment field counter
+                    $('#sizeOption').append(newRowAdd);
+                }
+            });
+    
+            $("#sizeOption").on("click", "#sizeSub", function () {  
+                $(this).parents("#sizeOptionSub").remove();
+                s--;
             })
          
         });

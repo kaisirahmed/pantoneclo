@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Pentoneclo')
+@section('title','Home')
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/responsive.css') }}">

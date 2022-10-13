@@ -22,16 +22,23 @@
             <span class="badge badge-secondary badge-pill">{{ $cartTotalQuantity }}</span>
           </h4>
           <ul class="list-group mb-3">
+            <table class="table" id="cartTable">
             @foreach ($cartitems as $item)
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <tr>
+                <td style="vertical-align: middle;width: 30%;" align="left"><img width="50%" src="{{ $item->attributes->image }}" alt=""></td>
+                <td style="vertical-align: middle;width: 40%;" align="left">{{ mb_strimwidth($item->name,0,30,"...") }}</td>
+                <td style="vertical-align: middle">{{ $item->attributes->variation }} | {{ $item->quantity }}</td>
+                <td style="vertical-align: middle">{{ $item->attributes->currency }}{{ $item->price }}</td>
+              </tr>
+                {{-- <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
                     <h6 class="my-0"><img width="30px" style="border-right: 1px solid #dfdfdf" src="{{ $item->attributes->image }}" alt=""> {{ $item->name }}</h6>
-                    <small class="text-muted">{{ $item->attributes->color }} | {{ $sizes[$item->attributes->size_id] }} | {{ $item->quantity }}</small>
+                    <small class="text-muted">{{ $item->attributes->options }} | {{ $item->quantity }}</small>
                   </div>
                   <span class="text-muted">{{ $item->attributes->currency }}{{ $item->price }}</span>
-                </li>
+                </li> --}}
             @endforeach
-           
+            </table>
             {{-- <li class="list-group-item d-flex justify-content-between bg-light">
               <div class="text-success">
                 <h6 class="my-0">Promo code</h6>
@@ -57,20 +64,49 @@
 
 
         <div class="col-md-8 order-md-1">
-          <h4 class="mb-3">Billing address</h4>
           <form class="needs-validation form-box" novalidate="" method="POST" action="{{ route('checkout.store') }}">
             @csrf
+          @if($user->billing() != null)
+          <div class="alert alert-soft-warning d-flex align-items-center card-margin" role="alert">
+            <input type="checkbox" value="{{ $user->billing()->id }}" name="billing_id" id="billingId">
+            <div class="text-body">
+              &nbsp;{{ $user->billing() != null ? $user->billing()->street .", ".$user->billing()->street2.", ".$user->billing()->state->name.", ".($user->billing()->city != 0 ? $user->billing()->city->name : '')." ".$user->billing()->country->name : 'Not Added Yet' }}
+            </div>
+            <button class="btn btn-outline-primary btn-sm ml-auto" disabled>Billing Address</button>
+          </div>
+          @endif
+          @if($user->shipping() != null)
+          <div class="alert alert-soft-warning d-flex align-items-center card-margin" role="alert">
+            <input type="checkbox" value="{{ $user->shipping()->id }}" name="shipping_id" id="shippingId">
+            <div class="text-body">
+              &nbsp;{{ $user->shipping() != null ? $user->shipping()->street .", ".$user->shipping()->street2.", ".$user->shipping()->state->name.", ".($user->shipping()->city != 0 ? $user->shipping()->city->name : '')." ".$user->shipping()->country->name : 'Not Added Yet' }}
+            </div>
+            <button class="btn btn-outline-primary btn-sm ml-auto" disabled>Shipping Address</button>
+          </div>
+          @endif
+          <h6 class="text-muted">If you want to add use new billing or shipping please fillup the fields. Otherwise set the default address automatically.</h6>
+          <hr class="mb-4">
+          @if($user->billing() != null && $user->shipping() != null)
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" name="default_address" class="custom-control-input" id="default-address" value="1">
+            <label class="custom-control-label" for="default-address"><b>Place order with default address</b></label>
+          </div>
+          <hr class="mb-4">
+          @endif
+          <div id="billing-address">
+            <h5 class="mb-3">Billing Address</h5>
+            
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name</label>
-                <input type="text" name="billing_first_name" class="form-control" id="billing_firstName" placeholder="" value="" required>
+                <input type="text" name="billing_first_name" class="form-control" id="billing_firstName" placeholder="" value="">
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">Last name</label>
-                <input type="text" name="billing_last_name" class="form-control" id="billing_lastName" placeholder="" value="" required>
+                <input type="text" name="billing_last_name" class="form-control" id="billing_lastName" placeholder="" value="">
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
@@ -92,14 +128,14 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="email">Email</label>
-                <input type="email" name="billing_email" class="form-control" id="billing_email" placeholder="you@example.com">
+                <input type="email" name="billing_email" class="form-control" id="billing_email" placeholder="you@email.com">
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="phone">Phone <span class="text-muted">(Optional)</span></label>
-                <input type="text" name="billing_phone" class="form-control" id="billing_phone" placeholder="" value="" required>
+                <label for="phone">Mobile</span></label>
+                <input type="text" name="billing_mobile" class="form-control" id="billing_mobile" placeholder="+xxx-xxxxxxx" value="">
                 <div class="invalid-feedback">
                   Valid phone is required.
                 </div>
@@ -108,7 +144,7 @@
          
             <div class="mb-3">
               <label for="street">Street</label>
-              <input type="text" name="billing_street" class="form-control" id="billing_street" placeholder="" required>
+              <input type="text" name="billing_street" class="form-control" id="billing_street" placeholder="">
               <div class="invalid-feedback">
                 Please enter your street.
               </div>
@@ -122,7 +158,7 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="country">Country</label>
-                <select class="custom-select d-block w-100" name="billing_country_id" id="billing_country" required>
+                <select class="custom-select d-block w-100" name="billing_country_id" id="billing_country">
                   <option value="">Choose...</option>
                   @foreach ($countries as $country)
                       <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -156,7 +192,7 @@
 
               <div class="col-md-6 mb-3">
                 <label for="zip">Zip</label>
-                <input type="text" class="form-control" name="billing_zip" id="billing_zip" placeholder="" required>
+                <input type="text" class="form-control" name="billing_zip" id="billing_zip" placeholder="">
                 <div class="invalid-feedback">
                   Zip code required.
                 </div>
@@ -175,7 +211,7 @@
           <hr class="mb-4">
           
             <div class="shipping-address">
-              <h4 class="mb-3">Shipping address</h4>
+              <h5 class="mb-3">Shipping address</h5>
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="firstName">First name</label>
@@ -215,7 +251,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="phone">Phone <span class="text-muted">(Optional)</span></label>
-                  <input type="text" name="shipping_phone" class="form-control" id="shipping_phone" placeholder="" value="">
+                  <input type="text" name="shipping_mobile" class="form-control" id="shipping_mobile" placeholder="" value="">
                   <div class="invalid-feedback">
                     Valid phone is required.
                   </div>
@@ -280,7 +316,7 @@
               </div>
               <hr class="mb-4">
             </div>  
-              
+          </div>
             <button class="btn btn-primary btn-sm" type="submit">Place Order</button>
           </form>
         </div>

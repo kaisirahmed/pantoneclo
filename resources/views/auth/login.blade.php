@@ -70,13 +70,15 @@
                                     <h3 class="c-black">First time here?</h3>
                                     <a href="{{ route('register') }}" class="btn btn-custom">Sign up</a>
                                 </div>
-                                <h5 class="c-black mb-4 mt-n1">Or Sign In With</h5>
-                                <div class="socials">
+                                <h5 class="c-black mb-4 mt-n1">
+                                    <img width="40%" src="{{ asset('assets/images/pantoneclo.png') }}" alt="">
+                                </h5>
+                                {{-- <div class="socials">
                                     <a href="#" class="zmdi zmdi-facebook"></a>
                                     <a href="#" class="zmdi zmdi-twitter"></a>
                                     <a href="#" class="zmdi zmdi-google"></a>
                                     <a href="#" class="zmdi zmdi-instagram"></a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

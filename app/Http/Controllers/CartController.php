@@ -44,14 +44,13 @@ class CartController extends Controller
             $product_id = $request->product_id;
             $variants = implode("",$request->variants);
             
-            $variant = $product_id.$variants;
+            $variant = $product_id.$variants; 
             $product = Product::where('id',$product_id)
                             ->where('status',1)
                             ->first();
 
             $variation = Variation::where('code',$variant)->where('product_id',$product_id)->first();            
-           
-
+            
             if($request->quantity){
                 $quantity = $request->quantity;
             }else{
@@ -61,19 +60,20 @@ class CartController extends Controller
             $id = $product->id;
             $name = $product->name;
             $price = $variation->sale_price;
-            $image = $product->image;
-                        
+            $image = $variation->image != null ? $variation->image : $product->image;
+            $discountAmount = $variation->price-$variation->sale_price;
+            $varantName = $variation->name;
             $cart = Cart::add([
                 'id' => $variant,
-                'name' => $name." (".$variation->name.")",
+                'name' => $name." (".$varantName.")",
                 'price' => $price,
                 'quantity' => $quantity,
                 'attributes' => [
                     'product_id' => $id,
-                    'discount_amount' => $variation->discount_amount,
-                    'discount_percentage' => $variation->discount_percentage,
+                    'unit' => $product->unit->code,
+                    'discount_amount' => $discountAmount,
                     'image' => $image,
-                    'options' => $variation->name,
+                    'variation' => $varantName,
                     'currency' => '$'
                 ]
             ]);

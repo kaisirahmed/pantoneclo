@@ -40,45 +40,49 @@ class FileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, File $file)
-    { 
+    public function store(Request $request)
+    {  
         $inputFileCount = count($request->files);
-        $uploadFileCount = 0;
-        $inputFiles = $request->file('files'); 
-        if($inputFileCount <= 10){
-            foreach($inputFiles as $key => $inputFile) {
-                
-                $rules = array('files' => 'required|unique:files,file|mimes:jpg,jpeg,png,bmp,tiff,gif|max:2048'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
-                $validator = Validator::make(array('files'=> $inputFile), $rules);
-    
-                if ($validator->fails()) {
-                    return $validator->validate();
-                } else {
-                    $image = $inputFile;  
-                    $file->mime = $image->getClientOriginalExtension();
-                    $fileName = $image->getClientOriginalName();
-                    $file->name = Str::of($fileName)->basename('.'.$file->mime);
-                    $destination = 'uploads/files/'.$fileName;
-                    $createImage = Image::make($image)->save($destination);
-                    $file->file = $destination;
-                    $file->dimension = $createImage->width().' X '.$createImage->height();
-                    // get file size
-                    $file->size = number_format($createImage->filesize()/1024,2).' KB';
-                    $file->date = date('Y-m-d');
-                    if($file->save()){
-                        $uploadFileCount++;
-                    }  
-                }              
-                
+        if($inputFileCount > 0){
+            $uploadFileCount = 0;
+            $inputFiles = $request->file('files'); 
+            if($inputFileCount <= 10){
+                foreach($inputFiles as $key => $inputFile) {
+                    
+                    $rules = array('files' => 'required|unique:files,file|mimes:jpg,jpeg,png,bmp,tiff,gif|max:2048'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
+                    $validator = Validator::make(array('files'=> $inputFile), $rules);
+        
+                    if ($validator->fails()) {
+                        return $validator->validate();
+                    } else {
+                        $image = $inputFile;  
+                        $input['mime'] = $image->getClientOriginalExtension();
+                        $fileName = $image->getClientOriginalName();
+                        $input['name'] = Str::of($fileName)->basename('.'.$input['mime']);
+                        $destination = 'uploads/files/'.$fileName;
+                        $createImage = Image::make($image)->save($destination);
+                        $input['file'] = $destination;
+                        $input['dimension'] = $createImage->width().' X '.$createImage->height();
+                        // get file size
+                        $input['size'] = number_format($createImage->filesize()/1024,2).' KB';
+                        $input['date'] = date('Y-m-d');
+                        if(File::create($input)){
+                            $uploadFileCount++;
+                        }  
+                    }              
+                    
+                }
+            } else {
+                Session::flash('limit','Files upload limit only 10 item at a time.');
+            }
+ 
+            if($inputFileCount == $uploadFileCount) {
+                Session::flash('success',$uploadFileCount.' Files has been uploaded successfully.');
+            } else {
+                Session::flash('warning','Something is wrong when creating file upload.');
             }
         } else {
-            Session::flash('limit','Files upload limit only 10 item at a time.');
-        }
-
-        if($inputFileCount == $uploadFileCount) {
-            Session::flash('message','Files has been uploaded successfully.');
-        } else {
-            Session::flash('warning','Something is wrong when creating app info.');
+            Session::flash('warning','No files are selected!');
         }
 
         return redirect()->route('admin.files.index');
@@ -124,8 +128,9 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(File $file)
     {
-        //
+        $file->delete();
+        return redirect()->back()->with('success','File has been deleted successfully!');
     }
 }

@@ -10,7 +10,7 @@
     @csrf
 <div class="container-fluid page__heading-container">
     <div class="page__heading d-flex align-items-center justify-content-between">
-        <h4 class="m-0">Files</h4>
+        <h5 class="m-0"><a href="{{ route('admin.dashboard') }}">Dashboard</a> / Files</h5>
         <button type="submit" class="btn btn-success ml-1">Save <i class="material-icons">account_circle</i></button>
     </div>
 </div>
@@ -20,14 +20,7 @@
             <div class="container-fluid ">
                 <div class="page__heading d-flex align-items-center justify-content-between">
                     <input type="file" name="files[]" class="btn btn-light" multiple>
-                    @error('files')
-                    <div class="alert alert-soft-warning d-flex align-items-center card-margin" role="alert">
-                        <i class="material-icons mr-3">error_outline</i>
-                        <div class="text-body">
-                            {{ $message }}
-                        </div>
-                    </div>
-                    @enderror
+                    @include('common.message')
                     @if(Session::has('limit'))
                     <div class="alert alert-soft-warning d-flex align-items-center card-margin" role="alert">
                         <i class="material-icons mr-3">error_outline</i>
@@ -38,6 +31,7 @@
                     @endif
                 </div>
             </div>
+            {{ Form::close() }}
             <div class="col-lg-12 card-form__body">
 
                 <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-category-name","js-lists-values-parent-name"]'>                  
@@ -101,7 +95,11 @@
                                 
                                 {{-- <td>&dollar;12,402</td> --}}
                                 <td>
-                                    <a class="btn btn-danger btn-sm" href="#"><i class="material-icons">close</i> Delete</a>
+                                    <a class="btn btn-danger btn-sm" href="javascript:;" onclick="confirmDelete('{{ $file->id }}')"><i class="material-icons">delete</i></a>
+                                    <form id="delete{{ $file->id }}" action="{{ route('admin.files.destroy', $file->id) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -116,7 +114,7 @@
     </div>
 
 </div>
-{{ Form::close() }}        
+        
 @endsection
 @section('script')
   <!-- List.js -->
@@ -146,5 +144,6 @@
         toastr.success('Link Copied');
 
     }
+     
   </script>
 @endsection

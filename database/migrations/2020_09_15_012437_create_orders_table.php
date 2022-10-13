@@ -28,7 +28,7 @@ class CreateOrdersTable extends Migration
             $table->dateTime('date');
             $table->dateTime('shipping_date');
             $table->double('shipping_charge');
-            $table->integer('status');// 1=>Pending payment, 2=>Failed, 3=>Processing, 4=>Completed, 5=>On hold, 6=>Canceled, 7=>Refunded, 8=>Authentication required
+            $table->integer('status');// 1=>Pending Payment, 2=>Failed, 3=>Processing, 4=>Completed, 5=>On hold, 6=>Canceled, 7=>Refunded, 8=>Authentication required
             $table->softDeletes();
             $table->timestamps();
         });

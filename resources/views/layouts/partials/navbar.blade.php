@@ -46,7 +46,7 @@
                     <div class="menu_trigger_container ml-auto">
                         <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
                             <div class="menu_burger">
-                                <div class="menu_trigger_text">menu</div>
+                                {{-- <div class="menu_trigger_text">menu</div> --}}
                                 <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
                             </div>
                         </div>
@@ -97,6 +97,27 @@
                             <a href="{{ route('category.products',$category->slug) }}">{{ $category->name }}<i class="fas fa-chevron-down"></i></a>
                         </li>
                         @endforeach
+                        <li class="page_menu_item">
+                            <div class="cart">
+                                <a href="{{ route('cart') }}">
+                                    <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                                        <div class="cart_icon">
+                                            <img src="{{ asset('assets/images/cart.png') }}" alt="">
+                                            <div class="cart_count"><span>{{ $cartTotalQuantity}}</span></div>
+                                        </div>
+                                        
+                                        {{-- <div class="cart_content">
+                                            <div class="cart_price">{{ $cartTotal > 0 ? $cartTotal : }}</div>
+                                        </div> --}}
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        @if(auth()->check())
+                        <li class="page_menu_item">
+                            <a href="{{ route('account') }}">{{ auth()->user()->name }}<i class="fas fa-chevron-down"></i></a>
+                        </li>
+                        @endif
                     </ul>
                     
                     <div class="menu_contact">

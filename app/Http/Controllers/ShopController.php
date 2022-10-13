@@ -53,8 +53,8 @@ class ShopController extends Controller
     {
         $product = Product::where('slug',$slug)->first();
         
-        // $variant = $product->variant();
-        // dd($variant->name);
+         //$variant = $product->variants()->where('is_default',1)->first();
+         //dd($variant);
         // if(!is_null($product)){
         //     $options = $product->options()->get();
         //     foreach($options as $option){

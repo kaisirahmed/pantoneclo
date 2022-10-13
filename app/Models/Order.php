@@ -24,15 +24,15 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function shipping()
-    {
-        return $this->belongsTo(Shipping::class);
-    }
     public function billing()
     {
-        return $this->belongsTo(Billing::class);
+        return $this->hasOne(Address::class,'id','billing_id')->where('type',1)->where('is_default',1)->first();
     }
-
+    public function shipping()
+    {
+        return $this->hasOne(Address::class,'id','shipping_id')->where('type',2)->where('is_default',1)->first();
+    }
+     
     public function items()
     {
         return $this->hasMany(OrderItem::class);

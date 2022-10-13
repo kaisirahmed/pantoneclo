@@ -27,5 +27,18 @@
         $(this).val(0);
       }
     })
+    $('#default-address').change(function(){
+      if($(this).is(":checked")){
+        $('#billingId').prop("checked", true);
+        $('#shippingId').prop("checked", true);
+        $('#billing-address').hide(500);
+        $(this).val(1);
+      } else {
+        $('#billingId').prop("checked", false);
+        $('#shippingId').prop("checked", false);
+        $('#billing-address').show(500);
+        $(this).val(0);
+      }
+    })
 
   }())

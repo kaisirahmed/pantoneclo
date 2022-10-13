@@ -791,7 +791,7 @@ $(document).ready(function()
 				nav:false,
 				dots:false,
 				autoplayHoverPause:true,
-				autoplay:false,
+				autoplay:true,
 				responsive:
 				{
 					0:{items:1},

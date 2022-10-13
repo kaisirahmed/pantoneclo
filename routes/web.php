@@ -46,6 +46,12 @@ Route::group(['middleware' => ['auth']], function () {//'verified'
 
 	Route::get('/account',['as'=>'account','uses'=>'AccountController@index']);
 	Route::get('/account/orders',['as'=>'account.orders','uses'=>'AccountController@orders']);
+	Route::get('/account/address',['as'=>'account.address','uses'=>'AccountController@addressList']);
+	Route::get('/account/address/create',['as'=>'account.address.create','uses'=>'AccountController@addressCreate']);
+	Route::get('/account/address/{id}/edit',['as'=>'account.address.edit','uses'=>'AccountController@addressEdit']);
+	Route::post('/account/address/store',['as'=>'account.address.store','uses'=>'AccountController@addressStore']);
+	Route::post('/account/address/{id}/update',['as'=>'account.address.update','uses'=>'AccountController@addressUpdate']);
+	Route::post('/account/address/{id}/destroy',['as'=>'account.address.destroy','uses'=>'AccountController@addressDestroy']);
 	// Ajax routes
 	Route::post('/account/user/edit',['as'=>'account.user.edit','uses'=>'AccountController@userEdit']);
 	Route::post('/account/user/update',['as'=>'account.user.update','uses'=>'AccountController@userUpdate']);
@@ -104,9 +110,18 @@ Route::namespace('Admin')->group(function(){
 			Route::resource('categories','CategoryController');
 			//Route::get('/categories/pdf',['as'=>'categories.pdf','uses'=>'CategoryController@pdf'];
 			Route::resource('products','ProductController');
+			Route::get('attributes/{product}/edit',['as'=>'attributes.edit','uses'=>'ProductController@attributesEdit']);
+			Route::post('attributes/update/{product}',['as'=>'attributes.update','uses'=>'ProductController@attributesUpdate']);
+
+			Route::get('variations/{product}/edit',['as'=>'variations.edit','uses'=>'ProductController@variationsEdit']);
+			Route::post('variations/update/{product}',['as'=>'variations.update','uses'=>'ProductController@variationsUpdate']);
+			Route::post('attribute/store/{id}',['as'=>'attribute.store','uses'=>'ProductController@storeAttribute']);
 			Route::post('products/imageupload',['as'=>'products.imageupload','uses'=>'ProductController@imageUpload']);
 			//Route::post('products/delete',['as'=>'products.delete','uses'=>'ProductController@delete']);
 			Route::get('/products/pdf',['as'=>'products.pdf','uses'=>'ProductController@pdf']);
+
+			Route::resource('stocks', 'StockController');
+			Route::resource('orders', 'OrderController');
 
 			Route::resource('files','FileController');
 		});

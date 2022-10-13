@@ -8,21 +8,22 @@
 
 <div class="container-fluid page__heading-container">
     <div class="page__heading d-flex align-items-center justify-content-between">
-        <h4 class="m-0">Products</h4>
-        <a href="{{ route('admin.products.create') }}" class="btn btn-success ml-1">Create <i class="material-icons">account_circle</i></a>
+        <h5 class="m-0"><a href="{{ route('admin.dashboard') }}">Dashboard</a> / Products</h5>
+        <a href="{{ route('admin.products.create') }}" class="btn btn-success ml-1">Add <i class="material-icons">add_box</i></a>
     </div>
 </div>
 <div class="container page__container">
     <div class="card card-form">
         <div class="row no-gutters">
-            {{-- <div class="container-fluid page__heading-container">
+            <div class="container-fluid">
                 <div class="page__heading d-flex align-items-center justify-content-between">
                     <h4 class="m-0">Products</h4>
+                    @include('common.message')
                 </div>
-            </div> --}}
+            </div>
             <div class="col-lg-12 card-form__body">
 
-                <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-category-name","js-lists-values-parent-name"]'>
+                <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-category-name","js-lists-values-parent-name","js-lists-values-code"]'>
                     <div class="search-form search-form--light m-3">
                         <input type="text" class="form-control search" placeholder="Search">
                         <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
@@ -40,8 +41,10 @@
                                 </th>
                                 <th>Image</th>
                                 <th>
-                                    <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-category-name">Name</a>
+                                    <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-product-name">Name</a>
                                 </th>
+                                <th>Variations</th>
+                                <th>Code</th>
                                 <th>
                                     <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-parent-name">Category</a>
                                 </th>
@@ -65,20 +68,11 @@
                                     </div>
                                 </td>
                                 <td><img width="50px" src="{{ $product->image }}" alt="{{ $product->image }}"></td>
-                                <td>
-
-                                    <div class="media align-items-center">
-                                        {{-- <div class="avatar avatar-xs mr-2">
-                                            <img src="assets/images/256_luke-porter-261779-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                        </div> --}}
-                                        <div class="media-body">
-                                            
-                                            <span class="js-lists-values-category-name">{{ $product->name }}</span>
-
-                                        </div>
-                                    </div>
-
+                                <td width="20%">
+                                    <span class="js-lists-values-product-name">{{ $product->name }}</span>
                                 </td>
+                                <td style="background-color:floralwhite">{{ $product->variants()->count() }}</td>
+                                <td><span class="js-lists-values-code">{{ $product->code }}</span></td>
                                 <td>
                                     <span class="js-lists-values-parent-name">
                                         {{ implode(', ', $product->categories()->get()->sortBy('name')->pluck('name')->toArray()) }}
@@ -103,7 +97,7 @@
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item text-success" href="{{ route('admin.products.show', $product->id) }}"><i class="material-icons">view_list</i> View</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item text-danger" href="#" type="submit" onclick="confirmDelete('{{ $product->id }}')"><i class="material-icons">delete</i> Delete</a>
+                                            <a class="dropdown-item text-danger" href="javascript:;" onclick="confirmDelete('{{ $product->id }}')"><i class="material-icons">delete</i> Delete</a>
                                             <form id="delete{{ $product->id }}" action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display: none;">
                                                 @csrf
                                                 {{ method_field('DELETE') }}

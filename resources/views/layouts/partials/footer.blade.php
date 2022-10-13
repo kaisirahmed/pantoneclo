@@ -30,7 +30,12 @@
                     <ul class="footer_list">
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('shop') }}">Shop</a></li>
+                        <li><a href="{{ route('cart') }}">Cart</a></li>
                         <li><a href="{{ route('contact') }}">Contact</a></li>
+                        @if(!auth()->check())
+                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -48,12 +53,12 @@
                     </ul>
                 </div>
             </div>
-
+            @if(auth()->check())
             <div class="col-lg-2">
                 <div class="footer_column">
-                    <div class="footer_title">Customer Care</div>
+                    <div class="footer_title">My Account</div>
                     <ul class="footer_list">
-                        <li><a href="{{ route('account') }}">My Account</a></li>
+                        <li><a href="{{ route('account') }}">Account</a></li>
                         <li><a href="{{ route('account.orders') }}">My Orders</a></li>
                         {{-- <li><a href="#">Wish List</a></li>
                         <li><a href="#">Customer Services</a></li>
@@ -62,7 +67,7 @@
                     </ul>
                 </div>
             </div>
-
+            @endif
         </div>
     </div>
 </footer>

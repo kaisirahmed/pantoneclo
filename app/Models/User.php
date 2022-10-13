@@ -69,5 +69,17 @@ class User extends Authenticatable
     {
         return $this->hasOne(Address::class);
     }
+    public function billing()
+    {
+        return $this->hasOne(Address::class)->where('type',1)->where('is_default',1)->first();
+    }
+    public function shipping()
+    {
+        return $this->hasOne(Address::class)->where('type',2)->where('is_default',1)->first();
+    }
+    public function billingShipping()
+    {
+        return $this->hasOne(Address::class)->where('type',0)->where('is_default',1)->first();
+    }
 
 }

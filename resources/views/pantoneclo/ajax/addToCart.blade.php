@@ -27,7 +27,7 @@
                 success:function(data){ console.log(data);
                     $.notify("Cart Item Added Successfully!","success");
                     $('.cart_price').text(data.cartTotal)
-                    $('.cart_count').text(data.cartTotalQuantity)
+                    $('.cart_count').html('<span>'+data.cartTotalQuantity+'</span>')
                 } 
             }); 
         } else {
@@ -36,15 +36,17 @@
     }
 
     function clearCart(){
-        Swal.fire({
+        swal({
             title: '<h4>Do you want to clear the cart!</h4>',
+            html: true,
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Yes`,
             denyButtonText: `No`,
-            }).then((result) => {
+            },
+            function(isConfirm){
             /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
+            if (isConfirm) {
                 $.ajax({ 
                     type:"post", 
                     url: "{{ route('cart.clear') }}",
@@ -54,7 +56,7 @@
                     dataType: "json", 
                     success:function(data){ 
                         $('.cart_price').text(data.cartTotal);
-                        $('.cart_count').text(data.cartTotalQuantity);
+                        $('.cart_count').html('<span>'+data.cartTotalQuantity+'</span>');
                         $('.cart_list').remove();
                         $('.order_total').remove();
                         $('.cart_buttons').remove();
@@ -93,7 +95,7 @@
                     success:function(data){ 
                         $('#'+itemId).remove();
                         $('.cart_price').text(data.cartTotal);
-                        $('.cart_count').text(data.cartTotalQuantity);
+                        $('.cart_count').html('<span>'+data.cartTotalQuantity+'</span>');
                         $('.order_total_amount').html('&#36;'+data.cartTotal);
                         //$.notify("Cart has been cleared Successfully!","success");
                         $.notify(data.message, "success");
@@ -125,7 +127,7 @@
             success:function(data){ 
                 $('#productTotalPrice'+itemId).html('&#36;'+data.price)
                 $('.cart_price').text(data.cartTotal);
-                $('.cart_count').text(data.cartTotalQuantity);
+                $('.cart_count').html('<span>'+data.cartTotalQuantity+'</span>');
                 $('.order_total_amount').html('&#36;'+data.cartTotal);
                 //$.notify("Cart has been cleared Successfully!","success");
                 $.notify(data.message, "success");
@@ -164,7 +166,7 @@
                 });
                
                 $('.cart_price').text(data.cartTotal);
-                $('.cart_count').text(data.cartTotalQuantity);
+                $('.cart_count').html('<span>'+data.cartTotalQuantity+'</span>');
                 $('.order_total_amount').html('&#36;'+data.cartTotal);
                 //$.notify("Cart has been cleared Successfully!","success");
                 $.notify(data.message, "success");

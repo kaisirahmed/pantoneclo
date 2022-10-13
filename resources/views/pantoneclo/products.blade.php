@@ -18,8 +18,8 @@
             <!-- Images -->
             <div class="col-lg-1 order-lg-1 order-2">
                 <ul class="image_list" id="product_gallery">
-                    <li data-image="{{ $product->has_option ? $product->variant()->front_side_image : $product->front_side_image }}" data-zoom-image="{{ $product->has_option ? $product->variant()->front_side_image : $product->front_side_image }}">
-                        <img src="{{ $product->front_side_image }}" alt=""/>
+                    <li data-image="{{ $product->has_option && $product->variant() != null ? $product->variant()->image : $product->front_side_image }}" data-zoom-image="{{ $product->has_option && $product->variant() != null ? $product->variant()->image : $product->front_side_image }}">
+                        <img src="{{ $product->has_option && $product->variant() != null ? $product->variant()->image : $product->front_side_image }}" alt=""/>
                     </li>
                     <li data-image="{{ $product->back_side_image }}" data-zoom-image="{{ $product->back_side_image }}">
                         <img src="{{ $product->back_side_image }}" alt="">

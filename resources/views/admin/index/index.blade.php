@@ -1,7 +1,13 @@
 @extends('admin.layouts.index')
 @section('title','Dashboard')
 @section('content')
-<div class="container-fluid page__container">
+
+<div class="container-fluid page__heading-container">
+    <div class="page__heading d-flex align-items-center justify-content-between">
+        <h4 class="m-0">Dashboard</h4>
+    </div>
+</div>
+<div class="container page__container">
 
     <div class="row card-group-row">
         <div class="col-lg-4 col-md-6 card-group-row__col">

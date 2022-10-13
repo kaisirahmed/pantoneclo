@@ -29,10 +29,10 @@
                         <div class="row"> 
                             <div class="col-md-8">
                                 <h6 class="text-muted">Delivery to</h6>
-                                <p>{{ $order->shipping->name }}<br>  
-                                Phone: {{ $order->shipping->phone }} Email: {{ $order->shipping->email }} <br>
-                                Location: {{ $order->shipping->street }}, {{ $order->shipping->street2 }}, {{ ($order->shipping->city != 0 ? $order->shipping->city->name : '') }}, {{ $order->shipping->state->name }}, {{ $order->shipping->country->name }} <br> 
-                                Zip Code: {{ $order->shipping->zip }}
+                                <p>{{ $order->shipping()->first_name." ".$order->shipping()->last_name }}<br>  
+                                Phone: {{ $order->shipping()->phone }} Email: {{ $order->shipping()->email }} <br>
+                                Location: {{ $order->shipping()->street }}, {{ $order->shipping()->street2 }}, {{ ($order->shipping()->city != 0 ? $order->shipping()->city->name : '') }}, {{ $order->shipping()->state->name }}, {{ $order->shipping()->country->name }} <br> 
+                                Zip Code: {{ $order->shipping()->zip }}
                                 </p>
                             </div>
                             <div class="col-md-4">
@@ -62,8 +62,7 @@
                                         <var class="price text-muted">USD {{ $item->product->sale_price }}</var>
                                     </td>
                                     <td> 
-                                        <span>{{ $item->size ? $item->size : '' }}</span>
-                                        <span>{{ $item->color ? $item->color : '' }}</span>
+                                        <span>{{ $item->variation }}</span>
                                     </td>
                                     {{-- <td width="250"> <a href="#" class="btn btn-outline-primary">Track order</a> 
                                         <div class="dropdown d-inline-block">

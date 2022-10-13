@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>@yield('title')</title>
-
+<title>Pantoneclo | @yield('title')</title>
+<link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icon.png') }}">
 @include('layouts.partials.meta')
 @include('layouts.partials.style')
 

@@ -16,19 +16,19 @@ Here's a confirmation of what you bought in your order.
 <table class="table table-striped">
     <tr>
         <td>Name: </td>
-        <td>{{ $order->shipping->name }}</td>
+        <td>{{ $order->shipping()->name }}</td>
     </tr>
     <tr>
         <td>Address: </td>
-        <td>{{ $order->shipping->street }}, {{ $order->shipping->street2 }}, {{ ($order->shipping->city != 0 ? $order->shipping->city->name : '') }}, {{ $order->shipping->state->name }}, {{ $order->shipping->country->name }}</td>
+        <td>{{ $order->shipping()->street }}, {{ $order->shipping()->street2 }}, {{ ($order->shipping()->city != 0 ? $order->shipping()->city->name : '') }}, {{ $order->shipping()->state->name }}, {{ $order->shipping()->country->name }}</td>
     </tr>
     <tr>
         <td>Phone: </td>
-        <td>{{ $order->shipping->phone }}</td>
+        <td>{{ $order->shipping()->phone }}</td>
     </tr>
     <tr>
         <td>Email: </td>
-        <td>{{ $order->shipping->email }}</td>
+        <td>{{ $order->shipping()->email }}</td>
     </tr>
 </table>
 
@@ -49,7 +49,7 @@ Here's a confirmation of what you bought in your order.
       <th scope="row">{{ $key+1 }}</th>
       <td><img width="40" src="{{ $item->product->image }}"></td>
       <td>{{ $item->product->name }}</td>
-      <td>{{ $item->size ? $item->size : '' }} | {{ $item->color ? $item->color : '' }}</td>
+      <td>{{ $item->variation }}</td>
       <td>{{ $item->quantity }}*{{ $item->product_price }}</td>
       <td>{{ $item->total_price }}</td>
     </tr>

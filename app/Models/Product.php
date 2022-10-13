@@ -65,9 +65,17 @@ class Product extends Model
     {
         return $this->hasMany(Option::class);
     }
+    public function optionValues() 
+    {
+        return $this->hasMany(OptionValue::class);
+    }
     public function variants() 
     {
         return $this->hasMany(Variation::class);
+    }
+    public function stocks() 
+    {
+        return $this->hasMany(Stock::class);
     }
     public function variant() 
     {

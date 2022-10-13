@@ -6,13 +6,15 @@
 @endsection
 @section('content')
 <!-- Cart -->
-
+@section('banner')
+@include('layouts.partials.pagebanner')
+@endsection
 <div class="cart_section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 offset-lg-1">
+            <div class="col-lg-12">
                 <div class="cart_container">
-                    <div class="cart_title">Shopping Cart</div>
+                    {{-- <div class="cart_title">Shopping Cart</div> --}}
                     <div class="cart_items">
                         @if(!Cart::isEmpty())
                         <ul class="cart_list">
@@ -26,7 +28,7 @@
                                             {{-- <th scope="col">#</th> --}}
                                             <th scope="col">Image</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Options</th>
+                                            <th scope="col">Variation</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Total</th>
@@ -40,7 +42,7 @@
                                             {{-- <th scope="row">{{ $i++ }}</th> --}}
                                             <td><div class="cart_item_image"><img src="{{ $item->attributes->image }}" alt=""></div></td>
                                             <td><div class="cart_item_text"><p title="{{ $item->name }}">{{ $item->name }}</p></div></td>
-                                            <td><div class="cart_item_text"><p>{{ $item->attributes->options }}</p></div></td>
+                                            <td><div class="cart_item_text"><p>{{ $item->attributes->variation }}</p></div></td>
                                             <td>
                                                 <div class="product_quantity cart_item_text clearfix">
                                                     <strong>Qty: </strong>

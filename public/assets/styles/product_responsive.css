@@ -486,7 +486,7 @@
 	}
 	.main_nav_content
 	{
-		height: 35px;
+		height: 50px;
 	}
 	.cat_menu_container
 	{
@@ -693,6 +693,10 @@
 	.logos
 	{
 		margin-top: 30px;
+	}
+	.logo a img {
+		width: 140px;
+		height: 50px;
 	}
 }
 

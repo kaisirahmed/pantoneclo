@@ -85,8 +85,7 @@
                                 <figure class="itemside mb-3">
                                     <div class="aside"><img src="{{ $item->product->image }}" class="border img-sm"></div>
                                     <figcaption class="info">
-                                        <span>{{ $item->size ? $item->size : '' }}</span>
-                                        <span>{{ $item->color ? $item->color : '' }}</span>
+                                        <span>{{ $item->variation }}</span>
                                         <a href="{{ route('product.show',$item->product->slug) }}" tabindex="0"><p>{{ $item->product->name }}</p></a>
                                         <span class="text-success">{{ config('orderstatus.'.$order->status) }}</span>
                                     </figcaption>

@@ -75,7 +75,7 @@
                             <span>Sort by:</span>
                             <ul>
                                 <li>
-                                    <span class="sorting_text">highest rated<i class="fa fa-chevron-down"></span></i>
+                                    <span class="sorting_text">Highest rated<i class="fa fa-chevron-down"></span></i>
                                     <ul>
                                         <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "original-order" }'>Highest rated</li>
                                         <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "name" }'>Name</li>
@@ -103,9 +103,9 @@
                             <div class="product_fav"><i class="fa fa-heart"></i></div>
                             <ul class="product_marks">
                                 @if($product->discount_amount != 0)
-                                    <li class="product_mark product_discount">-{{ $product->discount_amount }}</li>
+                                    <li class="product_mark product_discount">-{{ $product->discount_amount }}$</li>
                                 @elseif($product->discount_percentage !=0)
-                                    <li class="product_mark product_discount">-{{ $product->discount_percentage }}</li>
+                                    <li class="product_mark product_discount">-{{ $product->discount_percentage }}%</li>
                                 @endif
                                 <li class="product_mark product_new">new</li>
                             </ul>

@@ -4,6 +4,7 @@
 <head>
     @include('admin.components.meta.meta')
     <title>@yield('title') | Pantoneclo</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icon.png') }}">
     @include('admin.components.link.link')  
 </head>
 
