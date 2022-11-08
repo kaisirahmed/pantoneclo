@@ -61,8 +61,9 @@ class StockController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $stock = Stock::findOrFail($id);
+        return view('admin.stocks.edit',compact('stock'));
     }
 
     /**
@@ -72,9 +73,16 @@ class StockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Stock $stock)
+    { 
+        if($request->ajax()){
+            $stock->quantity = $request->quantity;
+            if($stock->save()){
+                return response()->json(['message'=>'Stock has been updated!']);
+            } else {
+                return response()->json(['warning'=>'Stock is not updated!']);
+            }            
+        }
     }
 
     /**

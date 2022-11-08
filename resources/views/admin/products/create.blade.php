@@ -14,12 +14,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                {{-- <div class="card-header card-header-large bg-white d-flex align-items-center">
-                    <h4 class="card-header__title flex m-0">Information</h4>
-                    <div>
-                        <a href="javascript:void(0)" class="link-date">13/03/2018 <span class="text-muted mx-1">to</span> 20/03/2018</a>
-                    </div>
-                </div> --}}
+                <div class="page__heading d-flex align-items-center justify-content-between">
+                    @include('common.message')
+                </div>
                 
                 <div class="card-header card-header-tabs-basic nav" role="tablist">
                     <a href="#generalinfo" class="active" data-toggle="tab" role="tab" aria-controls="generalinfo" aria-selected="true">Product Information</a>
@@ -224,8 +221,8 @@
                                         <div class="col-12 col-md-6 mb-3">
                                             <div class="was-validated">
                                                 <label for="price">Quantity</label>
-                                                <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" min="1" type="text" name="quantity" placeholder="Quantity" value="{{ old('quality') }}" required="">
-                                                <div class="invalid-feedback">Please provide a Weight of product.</div>
+                                                <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" min="1" type="text" name="quantity" placeholder="Quantity" value="{{ old('quantity') }}" required="">
+                                                <div class="invalid-feedback">Please provide a Quantity of product.</div>
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
                                         </div>

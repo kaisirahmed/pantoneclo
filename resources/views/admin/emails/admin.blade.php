@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-Welcome to Grocers
+Welcome to Pantoneclo
 
 You have selected and maden an admin 
 

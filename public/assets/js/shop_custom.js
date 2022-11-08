@@ -359,42 +359,83 @@ $(document).ready(function()
 	*/
 
     function initPriceSlider()
-    {
-    	if($("#slider-range").length)
-    	{
-    		$("#slider-range").slider(
-			{
-				range: true,
-				min: 0,
-				max: 1000,
-				values: [ 0, 580 ],
-				slide: function( event, ui )
+    {			
+		$("#priceRange1").on('click',function(){
+			var amount = $(this).val();
+			$('.product_grid').isotope({
+				filter: function()
 				{
-					$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+					var priceRange = amount;
+					var priceMin = parseFloat(priceRange.split('-')[0].replace('$', ''));
+					var priceMax = parseFloat(priceRange.split('-')[1].replace('$', ''));
+					var itemPrice = $(this).find('.product_price').clone().children().remove().end().text().replace( '$', '' );
+
+					return (itemPrice > priceMin) && (itemPrice < priceMax);
+				},
+				animationOptions: {
+					duration: 750,
+					easing: 'linear',
+					queue: false
 				}
 			});
-				
-			$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-			$('.ui-slider-handle').on('mouseup', function()
-			{
-				$('.product_grid').isotope({
-		            filter: function()
-		            {
-		            	var priceRange = $('#amount').val();
-			        	var priceMin = parseFloat(priceRange.split('-')[0].replace('$', ''));
-			        	var priceMax = parseFloat(priceRange.split('-')[1].replace('$', ''));
-			        	var itemPrice = $(this).find('.product_price').clone().children().remove().end().text().replace( '$', '' );
+		});
+		$("#priceRange2").on('click',function(){
+			var amount = $(this).val();
+			$('.product_grid').isotope({
+				filter: function()
+				{
+					var priceRange = amount;
+					var priceMin = parseFloat(priceRange.split('-')[0].replace('$', ''));
+					var priceMax = parseFloat(priceRange.split('-')[1].replace('$', ''));
+					var itemPrice = $(this).find('.product_price').clone().children().remove().end().text().replace( '$', '' );
 
-			        	return (itemPrice > priceMin) && (itemPrice < priceMax);
-		            },
-		            animationOptions: {
-		                duration: 750,
-		                easing: 'linear',
-		                queue: false
-		            }
-		        });
+					return (itemPrice > priceMin) && (itemPrice < priceMax);
+				},
+				animationOptions: {
+					duration: 750,
+					easing: 'linear',
+					queue: false
+				}
 			});
-    	}	
+		});
+		$("#priceRange3").on('click',function(){
+			var amount = $(this).val();
+			$('.product_grid').isotope({
+				filter: function()
+				{
+					var priceRange = amount; 
+					var priceMin = parseFloat(priceRange.split('-')[0].replace('$', ''));
+					var priceMax = parseFloat(priceRange.split('-')[1].replace('$', ''));
+					var itemPrice = $(this).find('.product_price').clone().children().remove().end().text().replace( '$', '' );
+
+					return (itemPrice > priceMin) && (itemPrice < priceMax);
+				},
+				animationOptions: {
+					duration: 750,
+					easing: 'linear',
+					queue: false
+				}
+			});
+		});
+		$("#priceRange4").on('click',function(){
+			var amount = $(this).val();
+			$('.product_grid').isotope({
+				filter: function()
+				{
+					var priceRange = amount; 
+					var priceMin = parseFloat(priceRange.split('-')[0].replace('$', ''));
+					var priceMax = parseFloat(priceRange.split('-')[1].replace('$', ''));
+					var itemPrice = $(this).find('.product_price').clone().children().remove().end().text().replace( '$', '' );
+
+					return (itemPrice > priceMin) && (itemPrice < priceMax);
+				},
+				animationOptions: {
+					duration: 750,
+					easing: 'linear',
+					queue: false
+				}
+			});
+		});
     }
 
     /* 

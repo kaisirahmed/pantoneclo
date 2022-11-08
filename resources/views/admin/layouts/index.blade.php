@@ -59,6 +59,8 @@
         </div>
     </div>
 
+    @include('admin.ajax.modal')
+
     @include('admin.components.script.script')
     @yield('script')
     <script type="text/javascript">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\Order;
 
@@ -60,7 +62,8 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        return view('admin.orders.edit',compact('order'));
     }
 
     /**
@@ -70,9 +73,28 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'shipping_charge' => ['required','regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
+            'shipping_date' => ['required'],
+            'status' => ['required','string'],
+        ]);
+
+        if ($validator->fails()) {
+            return $validator->validate()->withInput();
+        } else {
+            $order->shipping_charge = $request->shipping_charge;
+            $order->shipping_date = $request->shipping_date;
+            $order->status = $request->status;
+
+            if($order->save()){
+                Session::flash('success','Order has been saved successfully.');
+            } else {
+                Session::flash('warning','Something is wrong when saving order.');
+            }
+            return redirect()->route('admin.orders.index');
+        }
     }
 
     /**

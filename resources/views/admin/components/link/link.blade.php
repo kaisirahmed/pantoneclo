@@ -20,3 +20,12 @@
     <!-- Toastr -->
     <link type="text/css" href="{{ asset('admin/assets/vendor/toastr.min.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('admin/assets/vendor/sweetalert.css') }}" rel="stylesheet">
+    
+    <!-- Flatpickr -->
+    <link type="text/css" href="{{ asset('admin/assets/css/vendor-flatpickr.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('admin/assets/css/vendor-flatpickr.rtl.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('admin/assets/css/vendor-flatpickr-airbnb.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('admin/assets/css/vendor-flatpickr-airbnb.rtl.css') }}" rel="stylesheet">
+
+    <!-- DateRangePicker -->
+    <link type="text/css" href="{{ asset('admin/assets/vendor/daterangepicker.css') }}" rel="stylesheet">

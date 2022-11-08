@@ -5,16 +5,16 @@
 <div class="container-fluid page__heading-container">
     <div class="page__heading d-flex align-items-center justify-content-between">
         <h5 class="m-0"><a href="{{ route('admin.dashboard') }}">Dashboard</a> / Categories</h5>
+        <a href="{{ route('admin.categories.create') }}" class="btn btn-success ml-1">Add <i class="material-icons">add_box</i></a>
     </div>
 </div>
 <div class="container page__container">
     <div class="card card-form">
         <div class="row no-gutters">
-            {{-- <div class="container-fluid page__heading-container">
-                <div class="page__heading d-flex align-items-center justify-content-between">
-                    <h4 class="m-0">Categories</h4>
-                </div>
-            </div> --}}
+            <div class="page__heading d-flex align-items-center justify-content-between">
+                <h4 class="m-0">Categories</h4>
+                @include('common.message')
+            </div>
             <div class="col-lg-12 card-form__body">
 
 
@@ -47,7 +47,7 @@
                             </tr>
                         </thead>
                         <tbody class="list" id="staff">
-                            @foreach($categories as $category)
+                            @foreach($adminCategories as $category)
                             <tr>
 
                                 <td>
@@ -93,8 +93,8 @@
                                         <div class="dropdown-menu dropdown-menu-right" style="display: none;">
                                             <a class="dropdown-item text-warning" href="{{ route('admin.categories.edit', $category->id) }}"><i class="material-icons">edit</i> Edit</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item text-success" href="{{ route('admin.categories.show', $category->id) }}"><i class="material-icons">view_list</i> View</a>
-                                            <div class="dropdown-divider"></div>
+                                            {{-- <a class="dropdown-item text-success" href="{{ route('admin.categories.show', $category->id) }}"><i class="material-icons">view_list</i> View</a>
+                                            <div class="dropdown-divider"></div> --}}
                                             <a class="dropdown-item text-danger" href="#" type="submit" onclick="confirmDelete('{{ $category->id }}')"><i class="material-icons">delete</i> Delete</a>
                                             <form id="delete{{ $category->id }}" action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" style="display: none;">
                                                 @csrf

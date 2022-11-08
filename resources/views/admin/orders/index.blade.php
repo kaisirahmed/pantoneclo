@@ -10,11 +10,10 @@
 <div class="container page__container">
     <div class="card card-form">
         <div class="row no-gutters">
-            {{-- <div class="container-fluid page__heading-container">
-                <div class="page__heading d-flex align-items-center justify-content-between">
-                    <h4 class="m-0">Categories</h4>
-                </div>
-            </div> --}}
+            <div class="page__heading d-flex align-items-center justify-content-between">
+                <h4 class="m-0">Orders</h4>
+                @include('common.message')
+            </div>
             <div class="col-lg-12 card-form__body">
 
 
@@ -54,8 +53,8 @@
                             <tr>
                                 <td>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input js-check-selected-row" id="customCheck1_1" value="{{ $order->id }}">
-                                        <label class="custom-control-label" for="customCheck1_1"><span class="text-hide">Check</span></label>
+                                        <input type="checkbox" class="custom-control-input js-check-selected-row" id="order_check_id" value="{{ $order->id }}">
+                                        <label class="custom-control-label" for="order_check_id"><span class="text-hide">Check</span></label>
                                     </div>
                                 </td>
 
@@ -74,8 +73,8 @@
                                             <i class="material-icons">more_vert</i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right" style="display: none;">
-                                            {{-- <a class="dropdown-item text-warning" href="{{ route('admin.orders.edit', $order->id) }}"><i class="material-icons">edit</i> Edit</a>
-                                            <div class="dropdown-divider"></div> --}}
+                                            <a class="dropdown-item text-warning" href="{{ route('admin.orders.edit', $order->id) }}"><i class="material-icons">edit</i> Edit</a>
+                                            <div class="dropdown-divider"></div>
                                             <a class="dropdown-item text-success" href="{{ route('admin.orders.show', $order->id) }}"><i class="material-icons">view_list</i> View</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item text-danger" href="#" type="submit" onclick="confirmDelete('{{ $order->id }}')"><i class="material-icons">delete</i> Delete</a>

@@ -31,9 +31,28 @@
                         <div class="sidebar_title">Filter By</div>
                         <div class="sidebar_subtitle">Price</div>
                         <div class="filter_price">
-                            <div id="slider-range" class="slider_range"></div>
-                            <p>Range: </p>
-                            <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+                            <input class="form-check-input" type="radio" name="priceRange" id="priceRange1" value="$10 - $50">
+                            <label class="form-check-label" for="priceRange1">
+                              10$-50$
+                            </label>
+                        </div>
+                        <div class="filter_price">
+                            <input class="form-check-input" type="radio" name="priceRange" id="priceRange2" value="$50 - $150">
+                            <label class="form-check-label" for="priceRange2">
+                              50$-150$
+                            </label>
+                        </div>
+                        <div class="filter_price">
+                            <input class="form-check-input" type="radio" name="priceRange" id="priceRange3" value="$150 - $300">
+                            <label class="form-check-label" for="priceRange3">
+                              150$-300$
+                            </label>
+                        </div>
+                        <div class="filter_price">
+                            <input class="form-check-input" type="radio" name="priceRange" id="priceRange4" value="$300 - 1000">
+                            <label class="form-check-label" for="priceRange4">
+                              300$-1000
+                            </label>
                         </div>
                     </div>
                     {{-- <div class="sidebar_section">

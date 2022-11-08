@@ -43,7 +43,7 @@
                                 <th><a href="javascript:void(0)" class="sort" data-sort="js-lists-values-model-name">Model</a></th>
                                 <th>Quantity</th>
                                 <th>Status</th>
-                                {{-- <th>Action</th> --}}
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody class="list" id="staff">
@@ -64,28 +64,26 @@
                                 <td><span class="js-lists-values-sku-name">{{ $stock->sku }}</span></td>
                                 <td>{{ $stock->name }}</td>
                                 <td><span class="js-lists-values-model-name">{{ $stock->model }}</span></td>
-                                <td>{{ $stock->quantity }}</td>
+                                <td><span id="quantityStock{{ $stock->id }}">{{ $stock->quantity }}</span></td>
                                 <td><span class="badge badge-{{ $stock->status === 1 ? 'success' : 'warning' }}">{{ $stock->status === 1 ? 'Active' : 'Draft' }}</span></td>
-                                
-                                {{-- <td>&dollar;12,402</td> --}}
-                                {{-- <td>
+                                <td>
                                     <div class="dropdown ml-auto">
                                         <a href="javascript:void(0)" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown" aria-expanded="false">
                                             <i class="material-icons">more_vert</i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right" style="display: none;">
-                                            <a class="dropdown-item text-warning" href="{{ route('admin.stocks.edit', $stock->id) }}"><i class="material-icons">edit</i> Edit</a>
-                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item text-warning" href="javascript:;" onclick="editStock('{{ route('admin.stocks.edit', $stock->id) }}')"><i class="material-icons">edit</i> Edit</a>
+                                            {{-- <div class="dropdown-divider"></div>
                                             <a class="dropdown-item text-success" href="{{ route('admin.stocks.show', $stock->id) }}"><i class="material-icons">view_list</i> View</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item text-danger" href="#" type="submit" onclick="confirmDelete('{{ $stock->id }}')"><i class="material-icons">delete</i> Delete</a>
                                             <form id="delete{{ $stock->id }}" action="{{ route('admin.stocks.destroy', $stock->id) }}" method="POST" style="display: none;">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
-                                            </form>
+                                            </form> --}}
                                         </div>
                                     </div>
-                                </td> --}}
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -104,4 +102,5 @@
   <!-- List.js -->
   <script src="{{ asset('admin/assets/vendor/list.min.js') }}"></script>
   <script src="{{ asset('admin/assets/js/list.js') }}"></script>
+  @include('admin.ajax.stocks')
 @endsection

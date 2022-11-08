@@ -37,7 +37,7 @@
 
     function clearCart(){
         swal({
-            title: '<h4>Do you want to clear the cart!</h4>',
+            title: 'Do you want to clear the cart!',
             html: true,
             showDenyButton: true,
             showCancelButton: true,
@@ -75,15 +75,16 @@
     // Cart item delete
     function cartDelete(itemId){
         itemId = itemId;
-        Swal.fire({
-            title: '<h4>Do you want to delete the item!</h4>',
+        swal({
+            title: 'Do you want to delete the item!',
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Yes`,
             denyButtonText: `No`,
-            }).then((result) => {
+            },
+            function(isConfirm){
             /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
+            if (isConfirm) {
                 $.ajax({ 
                     type:"post", 
                     url: "{{ route('cart.delete') }}",

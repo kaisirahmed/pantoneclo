@@ -9,10 +9,10 @@
 <h4>{{ $data['email'] }}</h4>
 <h4>{{ $data['subject'] }}</h4>
 <h4>{{ $data['message'] }}</h4>
-The body of your message.
+#The body of your message.
  
 Thanks,<br>
-{{ __('Learning') }}
+{{ __($data['name']) }}
  </body>
  </html> 
 

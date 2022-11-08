@@ -32,6 +32,15 @@
 <script src="{{ asset('admin/assets/js/app-settings.js') }}"></script>
 
 
+<!-- Flatpickr -->
+<script src="{{ asset('admin/assets/vendor/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/flatpickr.js') }}"></script>
+
+<!-- DateRangePicker -->
+<script src="{{ asset('admin/assets/vendor/moment.min.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/daterangepicker.js') }}"></script>
+<script src="{{ asset('admin/assets/js/daterangepicker.js') }}"></script>
+
 <!-- Toastr -->
 <script src="{{ asset('admin/assets/vendor/toastr.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/toastr.js') }}"></script>
