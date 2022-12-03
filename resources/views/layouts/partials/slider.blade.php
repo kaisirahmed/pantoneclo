@@ -42,7 +42,13 @@
             frameborder="0" 
             allow="autoplay">
         </iframe> --}}
-        <video style="margin-top: -18px;" width="100%" height="1000" autoplay muted playsinline>
+        //Previous video method load
+        {{-- <video style="margin-top: -18px;" width="100%" height="1000" autoplay muted playsinline>
             <source src="{{ asset('assets/videos/pantoneclo.mp4') }}" type="video/mp4">
+        </video> --}}
+
+        // Video Optimized and added javascript to load instantly
+        <video preload="auto" oncontextmenu="return false;" style="margin-top: -18px;" width="100%" height="1000" autoplay loop muted playsinline id="pantoVideo">
+            <source src="https://pantoneclo.com/assets/videos/pantoneclo.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' >
         </video>
 </div>

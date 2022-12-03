@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
+use App\Models\Product;
+use App\Models\Stock;
+use App\Models\Order;
+use App\Models\Variation;
 use App\Mail\AdminMail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Cart;
 use Illuminate\Support\Facades\Mail;
 
@@ -20,7 +25,13 @@ class AdminController extends Controller
      */
     public function admin()
     {
-        return view('admin.index.index');
+        $pendingOrders = Order::whereMonth('date', Carbon::now()->month)->where('status', 1)->count();
+        $currentSales = Order::whereMonth('date', Carbon::now()->month)->where('status', 1)->count();
+        $orders = Order::whereMonth('date', Carbon::now()->month)->where('status', 1)->count();
+        $products = Product::count();
+        $variations = Variation::count();
+        $stocks = Stock::sum('quantity');
+        return view('admin.index.index',compact('pendingOrders','products','stocks','variations','currentSales','orders'));
     }
 
     /**
@@ -34,7 +45,7 @@ class AdminController extends Controller
             $admins = Admin::all()->sortByDesc('created_at');
         }else{
             $admins = Admin::all()->where('role','!=','superAdmin')->sortByDesc('created_at');
-        }
+        }        
         
         return view('admin.admins.index', compact('admins'));
     }

@@ -13,10 +13,20 @@
 <script src="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
 <script src="{{ asset('assets/js/notify/notify.js') }}"></script>
 <script src="{{ asset('assets/js/notify/notify.min.js') }}"></script>
-
+<script src="https://forbetterweb.com/html/universal/js/jquery.mb.YTPlayer.js"></script>
 <!--Sweet Alert -->
 <script src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
 <script>
+    window.addEventListener('load', function(){
+        var newVideo = document.getElementById('pantoVideo');
+        newVideo.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+    
+        newVideo.play();
+    
+    });
     function confirmDelete(Id) {
         swal({
         title: "Are you sure to delete?",
