@@ -674,7 +674,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function variationsUpdate(Request $request, $product){
+    public function variationsUpdate(Request $request, $product){ dd($request->all());
         $variationIds = Variation::where('product_id',$product)->pluck('id')->toArray();
         
         $variations = [];
